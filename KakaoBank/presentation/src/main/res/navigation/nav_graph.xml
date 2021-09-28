@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/signup_terms">
+
+    <fragment
+        android:id="@+id/signup_terms"
+        android:name="kr.hs.dgsw.kakaobank.view.fragment.signup.SignupTermsFragment"
+        android:label="fragment_signup_terms"
+        tools:layout="@layout/fragment_signup_terms" >
+        <action
+            android:id="@+id/action_signup_terms_to_signup_input"
+            app:destination="@id/signup_input" />
+    </fragment>
+    <activity
+        android:id="@+id/signup_activity"
+        android:name="kr.hs.dgsw.kakaobank.view.activity.SignupActivity"
+        android:label="activity_signup"
+        tools:layout="@layout/activity_signup" />
+    <fragment
+        android:id="@+id/signup_input"
+        android:name="kr.hs.dgsw.kakaobank.view.fragment.signup.SignupInputFragment"
+        android:label="fragment_signup_input"
+        tools:layout="@layout/fragment_signup_input" >
+        <action
+            android:id="@+id/action_signup_input_to_signupSelectImgFramgent"
+            app:destination="@id/signupSelectImgFramgent" />
+    </fragment>
+    <fragment
+        android:id="@+id/signupSelectImgFramgent"
+        android:name="kr.hs.dgsw.kakaobank.view.fragment.signup.SignupSelectImgFragment"
+        android:label="fragment_signup_select_img_framgent"
+        tools:layout="@layout/fragment_signup_select_img" >
+        <action
+            android:id="@+id/action_signupSelectImgFramgent_to_signupPasswordFramgent"
+            app:destination="@id/signupPasswordFramgent" />
+    </fragment>
+    <fragment
+        android:id="@+id/signupPasswordFramgent"
+        android:name="kr.hs.dgsw.kakaobank.view.fragment.signup.SignupPasswordFragment"
+        android:label="fragment_signup_password"
+        tools:layout="@layout/fragment_signup_password" >
+        <action
+            android:id="@+id/action_signupPasswordFramgent_to_passwordReputFragment"
+            app:destination="@id/passwordReputFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/passwordReputFragment"
+        android:name="kr.hs.dgsw.kakaobank.view.fragment.signup.PasswordReputFragment"
+        android:label="fragment_password_reput"
+        tools:layout="@layout/fragment_password_reput" />
+</navigation>

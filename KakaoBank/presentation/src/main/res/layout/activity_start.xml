@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="kr.hs.dgsw.kakaobank.viewmodel.StartViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/kakao"
+        android:orientation="vertical"
+        android:paddingLeft="50dp"
+        android:paddingTop="60dp"
+        android:paddingRight="50dp">
+
+        <ImageView
+            android:id="@+id/main_logoImg"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="160dp"
+            app:srcCompat="@drawable/kakaobank_logo" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/main_loginBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/white_border"
+            android:text="로그인"
+            android:onClick="@{() -> vm.onClickSignIn()}"
+            android:padding="20dp"
+            android:textColor="@color/white"
+            android:textFontWeight="700"
+            android:textSize="24sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/main_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/kakao_regular"
+                android:text="@string/not_account"
+                android:textColor="@color/text_gray"
+                android:textFontWeight="700"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:textSize="16sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/main_signup_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/kakao_bold"
+                android:text="@string/sign_up"
+                android:onClick="@{() -> vm.onClicksSignUp()}"
+                android:textColor="@color/black"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:textFontWeight="700"
+                android:layout_weight="1"
+                android:textSize="24sp" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

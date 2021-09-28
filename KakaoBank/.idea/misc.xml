@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/ljh04/Desktop/KakaoBank/app/src/main/res/layout/activity_main.xml" value="0.2046875" />
+        <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.38229166666666664" />
+        <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/drawable/checkbox_circle.xml" value="0.38229166666666664" />
+        <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/drawable/checked.xml" value="0.38229166666666664" />
+        <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/drawable/custom_checkbox.xml" value="0.38229166666666664" />
+        <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/drawable/form_border.xml" value="0.38229166666666664" />
+        <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/drawable/gray_border.xml" value="0.38229166666666664" />
+        <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/drawable/ic_launcher_background.xml" value="0.38229166666666664" />
+        <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/drawable/kakao_border.xml" value="0.38229166666666664" />
+        <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/drawable/overlap_btn.xml" value="0.38229166666666664" />
+        <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/drawable/unchecked.xml" value="0.38229166666666664" />
+        <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/drawable/white_border.xml" value="0.38229166666666664" />
+        <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/layout/activity_signup.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/layout/activity_start.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/layout/activity_welcom.xml" value="0.175" />
+        <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/layout/fragment_password_reput.xml" value="0.18" />
+        <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/layout/fragment_signup_input.xml" value="0.33" />
+        <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/layout/fragment_signup_password.xml" value="0.18" />
+        <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/layout/fragment_signup_select_img.xml" value="0.22" />
+        <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/layout/fragment_signup_select_img_framgent.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/layout/fragment_signup_terms.xml" value="0.22" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
