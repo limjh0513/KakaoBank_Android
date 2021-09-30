@@ -8,5 +8,5 @@
         android:topRightRadius="10dp" />
     <stroke
         android:width="3dp"
-        android:color="@color/white" />
+        android:color="@color/point_color" />
 </shape>

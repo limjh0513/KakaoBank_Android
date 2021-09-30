@@ -1,8 +1,9 @@
-package kr.hs.dgsw.kakaobank
+package kr.hs.dgsw.kakaobank.view.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import kr.hs.dgsw.kakaobank.R
 import kr.hs.dgsw.kakaobank.databinding.ActivityWelcomBinding
 
 class WelcomeActivity : AppCompatActivity() {

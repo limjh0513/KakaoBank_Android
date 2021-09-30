@@ -18,7 +18,8 @@ class StartActivity : BaseActivity<ActivityStartBinding, StartViewModel>() {
     override fun observerViewModel() {
         with(viewModel) {
             onClickSignInBtn.observe(this@StartActivity, Observer {
-
+                val intent = Intent(this@StartActivity, LoginActivity::class.java)
+                startActivity(intent)
             })
 
             onClickSignUpBtn.observe(this@StartActivity, Observer {

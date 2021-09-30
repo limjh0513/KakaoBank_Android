@@ -50,5 +50,17 @@
         android:id="@+id/passwordReputFragment"
         android:name="kr.hs.dgsw.kakaobank.view.fragment.signup.PasswordReputFragment"
         android:label="fragment_password_reput"
-        tools:layout="@layout/fragment_password_reput" />
+        tools:layout="@layout/fragment_password_reput" >
+        <action
+            android:id="@+id/action_passwordReputFragment_to_signupPasswordFramgent"
+            app:destination="@id/signupPasswordFramgent" />
+    </fragment>
+    <dialog
+        android:id="@+id/imageDialogFragment"
+        android:name="kr.hs.dgsw.kakaobank.view.fragment.alert.ImageDialogFragment"
+        android:label="ImageDialogFragment" >
+        <action
+            android:id="@+id/action_imageDialogFragment_to_signupPasswordFramgent"
+            app:destination="@id/signupPasswordFramgent" />
+    </dialog>
 </navigation>

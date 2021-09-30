@@ -1,5 +1,6 @@
 package kr.hs.dgsw.kakaobank.di
 
+import kr.hs.dgsw.kakaobank.viewmodel.LoginViewModel
 import kr.hs.dgsw.kakaobank.viewmodel.SignupViewModel
 import kr.hs.dgsw.kakaobank.viewmodel.StartViewModel
 import kr.hs.dgsw.kakaobank.viewmodel.signup.*
@@ -10,8 +11,10 @@ val viewModelModule = module {
     //activity
     viewModel { StartViewModel() }
     viewModel { SignupViewModel() }
+    viewModel { LoginViewModel() }
 
     //signup Fragment
+    viewModel { ImageAlertViewModel() }
     viewModel { PasswordReputViewModel() }
     viewModel { SignupInputViewModel() }
     viewModel { SignupPasswordViewModel() }

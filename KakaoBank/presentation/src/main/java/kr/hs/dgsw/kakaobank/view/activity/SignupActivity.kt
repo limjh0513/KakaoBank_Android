@@ -6,7 +6,6 @@ import kr.hs.dgsw.kakaobank.databinding.ActivitySignupBinding
 import kr.hs.dgsw.kakaobank.viewmodel.SignupViewModel
 import androidx.lifecycle.Observer
 import org.koin.android.ext.android.inject
-import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class SignupActivity : BaseActivity<ActivitySignupBinding, SignupViewModel>() {
     override val viewModel: SignupViewModel by inject()
@@ -17,9 +16,6 @@ class SignupActivity : BaseActivity<ActivitySignupBinding, SignupViewModel>() {
         with(viewModel){
             cancelBtn.observe(this@SignupActivity, Observer{
                 this@SignupActivity.finish()
-            })
-
-            initSignupFragment.observe(this@SignupActivity, Observer{
             })
         }
     }

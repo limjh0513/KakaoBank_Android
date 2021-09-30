@@ -19,4 +19,7 @@
     <color name="text_mainColor">#000000</color>
     <color name="overlap_btn">#FFF05B</color>
     <color name="hint_color">#A5A5A5</color>
+
+    <color name="point_color">#FFFFFF</color>
+    <color name="alert_color">#FFCD1B</color>
 </resources>

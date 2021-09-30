@@ -1,6 +1,8 @@
 package kr.hs.dgsw.kakaobank.view.fragment.signup
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.net.Uri
 import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
@@ -34,6 +36,16 @@ class SignupTermsFragment : BaseFragment<FragmentSignupTermsBinding, SignupTerms
                     mBinding.signTNextBtn.setOnClickListener {
                     }
                 }
+            })
+
+            firstPolicy.observe(this@SignupTermsFragment, Observer {
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://m.kakaobank.com/ServicePolicy"))
+                startActivity(intent)
+            })
+
+            secondPolicy.observe(this@SignupTermsFragment, Observer {
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://m.kakaobank.com/EBankingPolicy"))
+                startActivity(intent)
             })
         }
     }

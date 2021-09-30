@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import kr.hs.dgsw.kakaobank.R
 import kr.hs.dgsw.kakaobank.base.BaseFragment
 import kr.hs.dgsw.kakaobank.databinding.FragmentSignupSelectImgBinding
+import kr.hs.dgsw.kakaobank.view.fragment.alert.ImageDialogFragment
 import kr.hs.dgsw.kakaobank.viewmodel.signup.SignupSelectImgViewModel
 import org.koin.android.ext.android.inject
 
@@ -22,6 +23,7 @@ class SignupSelectImgFragment :
         get() = R.layout.fragment_signup_select_img
 
     private val OPEN_GALLARY: Int = 1
+    private var imageCheck = false;
 
     override fun observerViewModel() {
         with(mViewModel) {
@@ -32,7 +34,12 @@ class SignupSelectImgFragment :
             })
 
             nextBtn.observe(this@SignupSelectImgFragment, Observer {
-                this@SignupSelectImgFragment.findNavController().navigate(R.id.action_signupSelectImgFramgent_to_signupPasswordFramgent)
+                if(imageCheck){
+                    this@SignupSelectImgFragment.findNavController().navigate(R.id.action_signupSelectImgFramgent_to_signupPasswordFramgent)
+                } else {
+                    val dialogFragment = ImageDialogFragment().getInstance()
+                    dialogFragment.show(requireActivity().supportFragmentManager, dialogFragment.tag)
+                }
             })
         }
     }
@@ -54,6 +61,7 @@ class SignupSelectImgFragment :
                             val bitmap = ImageDecoder.decodeBitmap(source)
                             mBinding.signupSProfileImage.setImageBitmap(bitmap)
                         }
+                        imageCheck = true;
                     }
                 } catch (e: Exception){
                     e.printStackTrace()

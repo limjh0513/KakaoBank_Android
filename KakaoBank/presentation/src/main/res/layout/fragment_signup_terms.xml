@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="vm"
             type="kr.hs.dgsw.kakaobank.viewmodel.signup.SignupTermsViewModel" />
@@ -38,23 +40,96 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content">
 
                 <androidx.appcompat.widget.AppCompatCheckBox
                     android:id="@+id/terms_checkMain"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
                     android:layout_weight="1"
                     android:button="@drawable/custom_checkbox"
-                    android:layout_margin="16dp"
-                    android:textSize="18sp"
                     android:checked="@={vm.termsIsCheck}"
-                    android:textFontWeight="400"
-                    android:textColorLink="@color/text_mainColor"
                     android:fontFamily="@font/kakao_regular"
                     android:paddingLeft="10dp"
-                    android:text="카카오뱅크 이용약관 전체 동의" />
+                    android:text="카카오뱅크 이용약관 전체 동의"
+                    android:textColorLink="@color/text_mainColor"
+                    android:textFontWeight="400"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/signT_line1"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/line" />
+
+            <TextView
+                android:id="@+id/signT_text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/kakao_regular"
+                android:paddingLeft="10dp"
+                android:text="꼭 확인하세요!"
+                android:textColor="@color/text_mainColor"
+                android:textFontWeight="400"
+                android:textSize="24sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/signT_agree1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="10dp"
+                    android:fontFamily="@font/kakao_regular"
+                    android:paddingLeft="10dp"
+                    android:text="카카오뱅크 이용약관 전체 동의"
+                    android:textColor="@color/text_gray"
+                    android:textFontWeight="400"
+                    android:textSize="20sp" />
+
+                <ImageButton
+                    android:id="@+id/signT_agreeBtn1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:onClick="@{() -> vm.onClickFirstPolicy()}"
+                    app:srcCompat="@drawable/ic_click_intent" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/signT_agree2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="10dp"
+                    android:fontFamily="@font/kakao_regular"
+                    android:paddingLeft="10dp"
+                    android:text="전자 금융 거래 기본 약관"
+                    android:textColor="@color/text_gray"
+                    android:textFontWeight="400"
+                    android:textSize="20sp" />
+
+                <ImageButton
+                    android:id="@+id/signT_agreeBtn2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:onClick="@{() -> vm.onClickSecondPolicy()}"
+                    app:srcCompat="@drawable/ic_click_intent" />
             </LinearLayout>
         </LinearLayout>
 

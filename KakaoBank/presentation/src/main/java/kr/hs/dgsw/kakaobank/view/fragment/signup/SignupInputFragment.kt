@@ -88,7 +88,17 @@ class SignupInputFragment : BaseFragment<FragmentSignupInputBinding, SignupInput
 
             residentFrontNumber.observe(this@SignupInputFragment, Observer {
                 if (it.length == 6) {
-                    mBinding.signupIRegistNumEdText2.requestFocus()
+                    if(isValidResident(it)){
+                        mBinding.signupIRegistNumEdText2.requestFocus()
+                        if (residentFrontNumber.value?.length == 6 && residentBackNumber.value?.length == 1){
+                            mBinding.registNumCheckImg.setImageResource(R.drawable.is_checked)
+                            imageCheck[5] = 1
+                        }
+                        isAvilableNextBtn()
+                    } else {
+                        residentFrontNumber.value = ""
+                        Toast.makeText(requireContext(), "잘못된 주민번호 앞자리를 입력했습니다.", Toast.LENGTH_SHORT).show()
+                    }
                 } else {
                     mBinding.registNumCheckImg.setImageResource(R.drawable.is_cancel)
                     imageCheck[5] = 0
@@ -171,5 +181,11 @@ class SignupInputFragment : BaseFragment<FragmentSignupInputBinding, SignupInput
         val second = number.slice(IntRange(3, 6))
         val last = number.slice(IntRange(7, 10))
         return "$first-$second-$last"
+    }
+
+    fun isValidResident(number: String): Boolean{
+        val ResidentPattern = "^([0-9]{2}(0[1-9]|1[0-2])(0[1-9]|[1,2][0-9]|3[0,1]))$"
+
+        return Pattern.matches(ResidentPattern, number)
     }
 }
