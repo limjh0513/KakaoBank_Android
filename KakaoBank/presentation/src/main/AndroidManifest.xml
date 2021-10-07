@@ -16,6 +16,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
         <activity
+            android:name=".view.activity.OpenUpSuccessActivity"
+            android:exported="true" />
+        <activity
+            android:name=".view.activity.terms.InforAccountAcitivty"
+            android:exported="true" />
+        <activity
+            android:name=".view.activity.OpenupActivity"
+            android:exported="true" />
+        <activity
+            android:name=".view.activity.OpenUpAccountActivity"
+            android:exported="true" />
+        <activity
+            android:name=".view.activity.terms.BorrowAccountActivity"
+            android:exported="true" />
+        <activity
             android:name=".view.activity.EasyLoginActivity"
             android:exported="true" />
         <activity

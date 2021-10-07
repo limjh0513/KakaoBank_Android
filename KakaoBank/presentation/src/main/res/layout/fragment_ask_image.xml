@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="kr.hs.dgsw.kakaobank.viewmodel.signup.AskImageViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/view_background"
+        tools:context=".AskImageFragment">
+
+        <TextView
+            android:id="@+id/askI_tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/kakao_bold"
+            android:gravity="center"
+            android:text="프로필 사진을\n선택하지 않았어요"
+            android:textColor="@color/text_mainColor"
+            android:textFontWeight="700"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.1" />
+
+        <ImageView
+            android:id="@+id/askI_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/default_profile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/askI_tv1" />
+
+        <TextView
+            android:id="@+id/askI_tv2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/kakao_regular"
+            android:gravity="center"
+            android:lineHeight="25dp"
+            android:text="선택하지 않으면\n기본프로필이 적용됩니다."
+            android:textColor="@color/text_gray"
+            android:textFontWeight="600"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/askI_image" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <Button
+                android:id="@+id/askI_negativeBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/overlap_btn"
+                android:fontFamily="@font/kakao_regular"
+                android:onClick="@{() -> vm.onClickNegativeBtn()}"
+                android:text="돌아갈래요"
+                android:textColor="@color/text_mainColor"
+                android:textFontWeight="600"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/askI_positiveBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/overlap_btn"
+                android:fontFamily="@font/kakao_regular"
+                android:onClick="@{() -> vm.onClickPositiveBtn()}"
+                android:text="괜찮아요"
+                android:textColor="@color/text_mainColor"
+                android:textFontWeight="600"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

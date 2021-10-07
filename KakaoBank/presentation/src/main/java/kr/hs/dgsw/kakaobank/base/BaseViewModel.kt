@@ -33,7 +33,7 @@ open class BaseViewModel : ViewModel() {
             .observeOn(AndroidSchedulers.mainThread()).subscribeWith(observer))
     }
 
-    fun getIsLoading() : LiveData<Boolean> {
+    fun getIsLoading(): LiveData<Boolean> {
         return isLoading
     }
 

@@ -12,7 +12,6 @@ import androidx.navigation.fragment.findNavController
 import kr.hs.dgsw.kakaobank.R
 import kr.hs.dgsw.kakaobank.base.BaseFragment
 import kr.hs.dgsw.kakaobank.databinding.FragmentSignupSelectImgBinding
-import kr.hs.dgsw.kakaobank.view.fragment.alert.ImageDialogFragment
 import kr.hs.dgsw.kakaobank.viewmodel.signup.SignupSelectImgViewModel
 import org.koin.android.ext.android.inject
 
@@ -34,11 +33,13 @@ class SignupSelectImgFragment :
             })
 
             nextBtn.observe(this@SignupSelectImgFragment, Observer {
-                if(imageCheck){
-                    this@SignupSelectImgFragment.findNavController().navigate(R.id.action_signupSelectImgFramgent_to_signupPasswordFramgent)
+                if (imageCheck) {
+                    this@SignupSelectImgFragment.findNavController()
+                        .navigate(R.id.action_signupSelectImgFramgent_to_signupPasswordFramgent)
                 } else {
-                    val dialogFragment = ImageDialogFragment().getInstance()
-                    dialogFragment.show(requireActivity().supportFragmentManager, dialogFragment.tag)
+
+                    this@SignupSelectImgFragment.findNavController()
+                        .navigate(R.id.action_signupSelectImgFramgent_to_askImageFragment)
                 }
             })
         }
@@ -47,27 +48,29 @@ class SignupSelectImgFragment :
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if(resultCode == Activity.RESULT_OK){
-            if(requestCode == OPEN_GALLARY){
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == OPEN_GALLARY) {
                 var currentImageUri: Uri? = data?.data
 
-                try{
-                    currentImageUri.let{
-                        if(Build.VERSION.SDK_INT< 28){
-                            val bitmap = MediaStore.Images.Media.getBitmap(activity?.contentResolver, it)
+                try {
+                    currentImageUri.let {
+                        if (Build.VERSION.SDK_INT < 28) {
+                            val bitmap =
+                                MediaStore.Images.Media.getBitmap(activity?.contentResolver, it)
                             mBinding.signupSProfileImage.setImageBitmap(bitmap)
                         } else {
-                            val source = ImageDecoder.createSource(activity?.contentResolver!!, it!!)
+                            val source =
+                                ImageDecoder.createSource(activity?.contentResolver!!, it!!)
                             val bitmap = ImageDecoder.decodeBitmap(source)
                             mBinding.signupSProfileImage.setImageBitmap(bitmap)
                         }
                         imageCheck = true;
                     }
-                } catch (e: Exception){
+                } catch (e: Exception) {
                     e.printStackTrace()
                 }
             }
-        } else if(requestCode == Activity.RESULT_CANCELED){
+        } else if (requestCode == Activity.RESULT_CANCELED) {
             Toast.makeText(requireContext(), "사진 선택 취소", Toast.LENGTH_SHORT).show()
         }
     }

@@ -8,7 +8,7 @@ import kr.hs.dgsw.kakaobank.databinding.ActivityMainBinding
 import kr.hs.dgsw.kakaobank.viewmodel.MainViewModel
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
-class MainActivity : AppCompatActivity(){
+class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

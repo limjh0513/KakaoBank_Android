@@ -5,20 +5,20 @@ import androidx.lifecycle.MutableLiveData
 import kr.hs.dgsw.kakaobank.base.BaseViewModel
 import kr.hs.dgsw.kakaobank.widget.SingleLiveEvent
 
-class SignupPasswordViewModel: BaseViewModel() {
+class SignupPasswordViewModel : BaseViewModel() {
     val password = MutableLiveData<String>()
     val passwordBackBtn = SingleLiveEvent<Any>()
 
-    init{
+    init {
         password.value = ""
     }
 
-    fun onClickPasswordBtn(number : Int){
+    fun onClickPasswordBtn(number: Int) {
         password.value += "$number"
         Log.e("password", "${password.value}")
     }
 
-    fun onClickPassword(){
+    fun onClickBackBtn() {
         passwordBackBtn.call()
     }
 

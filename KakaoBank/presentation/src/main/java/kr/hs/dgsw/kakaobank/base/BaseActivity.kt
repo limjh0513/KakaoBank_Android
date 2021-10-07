@@ -8,9 +8,9 @@ import kr.hs.dgsw.kakaobank.BR
 
 abstract class BaseActivity<VB : ViewDataBinding, VM : BaseViewModel> : AppCompatActivity() {
 
-    protected lateinit var binding : VB
-    protected abstract val viewModel : VM
-    protected abstract val layoutRes : Int
+    protected lateinit var mBinding: VB
+    protected abstract val mViewModel: VM
+    protected abstract val layoutRes: Int
 
     protected abstract fun observerViewModel()
 
@@ -21,14 +21,14 @@ abstract class BaseActivity<VB : ViewDataBinding, VM : BaseViewModel> : AppCompa
     }
 
     private fun performDataBinding() {
-        binding = DataBindingUtil.setContentView(this, layoutRes)
-        binding.setVariable(BR.vm, viewModel)
-        binding.lifecycleOwner = this
-        binding.executePendingBindings()
+        mBinding = DataBindingUtil.setContentView(this, layoutRes)
+        mBinding.setVariable(BR.vm, mViewModel)
+        mBinding.lifecycleOwner = this
+        mBinding.executePendingBindings()
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        if(::binding.isInitialized) binding.unbind()
+        if (::mBinding.isInitialized) mBinding.unbind()
     }
 }

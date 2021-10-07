@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.activity.terms.BorrowAccountActivity"
+        android:background="@color/view_background">
+
+        <ImageButton
+            android:id="@+id/borrowA_backBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_back_image" />
+
+        <TextView
+            android:id="@+id/borrowA_textview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:text="「금융실명거래 및 비밀보장에 관한 법률」 제3조 제3항에 따라 누구든지 불법재산의 은닉, 자금세탁 행위, 공중협박자금조달행위 및 강제 집행의 면탈, 그 밖의 탈법행위를 목적으로타인의 실명으로 금융거래를 하여서는 아니되며, 이를 위반 시 5년 이하의 징역 또는 5천만원 이항의 벌금에 처할 수 있습니다. 본인은 위 안내에 대해 충분히 이해하였음을 확인합니다."
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/borrowA_backBtn" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

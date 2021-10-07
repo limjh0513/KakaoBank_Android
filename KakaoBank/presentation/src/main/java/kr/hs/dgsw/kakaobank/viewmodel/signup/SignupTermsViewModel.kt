@@ -4,17 +4,17 @@ import androidx.lifecycle.MutableLiveData
 import kr.hs.dgsw.kakaobank.base.BaseViewModel
 import kr.hs.dgsw.kakaobank.widget.SingleLiveEvent
 
-class SignupTermsViewModel: BaseViewModel() {
+class SignupTermsViewModel : BaseViewModel() {
     val termsIsCheck = MutableLiveData<Boolean>()
 
     val firstPolicy = SingleLiveEvent<Any>()
     val secondPolicy = SingleLiveEvent<Any>()
 
-    fun onClickFirstPolicy(){
+    fun onClickFirstPolicy() {
         firstPolicy.call()
     }
 
-    fun onClickSecondPolicy(){
+    fun onClickSecondPolicy() {
         secondPolicy.call()
     }
 }

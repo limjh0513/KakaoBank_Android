@@ -20,7 +20,7 @@ class SignupInputFragment : BaseFragment<FragmentSignupInputBinding, SignupInput
     override val layoutRes: Int
         get() = R.layout.fragment_signup_input
 
-    var imageCheck = IntArray(6)
+    private var imageCheck = IntArray(6)
 
     @SuppressLint("ClickableViewAccessibility")
     override fun observerViewModel() {
@@ -88,16 +88,18 @@ class SignupInputFragment : BaseFragment<FragmentSignupInputBinding, SignupInput
 
             residentFrontNumber.observe(this@SignupInputFragment, Observer {
                 if (it.length == 6) {
-                    if(isValidResident(it)){
+                    if (isValidResident(it)) {
                         mBinding.signupIRegistNumEdText2.requestFocus()
-                        if (residentFrontNumber.value?.length == 6 && residentBackNumber.value?.length == 1){
+                        if (residentFrontNumber.value?.length == 6 && residentBackNumber.value?.length == 1) {
                             mBinding.registNumCheckImg.setImageResource(R.drawable.is_checked)
                             imageCheck[5] = 1
                         }
                         isAvilableNextBtn()
                     } else {
                         residentFrontNumber.value = ""
-                        Toast.makeText(requireContext(), "잘못된 주민번호 앞자리를 입력했습니다.", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(),
+                            "잘못된 주민번호 앞자리를 입력했습니다.",
+                            Toast.LENGTH_SHORT).show()
                     }
                 } else {
                     mBinding.registNumCheckImg.setImageResource(R.drawable.is_cancel)
@@ -120,8 +122,8 @@ class SignupInputFragment : BaseFragment<FragmentSignupInputBinding, SignupInput
         }
     }
 
-    fun passwordReputCheck(){
-        if (mViewModel.inputPwAgain.value.toString() ==  mViewModel.inputPw.value.toString()) {
+    fun passwordReputCheck() {
+        if (mViewModel.inputPwAgain.value.toString() == mViewModel.inputPw.value.toString()) {
             mBinding.repwCheckImg.setImageResource(R.drawable.is_checked)
             imageCheck[2] = 1
             isAvilableNextBtn()
@@ -134,11 +136,8 @@ class SignupInputFragment : BaseFragment<FragmentSignupInputBinding, SignupInput
 
     fun isAvilableNextBtn() {
         var result = true
-        var j = 0
 
         for (i in imageCheck) {
-            Log.e("123", "${j} ${i}")
-            j++
             if (i == 0) {
                 result = false
                 break
@@ -183,7 +182,7 @@ class SignupInputFragment : BaseFragment<FragmentSignupInputBinding, SignupInput
         return "$first-$second-$last"
     }
 
-    fun isValidResident(number: String): Boolean{
+    fun isValidResident(number: String): Boolean {
         val ResidentPattern = "^([0-9]{2}(0[1-9]|1[0-2])(0[1-9]|[1,2][0-9]|3[0,1]))$"
 
         return Pattern.matches(ResidentPattern, number)

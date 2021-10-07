@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="kr.hs.dgsw.kakaobank.viewmodel.openup.OpenupInputViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/view_background"
+        tools:context=".view.fragment.openup.OpenupInputFragment">
+
+
+        <TextView
+            android:id="@+id/openI_tvMain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/kakao_regular"
+            android:gravity="center"
+            android:text="실명 정보 확인을 위해\n이름과 주민등록번호를 입력해주세요"
+            android:textColor="@color/text_mainColor"
+            android:textFontWeight="400"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="24dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/openI_tvMain">
+
+            <TextView
+                android:id="@+id/openI_tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/kakao_regular"
+                android:text="이름"
+                android:textColor="@color/text_mainColor"
+                android:textFontWeight="700"
+                android:textSize="22sp" />
+
+            <EditText
+                android:id="@+id/openI_etName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/gray_border"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:padding="10dp"
+                android:text="@={vm.inputName}"
+                android:textSize="16sp"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="24dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+
+            <TextView
+                android:id="@+id/openI_tvResist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/kakao_regular"
+                android:text="주민등록번호"
+                android:textColor="@color/text_mainColor"
+                android:textFontWeight="700"
+                android:textSize="22sp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:id="@+id/openI_etResistFront"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/gray_border"
+                    android:ems="6"
+                    android:fontFamily="@font/kakao_regular"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:padding="15dp"
+                    android:text="@={vm.inputRegisterFront}"
+                    android:textColor="@color/text_mainColor"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="TouchTargetSizeCheck"
+                    tools:text="123456" />
+
+                <View
+                    android:id="@+id/view2"
+                    android:layout_width="25dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="32dp"
+                    android:background="@color/line"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/openI_etResistFront"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/openI_etResistBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:background="@drawable/gray_border"
+                    android:ems="2"
+                    android:inputType="numberPassword"
+                    android:padding="15dp"
+                    android:text="@={vm.inputRegisterBack}"
+                    android:textColor="@color/text_mainColor"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/view2"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:background="@drawable/gray_border"
+                    android:fontFamily="@font/kakao_regular"
+                    android:padding="15dp"
+                    android:text="* * * * * *"
+                    android:textColor="@color/text_mainColor"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/openI_etResistBack"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/openI_nextBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/disabled"
+            android:fontFamily="@font/kakao_regular"
+            android:lineHeight="21px"
+            android:text="@string/next"
+            android:textColor="@color/disabled_text"
+            android:textFontWeight="400"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/openI_tvCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/kakao_regular"
+            android:gravity="center"
+            android:text="카카오 뱅크와 거래하시는 금융상품이\n고객님의 본인 소유인가요?"
+            android:textColor="@color/text_mainColor"
+            android:textFontWeight="400"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout8" />
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/openI_tvCheck">
+
+            <RadioButton
+                android:id="@+id/openI_radio1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="100dp"
+                android:checked="@={vm.positiveRadioBtn}"
+                android:fontFamily="@font/kakao_regular"
+                android:paddingLeft="10dp"
+                android:text="예"
+                android:textFontWeight="400"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/openI_radio2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="@={vm.negativeRadioBtn}"
+                android:fontFamily="@font/kakao_regular"
+                android:paddingLeft="10dp"
+                android:text="아니요"
+                android:textFontWeight="400"
+                android:textSize="20sp" />
+        </RadioGroup>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

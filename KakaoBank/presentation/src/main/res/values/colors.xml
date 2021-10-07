@@ -11,6 +11,7 @@
     <color name="kakao">#FFE700</color>
     <color name="disabled">#DDDDDD</color>
     <color name="line">#B0B0B0</color>
+    <color name="line2">#E4E4E4</color>
     <color name="input_background">#EAEAEA</color>
     <color name="text_gray">#646464</color>
     <color name="view_background">#FEFEFE</color>
@@ -22,4 +23,15 @@
 
     <color name="point_color">#FFFFFF</color>
     <color name="alert_color">#FFCD1B</color>
+    <color name="state_gray">#F1F1F1</color>
+    <color name="state_black">#101010</color>
+
+    <color name="account1">#C5EDE6</color>
+    <color name="account2">#C5DAED</color>
+    <color name="account3">#FEFFB7</color>
+    <color name="account4">#FFD9D9</color>
+    <color name="account5">#E3D9FF</color>
+
+    <color name="open_terms_color">#F7F7F7</color>
+    <color name="hint_text">#6D6D6D</color>
 </resources>

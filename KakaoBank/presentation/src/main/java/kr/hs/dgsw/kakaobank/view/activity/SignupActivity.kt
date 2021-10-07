@@ -8,13 +8,13 @@ import androidx.lifecycle.Observer
 import org.koin.android.ext.android.inject
 
 class SignupActivity : BaseActivity<ActivitySignupBinding, SignupViewModel>() {
-    override val viewModel: SignupViewModel by inject()
+    override val mViewModel: SignupViewModel by inject()
     override val layoutRes: Int
         get() = R.layout.activity_signup
 
     override fun observerViewModel() {
-        with(viewModel){
-            cancelBtn.observe(this@SignupActivity, Observer{
+        with(mViewModel) {
+            cancelBtn.observe(this@SignupActivity, Observer {
                 this@SignupActivity.finish()
             })
         }

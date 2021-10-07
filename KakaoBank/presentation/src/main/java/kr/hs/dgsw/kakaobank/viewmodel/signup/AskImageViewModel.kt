@@ -3,14 +3,15 @@ package kr.hs.dgsw.kakaobank.viewmodel.signup
 import kr.hs.dgsw.kakaobank.base.BaseViewModel
 import kr.hs.dgsw.kakaobank.widget.SingleLiveEvent
 
-class ImageAlertViewModel: BaseViewModel() {
+class AskImageViewModel : BaseViewModel() {
     val negativeBtn = SingleLiveEvent<Any>()
     val positiveBtn = SingleLiveEvent<Any>()
 
-    fun onClickNegativeBtn(){
+    fun onClickNegativeBtn() {
         negativeBtn.call()
     }
-    fun onClickPositiveBtn(){
+
+    fun onClickPositiveBtn() {
         positiveBtn.call()
     }
 }

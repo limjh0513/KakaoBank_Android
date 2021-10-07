@@ -9,7 +9,7 @@
         android:id="@+id/signup_terms"
         android:name="kr.hs.dgsw.kakaobank.view.fragment.signup.SignupTermsFragment"
         android:label="fragment_signup_terms"
-        tools:layout="@layout/fragment_signup_terms" >
+        tools:layout="@layout/fragment_signup_terms">
         <action
             android:id="@+id/action_signup_terms_to_signup_input"
             app:destination="@id/signup_input" />
@@ -17,13 +17,12 @@
     <activity
         android:id="@+id/signup_activity"
         android:name="kr.hs.dgsw.kakaobank.view.activity.SignupActivity"
-        android:label="activity_signup"
-        tools:layout="@layout/activity_signup" />
+        android:label="activity_signup" />
     <fragment
         android:id="@+id/signup_input"
         android:name="kr.hs.dgsw.kakaobank.view.fragment.signup.SignupInputFragment"
         android:label="fragment_signup_input"
-        tools:layout="@layout/fragment_signup_input" >
+        tools:layout="@layout/fragment_signup_input">
         <action
             android:id="@+id/action_signup_input_to_signupSelectImgFramgent"
             app:destination="@id/signupSelectImgFramgent" />
@@ -32,16 +31,19 @@
         android:id="@+id/signupSelectImgFramgent"
         android:name="kr.hs.dgsw.kakaobank.view.fragment.signup.SignupSelectImgFragment"
         android:label="fragment_signup_select_img_framgent"
-        tools:layout="@layout/fragment_signup_select_img" >
+        tools:layout="@layout/fragment_signup_select_img">
         <action
             android:id="@+id/action_signupSelectImgFramgent_to_signupPasswordFramgent"
             app:destination="@id/signupPasswordFramgent" />
+        <action
+            android:id="@+id/action_signupSelectImgFramgent_to_askImageFragment"
+            app:destination="@id/askImageFragment" />
     </fragment>
     <fragment
         android:id="@+id/signupPasswordFramgent"
         android:name="kr.hs.dgsw.kakaobank.view.fragment.signup.SignupPasswordFragment"
         android:label="fragment_signup_password"
-        tools:layout="@layout/fragment_signup_password" >
+        tools:layout="@layout/fragment_signup_password">
         <action
             android:id="@+id/action_signupPasswordFramgent_to_passwordReputFragment"
             app:destination="@id/passwordReputFragment" />
@@ -50,17 +52,21 @@
         android:id="@+id/passwordReputFragment"
         android:name="kr.hs.dgsw.kakaobank.view.fragment.signup.PasswordReputFragment"
         android:label="fragment_password_reput"
-        tools:layout="@layout/fragment_password_reput" >
+        tools:layout="@layout/fragment_password_reput">
         <action
             android:id="@+id/action_passwordReputFragment_to_signupPasswordFramgent"
             app:destination="@id/signupPasswordFramgent" />
     </fragment>
-    <dialog
-        android:id="@+id/imageDialogFragment"
-        android:name="kr.hs.dgsw.kakaobank.view.fragment.alert.ImageDialogFragment"
-        android:label="ImageDialogFragment" >
+    <fragment
+        android:id="@+id/askImageFragment"
+        android:name="kr.hs.dgsw.kakaobank.view.fragment.signup.AskImageFragment"
+        android:label="fragment_ask_image"
+        tools:layout="@layout/fragment_ask_image">
         <action
-            android:id="@+id/action_imageDialogFragment_to_signupPasswordFramgent"
+            android:id="@+id/action_askImageFragment_to_signupPasswordFramgent"
             app:destination="@id/signupPasswordFramgent" />
-    </dialog>
+        <action
+            android:id="@+id/action_askImageFragment_to_signupSelectImgFramgent"
+            app:destination="@id/signupSelectImgFramgent" />
+    </fragment>
 </navigation>

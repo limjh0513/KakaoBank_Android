@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="kr.hs.dgsw.kakaobank.viewmodel.openup.BankBookNickViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.fragment.openup.BankbookNickFragment">
+
+
+        <TextView
+            android:id="@+id/bookBank_mainText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/kakao_regular"
+            android:gravity="center"
+            android:text="계좌 개설을 위해 입력한 정보를\n확인하고 나만의 통장 별명을\n만들어 주세요!"
+            android:textColor="@color/text_mainColor"
+            android:textFontWeight="400"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout9"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="32dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bookBank_mainText">
+
+            <TextView
+                android:id="@+id/bookBank_tvHintName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/kakao_regular"
+                android:gravity="center"
+                android:text="이름"
+                android:textColor="@color/hint_text"
+                android:textFontWeight="400"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/bookBank_tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="30dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/kakao_regular"
+                android:gravity="right"
+                android:textColor="@color/text_mainColor"
+                android:textFontWeight="400"
+                android:textSize="18sp"
+                tools:text="임재현" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout10"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="32dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout9">
+
+            <TextView
+                android:id="@+id/bookBank_tvHintRegist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/kakao_regular"
+                android:gravity="center"
+                android:text="주민등록번호"
+                android:textColor="@color/hint_text"
+                android:textFontWeight="400"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/bookBank_tvRegist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="30dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/kakao_regular"
+                android:gravity="right"
+                android:textColor="@color/text_mainColor"
+                android:textFontWeight="400"
+                android:textSize="18sp"
+                tools:text="001122-3******" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/bankBook_tvNick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="56dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/kakao_regular"
+            android:text="통장 별명"
+            android:textColor="@color/text_mainColor"
+            android:textFontWeight="700"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout10" />
+
+
+        <EditText
+            android:id="@+id/editTextTextPersonName2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="64dp"
+            android:background="@drawable/gray_border"
+            android:ems="16"
+            android:fontFamily="@font/kakao_regular"
+            android:inputType="textPersonName"
+            android:padding="15dp"
+            android:text="@={vm.bankBookNickName}"
+            android:textColor="@color/text_mainColor"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bankBook_tvNick"
+            tools:text="피자 파티용 통장" />
+
+        <Button
+            android:id="@+id/bankBook_nextBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/disabled"
+            android:fontFamily="@font/kakao_regular"
+            android:lineHeight="21px"
+            android:text="@string/next"
+            android:textColor="@color/disabled_text"
+            android:textFontWeight="400"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

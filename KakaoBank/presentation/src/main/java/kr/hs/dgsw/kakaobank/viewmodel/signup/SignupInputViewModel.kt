@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import kr.hs.dgsw.kakaobank.base.BaseViewModel
 import kr.hs.dgsw.kakaobank.widget.SingleLiveEvent
 
-class SignupInputViewModel: BaseViewModel() {
+class SignupInputViewModel : BaseViewModel() {
     val inputId = MutableLiveData<String>()
     val overlapCheckBtn = SingleLiveEvent<Any>()
     val inputPw = MutableLiveData<String>()
@@ -16,7 +16,7 @@ class SignupInputViewModel: BaseViewModel() {
     val inputPhoneNumber = MutableLiveData<String>()
     val inputNickName = MutableLiveData<String>()
 
-    fun onClickOverlapCheckBtn(){
+    fun onClickOverlapCheckBtn() {
         overlapCheckBtn.call()
     }
 }

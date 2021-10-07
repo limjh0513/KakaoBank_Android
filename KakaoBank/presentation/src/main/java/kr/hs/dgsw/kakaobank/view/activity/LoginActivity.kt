@@ -8,12 +8,12 @@ import kr.hs.dgsw.kakaobank.viewmodel.LoginViewModel
 import org.koin.android.ext.android.inject
 
 class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
-    override val viewModel: LoginViewModel by inject()
+    override val mViewModel: LoginViewModel by inject()
     override val layoutRes: Int
         get() = R.layout.activity_login
 
     override fun observerViewModel() {
-        with(viewModel){
+        with(mViewModel) {
             backBtn.observe(this@LoginActivity, Observer {
                 finish()
             })

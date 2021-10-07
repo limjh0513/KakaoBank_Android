@@ -7,7 +7,7 @@ plugins {
 android {
     compileSdk 30
 
-    buildFeatures{
+    buildFeatures {
         dataBinding = true
     }
 

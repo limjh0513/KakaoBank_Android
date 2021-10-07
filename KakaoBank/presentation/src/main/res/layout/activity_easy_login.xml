@@ -1,9 +1,324 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.activity.EasyLoginActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <data>
+
+        <variable
+            name="vm"
+            type="kr.hs.dgsw.kakaobank.viewmodel.EasyLoginViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.activity.EasyLoginActivity"
+        android:background="@color/view_background">
+
+        <ImageButton
+            android:id="@+id/easyL_backBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@android:color/transparent"
+            android:onClick="@{() -> vm.onClickBackBtn()}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_back_image" />
+
+        <TextView
+            android:id="@+id/easyL_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:fontFamily="@font/kakao_regular"
+            android:text="간편 로그인"
+            android:textColor="@color/text_mainColor"
+            android:textSize="36sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/tableLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/easyL_textView"
+            app:layout_constraintVertical_bias="0.13">
+
+            <TextView
+                android:id="@+id/easyL_password1"
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/kakao_border"
+                android:fontFamily="@font/kakao_bold"
+                android:gravity="center"
+                android:textColor="@color/text_mainColor"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/easyL_password2"
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/kakao_border"
+                android:fontFamily="@font/kakao_bold"
+                android:gravity="center"
+                android:textColor="@color/text_mainColor"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/easyL_password3"
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/kakao_border"
+                android:fontFamily="@font/kakao_bold"
+                android:gravity="center"
+                android:textColor="@color/text_mainColor"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/easyL_password4"
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/kakao_border"
+                android:fontFamily="@font/kakao_bold"
+                android:gravity="center"
+                android:textColor="@color/text_mainColor"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/easyL_password5"
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/kakao_border"
+                android:fontFamily="@font/kakao_bold"
+                android:gravity="center"
+                android:textColor="@color/text_mainColor"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/easyL_password6"
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:background="@drawable/kakao_border"
+                android:fontFamily="@font/kakao_bold"
+                android:gravity="center"
+                android:textColor="@color/text_mainColor"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+        <TableLayout
+
+            android:id="@+id/tableLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/easyL_button1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@android:color/transparent"
+                    android:lineHeight="16sp"
+                    android:onClick="@{() -> vm.onClickPasswordBtn(1)}"
+                    android:padding="10dp"
+                    android:text="1"
+                    android:textColor="@color/text_mainColor"
+                    android:textFontWeight="400"
+                    android:textSize="18sp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/easyL_button2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@android:color/transparent"
+                    android:lineHeight="16sp"
+                    android:onClick="@{() -> vm.onClickPasswordBtn(2)}"
+                    android:padding="10dp"
+                    android:text="2"
+                    android:textColor="@color/text_mainColor"
+                    android:textFontWeight="400"
+                    android:textSize="18sp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/easyL_button3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@android:color/transparent"
+                    android:lineHeight="16sp"
+                    android:onClick="@{() -> vm.onClickPasswordBtn(3)}"
+                    android:padding="10dp"
+                    android:text="3"
+                    android:textColor="@color/text_mainColor"
+                    android:textFontWeight="400"
+                    android:textSize="18sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/easyL_button4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@android:color/transparent"
+                    android:lineHeight="16sp"
+                    android:onClick="@{() -> vm.onClickPasswordBtn(4)}"
+                    android:padding="10dp"
+                    android:text="4"
+                    android:textColor="@color/text_mainColor"
+                    android:textFontWeight="400"
+                    android:textSize="18sp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/easyL_button5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@android:color/transparent"
+                    android:lineHeight="16sp"
+                    android:onClick="@{() -> vm.onClickPasswordBtn(5)}"
+                    android:padding="10dp"
+                    android:text="5"
+                    android:textColor="@color/text_mainColor"
+                    android:textFontWeight="400"
+                    android:textSize="18sp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/easyL_button6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@android:color/transparent"
+                    android:lineHeight="16sp"
+                    android:onClick="@{() -> vm.onClickPasswordBtn(6)}"
+                    android:padding="10dp"
+                    android:text="6"
+                    android:textColor="@color/text_mainColor"
+                    android:textFontWeight="400"
+                    android:textSize="18sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/easyL_button7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@android:color/transparent"
+                    android:lineHeight="16sp"
+                    android:onClick="@{() -> vm.onClickPasswordBtn(7)}"
+                    android:padding="10dp"
+                    android:text="7"
+                    android:textColor="@color/text_mainColor"
+                    android:textFontWeight="400"
+                    android:textSize="18sp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/easyL_button8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@android:color/transparent"
+                    android:lineHeight="16sp"
+                    android:onClick="@{() -> vm.onClickPasswordBtn(8)}"
+                    android:padding="10dp"
+                    android:text="8"
+                    android:textColor="@color/text_mainColor"
+                    android:textFontWeight="400"
+                    android:textSize="18sp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/easyL_button9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@android:color/transparent"
+                    android:lineHeight="16sp"
+                    android:onClick="@{() -> vm.onClickPasswordBtn(9)}"
+                    android:padding="10dp"
+                    android:text="9"
+                    android:textColor="@color/text_mainColor"
+                    android:textFontWeight="400"
+                    android:textSize="18sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/easyL_buttonNone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@android:color/transparent"
+                    android:lineHeight="16sp"
+                    android:padding="10dp"
+                    android:textColor="@color/text_mainColor"
+                    android:textFontWeight="400"
+                    android:textSize="18sp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/easyL_button0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@android:color/transparent"
+                    android:lineHeight="16sp"
+                    android:onClick="@{() -> vm.onClickPasswordBtn(0)}"
+                    android:padding="10dp"
+                    android:text="0"
+                    android:textColor="@color/text_mainColor"
+                    android:textFontWeight="400"
+                    android:textSize="18sp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/easyL_buttonBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@android:color/transparent"
+                    android:lineHeight="16sp"
+                    android:onClick="@{() -> vm.onClickPasswordBackBtn()}"
+                    android:padding="10dp"
+                    android:text="←"
+                    android:textColor="@color/text_mainColor"
+                    android:textFontWeight="400"
+                    android:textSize="18sp" />
+            </TableRow>
+        </TableLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

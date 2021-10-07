@@ -7,16 +7,15 @@ import kr.hs.dgsw.kakaobank.base.BaseActivity
 import kr.hs.dgsw.kakaobank.databinding.ActivityStartBinding
 import kr.hs.dgsw.kakaobank.viewmodel.StartViewModel
 import org.koin.android.ext.android.inject
-import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class StartActivity : BaseActivity<ActivityStartBinding, StartViewModel>() {
     override val layoutRes: Int
         get() = R.layout.activity_start
 
-    override val viewModel: StartViewModel by inject()
+    override val mViewModel: StartViewModel by inject()
 
     override fun observerViewModel() {
-        with(viewModel) {
+        with(mViewModel) {
             onClickSignInBtn.observe(this@StartActivity, Observer {
                 val intent = Intent(this@StartActivity, LoginActivity::class.java)
                 startActivity(intent)

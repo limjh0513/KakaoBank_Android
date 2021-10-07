@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="kr.hs.dgsw.kakaobank.viewmodel.openup.OpenupTermsViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/open_terms_color">
+
+
+        <TextView
+            android:id="@+id/openT_tvMain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/kakao_regular"
+            android:gravity="center"
+            android:text="안전하고 투명한 금융거래를 위해\n아래 내용을 확인해주세요"
+            android:textColor="@color/text_mainColor"
+            android:textFontWeight="400"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/kakao_border_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/openT_tvMain">
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/openT_mainCheck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_weight="1"
+                android:checked="@={vm.termsMainIsChecked}"
+                android:fontFamily="@font/kakao_regular"
+                android:paddingLeft="10dp"
+                android:text="카카오뱅크 이용약관 전체 동의"
+                android:textColorLink="@color/text_mainColor"
+                android:textFontWeight="400"
+                android:textSize="18sp"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <ImageButton
+                android:id="@+id/openT_mainShow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="10dp"
+                android:background="@android:color/transparent"
+                android:onClick="@{() -> vm.onClickTermsMainShowBtn()}"
+                app:srcCompat="@drawable/ic_click_intent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/form_border"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/openT_tvMain2">
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/openT_check1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_weight="1"
+                android:button="@drawable/custom_checkbox"
+                android:checked="@={vm.termsIsChecked1}"
+                android:fontFamily="@font/kakao_regular"
+                android:paddingLeft="10dp"
+                android:text="카카오뱅크 이용약관 전체 동의"
+                android:textColorLink="@color/text_mainColor"
+                android:textFontWeight="400"
+                android:textSize="18sp"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <ImageButton
+                android:id="@+id/openT_show1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="10dp"
+                android:background="@android:color/transparent"
+                android:onClick="@{() -> vm.onClickTermsShowBtn1()}"
+                app:srcCompat="@drawable/ic_click_intent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/form_border"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/openT_check2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_weight="1"
+                android:button="@drawable/custom_checkbox"
+                android:checked="@={vm.termsIsChecked2}"
+                android:fontFamily="@font/kakao_regular"
+                android:paddingLeft="10dp"
+                android:text="불법/탈명 차명계좌 금지 설명 확인"
+                android:textColorLink="@color/text_mainColor"
+                android:textFontWeight="400"
+                android:textSize="18sp"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <ImageButton
+                android:id="@+id/openT_show2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="10dp"
+                android:background="@android:color/transparent"
+                android:onClick="@{() -> vm.onClickTermsShowBtn2()}"
+                app:srcCompat="@drawable/ic_click_intent" />
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/openT_nextBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/disabled"
+            android:fontFamily="@font/kakao_regular"
+            android:lineHeight="21px"
+            android:text="@string/next"
+            android:textColor="@color/disabled_text"
+            android:textFontWeight="400"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/openT_tvMain2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/kakao_regular"
+            android:gravity="center"
+            android:text="*상품설명서의 내용을 반드시 확인해주세요"
+            android:textColor="@color/text_mainColor"
+            android:textFontWeight="400"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout6" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
