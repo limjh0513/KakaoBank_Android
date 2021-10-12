@@ -27,7 +27,7 @@
             android:id="@+id/action_openupInputFragment_to_bankbookNickFragment"
             app:destination="@id/bankbookNickFragment" />
     </fragment>
-    <fragment
+     <fragment
         android:id="@+id/bankbookNickFragment"
         android:name="kr.hs.dgsw.kakaobank.view.fragment.openup.BankbookNickFragment"
         android:label="fragment_bankbook_nick"

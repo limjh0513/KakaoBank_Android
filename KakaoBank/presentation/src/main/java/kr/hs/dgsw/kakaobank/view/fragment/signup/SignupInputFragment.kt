@@ -100,6 +100,8 @@ class SignupInputFragment : BaseFragment<FragmentSignupInputBinding, SignupInput
                         Toast.makeText(requireContext(),
                             "잘못된 주민번호 앞자리를 입력했습니다.",
                             Toast.LENGTH_SHORT).show()
+                        imageCheck[5] = 0
+                        isAvilableNextBtn()
                     }
                 } else {
                     mBinding.registNumCheckImg.setImageResource(R.drawable.is_cancel)
@@ -144,7 +146,7 @@ class SignupInputFragment : BaseFragment<FragmentSignupInputBinding, SignupInput
             }
         }
 
-        if (result == true) {
+        if (result) {
             mBinding.signupINextBtn.setBackgroundColor(ContextCompat.getColor(requireContext(),
                 R.color.kakao))
             mBinding.signupINextBtn.setTextColor(ContextCompat.getColor(requireContext(),

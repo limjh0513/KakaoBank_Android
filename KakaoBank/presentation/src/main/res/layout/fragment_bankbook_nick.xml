@@ -65,6 +65,7 @@
                 android:textColor="@color/text_mainColor"
                 android:textFontWeight="400"
                 android:textSize="18sp"
+                android:text="@{vm.showName}"
                 tools:text="임재현" />
 
         </LinearLayout>
@@ -103,6 +104,7 @@
                 android:gravity="right"
                 android:textColor="@color/text_mainColor"
                 android:textFontWeight="400"
+                android:text="@{vm.showResist}"
                 android:textSize="18sp"
                 tools:text="001122-3******" />
 

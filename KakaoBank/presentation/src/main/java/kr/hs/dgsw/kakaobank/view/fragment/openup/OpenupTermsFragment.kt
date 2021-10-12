@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import kr.hs.dgsw.kakaobank.R
 import kr.hs.dgsw.kakaobank.base.BaseFragment
 import kr.hs.dgsw.kakaobank.databinding.FragmentOpenupTermsBinding
@@ -82,8 +83,7 @@ class OpenupTermsFragment : BaseFragment<FragmentOpenupTermsBinding, OpenupTerms
             mBinding.openTNextBtn.setTextColor(ContextCompat.getColor(requireContext(),
                 R.color.text_mainColor))
             mBinding.openTNextBtn.setOnClickListener {
-                //this.findNavController()
-                    //.navigate(R.id.)
+                this.findNavController().navigate(R.id.action_openupTermsFragment_to_openupInputFragment)
             }
         } else {
             mBinding.openTNextBtn.setBackgroundColor(ContextCompat.getColor(requireContext(),
