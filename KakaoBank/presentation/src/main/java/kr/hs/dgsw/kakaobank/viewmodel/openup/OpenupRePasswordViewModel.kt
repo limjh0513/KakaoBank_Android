@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import kr.hs.dgsw.kakaobank.base.BaseViewModel
 import kr.hs.dgsw.kakaobank.widget.SingleLiveEvent
 
-class OpenupPasswordViewModel: BaseViewModel() {
+class OpenupRePasswordViewModel: BaseViewModel() {
     val password = MutableLiveData<String>()
     val passwordBackBtn = SingleLiveEvent<Any>()
 

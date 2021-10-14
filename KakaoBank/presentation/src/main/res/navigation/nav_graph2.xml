@@ -31,5 +31,22 @@
         android:id="@+id/bankbookNickFragment"
         android:name="kr.hs.dgsw.kakaobank.view.fragment.openup.BankbookNickFragment"
         android:label="fragment_bankbook_nick"
-        tools:layout="@layout/fragment_bankbook_nick" />
+        tools:layout="@layout/fragment_bankbook_nick" >
+         <action
+             android:id="@+id/action_bankbookNickFragment_to_openupPasswordFragment"
+             app:destination="@id/openupPasswordFragment" />
+     </fragment>
+    <fragment
+        android:id="@+id/openupPasswordFragment"
+        android:name="kr.hs.dgsw.kakaobank.view.fragment.openup.OpenupPasswordFragment"
+        android:label="OpenupPasswordFragment" >
+        <action
+            android:id="@+id/action_openupPasswordFragment_to_openupRePasswordFragment"
+            app:destination="@id/openupRePasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/openupRePasswordFragment"
+        android:name="kr.hs.dgsw.kakaobank.view.fragment.openup.OpenupRePasswordFragment"
+        android:label="fragment_openup_re_password"
+        tools:layout="@layout/fragment_openup_re_password" />
 </navigation>

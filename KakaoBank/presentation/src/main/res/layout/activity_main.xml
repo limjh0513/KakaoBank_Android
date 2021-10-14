@@ -32,7 +32,8 @@
                 android:layout_marginRight="20dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/kakao_regular"
-                android:text="임재현"
+                android:text="@{vm.userName}"
+                tools:text="임재현"
                 android:textColor="@color/text_mainColor"
                 android:textFontWeight="400"
                 android:textSize="24sp" />
@@ -84,6 +85,7 @@
             android:padding="15dp"
             android:src="@drawable/add_btn"
             android:text="Button"
+            android:onClick="@{() -> vm.onClickOpenUpBtn()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

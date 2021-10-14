@@ -19,4 +19,9 @@ class OpenupActivity : BaseActivity<ActivityOpenupBinding, OpenupViewModel>() {
             })
         }
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
+    }
 }

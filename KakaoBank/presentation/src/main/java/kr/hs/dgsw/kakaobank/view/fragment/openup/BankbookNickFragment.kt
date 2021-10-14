@@ -25,7 +25,7 @@ class BankbookNickFragment : BaseFragment<FragmentBankbookNickBinding, BankBookN
                         R.color.text_mainColor))
                     mBinding.bankBookNextBtn.setOnClickListener {
                         this@BankbookNickFragment.findNavController()
-                            .navigate(R.id.action_openupInputFragment_to_bankbookNickFragment)
+                            .navigate(R.id.action_bankbookNickFragment_to_openupPasswordFragment)
                     }
                 } else {
                     mBinding.bankBookNextBtn.setBackgroundColor(ContextCompat.getColor(requireContext(),

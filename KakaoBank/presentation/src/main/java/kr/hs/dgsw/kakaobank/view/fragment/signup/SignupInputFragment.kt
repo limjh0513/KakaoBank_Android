@@ -14,6 +14,8 @@ import android.view.MotionEvent
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
+import org.koin.androidx.viewmodel.ext.android.getViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SignupInputFragment : BaseFragment<FragmentSignupInputBinding, SignupInputViewModel>() {
     override val mViewModel: SignupInputViewModel by inject()
@@ -121,6 +123,15 @@ class SignupInputFragment : BaseFragment<FragmentSignupInputBinding, SignupInput
                     isAvilableNextBtn()
                 }
             })
+
+            onSuccessEvent.observe(this@SignupInputFragment, Observer {
+                this@SignupInputFragment.findNavController()
+                    .navigate(R.id.action_signup_input_to_signupSelectImgFramgent)
+            })
+
+            onErrorEvent.observe(this@SignupInputFragment, Observer {
+                Toast.makeText(requireContext(), "회원가입 정보를 전송하지 못했습니다.", Toast.LENGTH_SHORT).show()
+            })
         }
     }
 
@@ -152,8 +163,7 @@ class SignupInputFragment : BaseFragment<FragmentSignupInputBinding, SignupInput
             mBinding.signupINextBtn.setTextColor(ContextCompat.getColor(requireContext(),
                 R.color.text_mainColor))
             mBinding.signupINextBtn.setOnClickListener {
-                this.findNavController()
-                    .navigate(R.id.action_signup_input_to_signupSelectImgFramgent)
+                mViewModel.signUp()
             }
         } else {
             mBinding.signupINextBtn.setBackgroundColor(ContextCompat.getColor(requireContext(),

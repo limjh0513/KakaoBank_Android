@@ -37,9 +37,9 @@ class OpenupInputFragment : BaseFragment<FragmentOpenupInputBinding, OpenupInput
             inputRegisterFront.observe(this@OpenupInputFragment, Observer {
                 if(it.length == 6){
                     if(isValidResident(it)){
+                        mBinding.openIEtResistBack.requestFocus()
                         if(inputRegisterBack.value?.length == 1){
                             check[1] = 1;
-                            mBinding.openIEtResistBack.requestFocus()
                             isAvilableNextBtn()
                         }
                     } else {
@@ -104,9 +104,8 @@ class OpenupInputFragment : BaseFragment<FragmentOpenupInputBinding, OpenupInput
             mBinding.openINextBtn.setTextColor(ContextCompat.getColor(requireContext(),
                 R.color.text_mainColor))
             mBinding.openINextBtn.setOnClickListener {
-                val intent = Intent(requireActivity(), OpenUpSuccessActivity::class.java)
-                startActivity(intent)
-                requireActivity().finish()
+                this.findNavController()
+                    .navigate(R.id.action_openupInputFragment_to_bankbookNickFragment)
             }
         } else {
             mBinding.openINextBtn.setBackgroundColor(ContextCompat.getColor(requireContext(),
