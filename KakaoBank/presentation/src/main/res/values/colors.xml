@@ -34,4 +34,7 @@
 
     <color name="open_terms_color">#F7F7F7</color>
     <color name="hint_text">#6D6D6D</color>
+    <color name="transfer_input">#9F9F9F</color>
+
+    <color name="toss_color">#004EF7</color>
 </resources>

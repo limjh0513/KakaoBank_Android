@@ -33,10 +33,10 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/kakao_regular"
                 android:text="@{vm.userName}"
-                tools:text="임재현"
                 android:textColor="@color/text_mainColor"
                 android:textFontWeight="400"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                tools:text="임재현" />
 
             <TextView
                 android:id="@+id/main_tvMyAccount"
@@ -62,19 +62,26 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/default_profile" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/main_recyclerview"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/main_refresh"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="32dp"
             app:layout_constraintBottom_toTopOf="@+id/main_addBtn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@+id/tv_profile"
-            tools:listitem="@layout/account_item" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_profile">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/main_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="32dp"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/account_item" />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 
         <ImageButton
             android:id="@+id/main_addBtn"
@@ -82,10 +89,10 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="@color/input_background"
+            android:onClick="@{() -> vm.onClickOpenUpBtn()}"
             android:padding="15dp"
             android:src="@drawable/add_btn"
             android:text="Button"
-            android:onClick="@{() -> vm.onClickOpenUpBtn()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

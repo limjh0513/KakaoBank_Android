@@ -2,11 +2,14 @@ package kr.hs.dgsw.kakaobank.view.fragment.signup
 
 import android.content.Intent
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import kr.hs.dgsw.kakaobank.R
 import kr.hs.dgsw.kakaobank.base.BaseFragment
 import kr.hs.dgsw.kakaobank.databinding.FragmentPasswordReputBinding
+import kr.hs.dgsw.kakaobank.view.activity.SignupActivity
+import kr.hs.dgsw.kakaobank.view.activity.StartActivity
 import kr.hs.dgsw.kakaobank.view.activity.WelcomeActivity
 import kr.hs.dgsw.kakaobank.viewmodel.signup.PasswordReputViewModel
 import org.koin.android.ext.android.inject
@@ -22,8 +25,14 @@ class PasswordReputFragment : BaseFragment<FragmentPasswordReputBinding, Passwor
             password.observe(this@PasswordReputFragment, Observer {
                 showSecretPassword(it.length)
                 if (it.length == 6) {
-                    val intent = Intent(requireActivity(), WelcomeActivity::class.java)
-                    startActivity(intent)
+                    if ((activity as SignupActivity).request.simpleNumber!! == Integer.parseInt(it)) {
+                        mViewModel.signUp((activity as SignupActivity).request)
+                    } else {
+                        Toast.makeText(requireContext(), "비밀번호를 잘못 입력했습니다. 다시 설정해주세요.", Toast.LENGTH_SHORT).show()
+                        this@PasswordReputFragment.findNavController()
+                            .navigate(R.id.action_passwordReputFragment_to_signupPasswordFramgent)
+                    }
+
                 }
             })
 
@@ -35,6 +44,16 @@ class PasswordReputFragment : BaseFragment<FragmentPasswordReputBinding, Passwor
                     Log.e("afds", "${password.value!!.length} ${password.value!!}")
                     showSecretPassword(password.value!!.length)
                 }
+            })
+
+            onErrorEvent.observe(this@PasswordReputFragment, Observer {
+                Toast.makeText(requireContext(), "회원가입 정보를 전송하지 못했습니다. 다시 시도해주세요", Toast.LENGTH_SHORT).show()
+            })
+
+            onSuccessEvent.observe(this@PasswordReputFragment, Observer {
+                val intent = Intent(requireContext(), WelcomeActivity::class.java)
+                intent.putExtra("userName", mViewModel.userName.value)
+                startActivity(intent)
             })
         }
     }

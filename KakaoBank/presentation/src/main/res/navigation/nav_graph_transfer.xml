@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_transfer"
+    app:startDestination="@id/transferInputFragment">
+
+    <fragment
+        android:id="@+id/transferInputFragment"
+        android:name="kr.hs.dgsw.kakaobank.view.fragment.transfer.TransferInputFragment"
+        android:label="fragment_transfer_input"
+        tools:layout="@layout/fragment_transfer_input" >
+        <action
+            android:id="@+id/action_transferInputFragment_to_transferConfirmFragment"
+            app:destination="@id/transferConfirmFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/transferConfirmFragment"
+        android:name="kr.hs.dgsw.kakaobank.view.fragment.transfer.TransferConfirmFragment"
+        android:label="TransferConfirmFragment" >
+        <action
+            android:id="@+id/action_transferConfirmFragment_to_transferPriceFragmemt"
+            app:destination="@id/transferPriceFragmemt" />
+    </fragment>
+    <fragment
+        android:id="@+id/transferPriceFragmemt"
+        android:name="kr.hs.dgsw.kakaobank.viewmodel.transfer.TransferPriceFragmemt"
+        android:label="fragment_transfer_price"
+        tools:layout="@layout/fragment_transfer_price" >
+        <action
+            android:id="@+id/action_transferPriceFragmemt_to_transferPasswordFragment"
+            app:destination="@id/transferPasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/transferPasswordFragment"
+        android:name="kr.hs.dgsw.kakaobank.viewmodel.transfer.TransferPasswordFragment"
+        android:label="fragment_transfer_password"
+        tools:layout="@layout/fragment_transfer_password" />
+</navigation>

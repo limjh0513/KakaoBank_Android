@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="kr.hs.dgsw.kakaobank.viewmodel.transfer.TransferPriceViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".viewmodel.transfer.TransferPriceFragmemt">
+
+        <TextView
+            android:id="@+id/transferP_sendNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/kakao_regular"
+            android:text="토스 123-4567891-123"
+            android:textColor="@color/text_mainColor"
+            android:textFontWeight="400"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/transferP_cencelBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/kakao_regular"
+            android:text="취소"
+            android:textColor="@color/text_mainColor"
+            android:textFontWeight="700"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/transferP_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:fontFamily="@font/kakao_regular"
+            android:hint="보낼 금액"
+            android:textColor="@color/text_mainColor"
+            android:textFontWeight="400"
+            android:textSize="32sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/transferP_sendNumber" />
+
+        <TextView
+            android:id="@+id/transferP_fees"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/kakao_regular"
+            android:text="수수료 : 500원"
+            android:textColor="@color/text_mainColor"
+            android:textFontWeight="400"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/transferP_price" />
+
+        <TextView
+            android:id="@+id/transferP_myPrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/border_gray_view"
+            android:fontFamily="@font/kakao_regular"
+            android:padding="20dp"
+            android:text="내 용돈 통장 : 20,000원"
+            android:textColor="@color/text_mainColor"
+            android:textFontWeight="400"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/transferP_fees" />
+
+
+        <TableLayout
+            android:id="@+id/transferP_tableLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/transferP_confirmBtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/transferP_myPrice"
+            app:layout_constraintVertical_bias="0.75">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/transferP_button1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/kakao_regular"
+                    android:lineHeight="16sp"
+                    android:onClick="@{() -> vm.onClickNumberBtn(1)}"
+                    android:padding="10dp"
+                    android:text="1"
+                    android:textColor="@color/text_mainColor"
+                    android:textFontWeight="400"
+                    android:textSize="18sp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/transferP_button2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/kakao_regular"
+                    android:lineHeight="16sp"
+                    android:onClick="@{() -> vm.onClickNumberBtn(2)}"
+                    android:padding="10dp"
+                    android:text="2"
+                    android:textColor="@color/text_mainColor"
+                    android:textFontWeight="400"
+                    android:textSize="18sp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/transferP_button3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/kakao_regular"
+                    android:lineHeight="16sp"
+                    android:onClick="@{() -> vm.onClickNumberBtn(3)}"
+                    android:padding="10dp"
+                    android:text="3"
+                    android:textColor="@color/text_mainColor"
+                    android:textFontWeight="400"
+                    android:textSize="18sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/transferP_button4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/kakao_regular"
+                    android:lineHeight="16sp"
+                    android:onClick="@{() -> vm.onClickNumberBtn(4)}"
+                    android:padding="10dp"
+                    android:text="4"
+                    android:textColor="@color/text_mainColor"
+                    android:textFontWeight="400"
+                    android:textSize="18sp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/transferP_button5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/kakao_regular"
+                    android:lineHeight="16sp"
+                    android:onClick="@{() -> vm.onClickNumberBtn(5)}"
+                    android:padding="10dp"
+                    android:text="5"
+                    android:textColor="@color/text_mainColor"
+                    android:textFontWeight="400"
+                    android:textSize="18sp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/transferP_button6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/kakao_regular"
+                    android:lineHeight="16sp"
+                    android:onClick="@{() -> vm.onClickNumberBtn(6)}"
+                    android:padding="10dp"
+                    android:text="6"
+                    android:textColor="@color/text_mainColor"
+                    android:textFontWeight="400"
+                    android:textSize="18sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/transferP_button7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/kakao_regular"
+                    android:lineHeight="16sp"
+                    android:onClick="@{() -> vm.onClickNumberBtn(7)}"
+                    android:padding="10dp"
+                    android:text="7"
+                    android:textColor="@color/text_mainColor"
+                    android:textFontWeight="400"
+                    android:textSize="18sp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/transferP_button8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/kakao_regular"
+                    android:lineHeight="16sp"
+                    android:onClick="@{() -> vm.onClickNumberBtn(8)}"
+                    android:padding="10dp"
+                    android:text="8"
+                    android:textColor="@color/text_mainColor"
+                    android:textFontWeight="400"
+                    android:textSize="18sp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/transferP_button9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/kakao_regular"
+                    android:lineHeight="16sp"
+                    android:onClick="@{() -> vm.onClickNumberBtn(9)}"
+                    android:padding="10dp"
+                    android:text="9"
+                    android:textColor="@color/text_mainColor"
+                    android:textFontWeight="400"
+                    android:textSize="18sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/transferP_buttonNone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/kakao_regular"
+                    android:lineHeight="16sp"
+                    android:padding="10dp"
+                    android:textColor="@color/text_mainColor"
+                    android:textFontWeight="400"
+                    android:textSize="18sp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/transferP_button0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/kakao_regular"
+                    android:lineHeight="16sp"
+                    android:onClick="@{() -> vm.onClickNumberBtn(0)}"
+                    android:padding="10dp"
+                    android:text="0"
+                    android:textColor="@color/text_mainColor"
+                    android:textFontWeight="400"
+                    android:textSize="18sp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/transferP_buttonBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/kakao_regular"
+                    android:lineHeight="16sp"
+                    android:onClick="@{() -> vm.onClickBackBtn()}"
+                    android:padding="10dp"
+                    android:text="←"
+                    android:textColor="@color/text_mainColor"
+                    android:textFontWeight="400"
+                    android:textSize="18sp" />
+            </TableRow>
+        </TableLayout>
+
+        <Button
+            android:id="@+id/transferP_confirmBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="16dp"
+            android:background="@color/disabled"
+            android:fontFamily="@font/kakao_regular"
+            android:text="확인"
+            android:textColor="@color/text_mainColor"
+            android:textFontWeight="400"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

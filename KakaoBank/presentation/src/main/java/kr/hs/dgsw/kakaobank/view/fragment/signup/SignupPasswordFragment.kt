@@ -6,6 +6,7 @@ import androidx.navigation.fragment.findNavController
 import kr.hs.dgsw.kakaobank.R
 import kr.hs.dgsw.kakaobank.base.BaseFragment
 import kr.hs.dgsw.kakaobank.databinding.FragmentSignupPasswordBinding
+import kr.hs.dgsw.kakaobank.view.activity.SignupActivity
 import kr.hs.dgsw.kakaobank.viewmodel.signup.SignupPasswordViewModel
 import org.koin.android.ext.android.inject
 
@@ -20,6 +21,7 @@ class SignupPasswordFragment :
             password.observe(this@SignupPasswordFragment, Observer {
                 showSecretPassword(it.length)
                 if (it.length == 6) {
+                    (activity as SignupActivity).request.simpleNumber = Integer.parseInt(it)
                     this@SignupPasswordFragment.findNavController()
                         .navigate(R.id.action_signupPasswordFramgent_to_passwordReputFragment)
                 }

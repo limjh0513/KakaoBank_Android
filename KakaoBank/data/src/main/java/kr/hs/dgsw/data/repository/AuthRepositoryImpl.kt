@@ -13,4 +13,8 @@ class AuthRepositoryImpl(private val authRemote: AuthRemote) : AuthRepository {
     override fun register(registerRequest: RegisterRequest): Completable =
         authRemote.register(registerRequest).ignoreElement()
 
+    override fun available(id: String): Single<Boolean> =
+        authRemote.available(id)
+
+
 }

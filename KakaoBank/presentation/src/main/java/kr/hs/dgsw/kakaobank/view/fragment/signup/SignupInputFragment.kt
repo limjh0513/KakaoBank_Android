@@ -1,6 +1,7 @@
 package kr.hs.dgsw.kakaobank.view.fragment.signup
 
 import android.annotation.SuppressLint
+import android.text.Layout
 import androidx.lifecycle.Observer
 import kr.hs.dgsw.kakaobank.R
 import kr.hs.dgsw.kakaobank.base.BaseFragment
@@ -14,6 +15,8 @@ import android.view.MotionEvent
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
+import kr.hs.dgsw.domain.request.RegisterRequest
+import kr.hs.dgsw.kakaobank.view.activity.SignupActivity
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -24,14 +27,12 @@ class SignupInputFragment : BaseFragment<FragmentSignupInputBinding, SignupInput
 
     private var imageCheck = IntArray(6)
 
-    @SuppressLint("ClickableViewAccessibility")
     override fun observerViewModel() {
         with(mViewModel) {
             overlapCheckBtn.observe(this@SignupInputFragment, Observer {
                 if (isValidId(inputId.value.toString())) { //아이디 정규식 확인
-                    imageCheck[0] = 1
-                    mBinding.idCheckImg.setImageResource(R.drawable.is_checked)
                     //아이디 중복 체크
+                    mViewModel.checkAvailableId()
                 } else {
                     imageCheck[0] = 0
                     Toast.makeText(requireContext(), "아이디 형식이 맞지 않습니다.", Toast.LENGTH_SHORT).show()
@@ -124,13 +125,20 @@ class SignupInputFragment : BaseFragment<FragmentSignupInputBinding, SignupInput
                 }
             })
 
-            onSuccessEvent.observe(this@SignupInputFragment, Observer {
-                this@SignupInputFragment.findNavController()
-                    .navigate(R.id.action_signup_input_to_signupSelectImgFramgent)
+            onAvailableErrorEvent.observe(this@SignupInputFragment, Observer {
+                Toast.makeText(requireContext(), "아이디 중복확인 중 문제가 발생했습니다.", Toast.LENGTH_SHORT).show()
             })
 
-            onErrorEvent.observe(this@SignupInputFragment, Observer {
-                Toast.makeText(requireContext(), "회원가입 정보를 전송하지 못했습니다.", Toast.LENGTH_SHORT).show()
+            onAvailableSuccessEvent.observe(this@SignupInputFragment, Observer {
+                Log.e("aaaaa", "${it}")
+                if(it){
+                    imageCheck[0] = 1
+                    mBinding.idCheckImg.setImageResource(R.drawable.is_checked)
+                } else {
+                    imageCheck[0] = 0
+                    Toast.makeText(requireContext(), "아이디가 중복되었습니다.", Toast.LENGTH_SHORT).show()
+                    mBinding.idCheckImg.setImageResource(R.drawable.is_cancel)
+                }
             })
         }
     }
@@ -163,7 +171,17 @@ class SignupInputFragment : BaseFragment<FragmentSignupInputBinding, SignupInput
             mBinding.signupINextBtn.setTextColor(ContextCompat.getColor(requireContext(),
                 R.color.text_mainColor))
             mBinding.signupINextBtn.setOnClickListener {
-                mViewModel.signUp()
+                val residentNum = "${mViewModel.residentBackNumber.value}${mViewModel.residentBackNumber.value}"
+
+                (activity as SignupActivity).request.id = mViewModel.inputId.value
+                (activity as SignupActivity).request.name = mViewModel.inputName.value
+                (activity as SignupActivity).request.nickName = mViewModel.inputNickName.value
+                (activity as SignupActivity).request.password = mViewModel.inputPw.value
+                (activity as SignupActivity).request.phoneNumber = mViewModel.inputPhoneNumber.value
+                (activity as SignupActivity).request.residentRegistrationNumber = residentNum
+
+                this@SignupInputFragment.findNavController()
+                    .navigate(R.id.action_signup_input_to_signupSelectImgFramgent)
             }
         } else {
             mBinding.signupINextBtn.setBackgroundColor(ContextCompat.getColor(requireContext(),

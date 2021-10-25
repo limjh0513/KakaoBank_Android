@@ -1,7 +1,9 @@
 package kr.hs.dgsw.kakaobank.view.activity
 
 import android.content.Intent
+import android.widget.Toast
 import androidx.lifecycle.Observer
+import kr.hs.dgsw.data.util.SharedPreferenceManager
 import kr.hs.dgsw.domain.request.RegisterRequest
 import kr.hs.dgsw.kakaobank.R
 import kr.hs.dgsw.kakaobank.base.BaseActivity
@@ -19,9 +21,17 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
             backBtn.observe(this@LoginActivity, Observer {
                 finish()
             })
-            loginBtn.observe(this@LoginActivity, Observer {
+
+            onErrorEvent.observe(this@LoginActivity, Observer {
+                Toast.makeText(this@LoginActivity, "로그인에 실패했습니다.", Toast.LENGTH_SHORT).show()
+            })
+
+            onSuccessEvent.observe(this@LoginActivity, Observer {
+                SharedPreferenceManager.setToken(this@LoginActivity.applicationContext, it)
+
                 val intent = Intent(this@LoginActivity, MainActivity::class.java)
                 startActivity(intent)
+                finish()
             })
         }
     }

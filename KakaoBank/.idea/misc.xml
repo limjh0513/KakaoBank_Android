@@ -12,6 +12,7 @@
         <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/drawable/border_item4.xml" value="0.38229166666666664" />
         <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/drawable/border_item5.xml" value="0.38229166666666664" />
         <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/drawable/border_items.xml" value="0.38229166666666664" />
+        <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/drawable/border_white_view.xml" value="0.3764102564102564" />
         <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/drawable/button_box.xml" value="0.38229166666666664" />
         <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/drawable/button_box_left.xml" value="0.38229166666666664" />
         <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/drawable/button_box_right.xml" value="0.38229166666666664" />
@@ -23,11 +24,16 @@
         <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/drawable/ic_back_image.xml" value="0.38229166666666664" />
         <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/drawable/ic_click_intent.xml" value="0.38229166666666664" />
         <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/drawable/ic_launcher_background.xml" value="0.38229166666666664" />
+        <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/drawable/ic_soil_icon.xml" value="0.22760416666666666" />
         <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/drawable/kakao_border.xml" value="0.38229166666666664" />
         <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/drawable/kakao_border_view.xml" value="0.38229166666666664" />
+        <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/drawable/kakaobank_show.xml" value="0.3764102564102564" />
         <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/drawable/main_imageview.xml" value="0.38229166666666664" />
         <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/drawable/overlap_btn.xml" value="0.38229166666666664" />
+        <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/drawable/show_kakaobank.xml" value="0.38229166666666664" />
+        <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/drawable/show_toss.xml" value="0.3764102564102564" />
         <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/drawable/terms_border.xml" value="0.38229166666666664" />
+        <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/drawable/transfer_inputs.xml" value="0.38229166666666664" />
         <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/drawable/unchecked.xml" value="0.38229166666666664" />
         <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/drawable/white_border.xml" value="0.38229166666666664" />
         <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/layout/account_item.xml" value="0.33" />
@@ -42,6 +48,7 @@
         <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/layout/activity_signup.xml" value="0.22" />
         <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/layout/activity_start.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/layout/activity_transfer.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/layout/activity_transfer_succese.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/layout/activity_welcom.xml" value="0.175" />
         <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/layout/fragment_ask_image.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/layout/fragment_bankbook_nick.xml" value="0.36614583333333334" />
@@ -56,6 +63,10 @@
         <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/layout/fragment_signup_select_img.xml" value="0.22" />
         <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/layout/fragment_signup_select_img_framgent.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/layout/fragment_signup_terms.xml" value="0.33" />
+        <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/layout/fragment_transfer_confirm.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/layout/fragment_transfer_input.xml" value="0.33" />
+        <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/layout/fragment_transfer_password.xml" value="0.3515625" />
+        <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/layout/fragment_transfer_price.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/layout/items_border.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/ljh04/Desktop/KakaoBank/presentation/src/main/res/layout/layout_borrow_account_activity.xml" value="0.36614583333333334" />
       </map>

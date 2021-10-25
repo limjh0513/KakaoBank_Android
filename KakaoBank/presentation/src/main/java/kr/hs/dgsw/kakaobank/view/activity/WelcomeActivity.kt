@@ -11,5 +11,7 @@ class WelcomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_welcom)
+
+        binding.welcomTvName.text = "반가워요 ${intent.getStringExtra("userName")}님!"
     }
 }
