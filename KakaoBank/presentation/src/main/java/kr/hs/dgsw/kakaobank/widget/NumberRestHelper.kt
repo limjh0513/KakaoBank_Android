@@ -5,7 +5,7 @@ import java.text.DecimalFormat
 fun getRestNumber(number: String): String{
     val decFormat = DecimalFormat("###,###")
 
-    var restNumbr: String = decFormat.format(number)
+    var restNumber: String = decFormat.format(Integer.parseInt(number))
 
-    return restNumbr
+    return restNumber
 }
