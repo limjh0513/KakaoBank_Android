@@ -24,7 +24,7 @@
     </fragment>
     <fragment
         android:id="@+id/transferPriceFragmemt"
-        android:name="kr.hs.dgsw.kakaobank.viewmodel.transfer.TransferPriceFragmemt"
+        android:name="kr.hs.dgsw.kakaobank.view.fragment.transfer.TransferPriceFragmemt"
         android:label="fragment_transfer_price"
         tools:layout="@layout/fragment_transfer_price" >
         <action
@@ -33,7 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/transferPasswordFragment"
-        android:name="kr.hs.dgsw.kakaobank.viewmodel.transfer.TransferPasswordFragment"
+        android:name="kr.hs.dgsw.kakaobank.view.fragment.transfer.TransferPasswordFragment"
         android:label="fragment_transfer_password"
         tools:layout="@layout/fragment_transfer_password" />
 </navigation>

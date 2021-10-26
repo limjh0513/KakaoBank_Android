@@ -26,6 +26,14 @@
         <action
             android:id="@+id/action_openupInputFragment_to_bankbookNickFragment"
             app:destination="@id/bankbookNickFragment" />
+        <argument
+            android:name="name"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="residentNumber"
+            app:argType="string"
+            app:nullable="true" />
     </fragment>
      <fragment
         android:id="@+id/bankbookNickFragment"
@@ -43,10 +51,17 @@
         <action
             android:id="@+id/action_openupPasswordFragment_to_openupRePasswordFragment"
             app:destination="@id/openupRePasswordFragment" />
+        <argument
+            android:name="password"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/openupRePasswordFragment"
         android:name="kr.hs.dgsw.kakaobank.view.fragment.openup.OpenupRePasswordFragment"
         android:label="fragment_openup_re_password"
-        tools:layout="@layout/fragment_openup_re_password" />
+        tools:layout="@layout/fragment_openup_re_password" >
+        <action
+            android:id="@+id/action_openupRePasswordFragment_to_openupPasswordFragment"
+            app:destination="@id/openupPasswordFragment" />
+    </fragment>
 </navigation>

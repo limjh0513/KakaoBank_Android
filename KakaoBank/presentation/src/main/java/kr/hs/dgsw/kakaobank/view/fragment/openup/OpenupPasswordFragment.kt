@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import kr.hs.dgsw.kakaobank.R
@@ -28,7 +29,8 @@ class OpenupPasswordFragment :
             password.observe(this@OpenupPasswordFragment, Observer {
                 showSecretPassword(it.length)
                 if (it.length == 4) {
-                    this@OpenupPasswordFragment.findNavController().navigate(R.id.action_openupPasswordFragment_to_openupRePasswordFragment)
+                    val bundle = bundleOf("password" to password.value)
+                    this@OpenupPasswordFragment.findNavController().navigate(R.id.action_openupPasswordFragment_to_openupRePasswordFragment, bundle)
                 }
 
             })

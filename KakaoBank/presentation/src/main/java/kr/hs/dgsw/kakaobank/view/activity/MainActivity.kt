@@ -2,6 +2,7 @@ package kr.hs.dgsw.kakaobank.view.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -23,10 +24,11 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         getAccount()
 
         mBinding.mainRefresh.setOnRefreshListener {
+            mBinding.mainRefresh.isRefreshing = false
             getAccount()
         }
 
-        with(mViewModel){
+        with(mViewModel) {
             openUpBtn.observe(this@MainActivity, Observer {
                 val intent = Intent(this@MainActivity, OpenupActivity::class.java)
                 startActivity(intent)
@@ -41,7 +43,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
             })
 
             getErrorEvent.observe(this@MainActivity, Observer {
-                Toast.makeText(this@MainActivity, "계좌 목록을 가져오는 중 문제가 발생했습니다.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@MainActivity, "계좌 목록을 가져오는 중 문제가 발생했습니다.", Toast.LENGTH_SHORT)
+                    .show()
             })
         }
     }
@@ -49,8 +52,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     private fun getAccount() {
         var token: String? = SharedPreferenceManager.getToken(this)
 
-        if(token != null){
-            mViewModel.getAccountList(token)
+        if (token != null) {
+            mViewModel.getAccountList("Bearer $token")
         } else {
             Toast.makeText(this, "토큰이 존재하지 않습니다. 다시 로그인해주세요", Toast.LENGTH_SHORT).show()
             finish()

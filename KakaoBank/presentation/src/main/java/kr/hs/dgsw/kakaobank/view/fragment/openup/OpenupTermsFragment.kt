@@ -2,6 +2,7 @@ package kr.hs.dgsw.kakaobank.view.fragment.openup
 
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -70,20 +71,21 @@ class OpenupTermsFragment : BaseFragment<FragmentOpenupTermsBinding, OpenupTerms
     fun checkBoxCheck() {
         var result = true
 
-        for (i in check){
-            if(check[i] != 1){
+        for (i in check) {
+            if (i == 0) {
                 result = false
                 break;
             }
         }
 
-        if(result){
+        if (result) {
             mBinding.openTNextBtn.setBackgroundColor(ContextCompat.getColor(requireContext(),
                 R.color.kakao))
             mBinding.openTNextBtn.setTextColor(ContextCompat.getColor(requireContext(),
                 R.color.text_mainColor))
             mBinding.openTNextBtn.setOnClickListener {
-                this.findNavController().navigate(R.id.action_openupTermsFragment_to_openupInputFragment)
+                this.findNavController()
+                    .navigate(R.id.action_openupTermsFragment_to_openupInputFragment)
             }
         } else {
             mBinding.openTNextBtn.setBackgroundColor(ContextCompat.getColor(requireContext(),

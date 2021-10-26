@@ -1,6 +1,7 @@
 package kr.hs.dgsw.kakaobank.view.activity
 
 import androidx.lifecycle.Observer
+import kr.hs.dgsw.domain.request.AccountRequest
 import kr.hs.dgsw.kakaobank.R
 import kr.hs.dgsw.kakaobank.base.BaseActivity
 import kr.hs.dgsw.kakaobank.databinding.ActivityOpenupBinding
@@ -11,6 +12,8 @@ class OpenupActivity : BaseActivity<ActivityOpenupBinding, OpenupViewModel>() {
     override val mViewModel: OpenupViewModel by inject()
     override val layoutRes: Int
         get() = R.layout.activity_openup
+
+    var request = AccountRequest()
 
     override fun observerViewModel() {
         with(mViewModel){

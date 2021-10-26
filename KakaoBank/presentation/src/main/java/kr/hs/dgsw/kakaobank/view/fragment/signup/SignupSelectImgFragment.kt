@@ -22,6 +22,10 @@ import kr.hs.dgsw.kakaobank.view.activity.SignupActivity
 import kr.hs.dgsw.kakaobank.viewmodel.signup.SignupSelectImgViewModel
 import org.koin.android.ext.android.inject
 import android.R.attr.bitmap
+import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import java.io.*
 
 
@@ -66,19 +70,19 @@ class SignupSelectImgFragment :
                             val bitmap =
                                 MediaStore.Images.Media.getBitmap(activity?.contentResolver, it)
                             mBinding.signupSProfileImage.setImageBitmap(bitmap)
-                            if (currentImageUri != null) {
-                                bitmapCovertFile(bitmap, getRealPathFromUri(currentImageUri))
-                            }
                         } else {
                             val source =
                                 ImageDecoder.createSource(activity?.contentResolver!!, it!!)
                             val bitmap = ImageDecoder.decodeBitmap(source)
                             mBinding.signupSProfileImage.setImageBitmap(bitmap)
-                            if (currentImageUri != null) {
-                                bitmapCovertFile(bitmap, getRealPathFromUri(currentImageUri))
-                            }
                         }
-                        imageCheck = true;
+
+                        val path = getRealPathFromUri(currentImageUri)
+
+                        if (path != null) {
+                            (activity as SignupActivity).file = File(path.toString())
+                            imageCheck = true
+                        }
                     }
                 } catch (e: Exception) {
                     e.printStackTrace()
@@ -89,39 +93,23 @@ class SignupSelectImgFragment :
         }
     }
 
-    fun bitmapCovertFile(bitmap: Bitmap, filePath: String) {
-        var file = File(filePath)
+    private fun getRealPathFromUri(uri: Uri?): Uri? {
+        if (uri != null) {
 
-        var os: OutputStream? = null
+            val filePathColumn = arrayOf(MediaStore.Images.Media.DATA)
+            val cursor =
+                requireContext().contentResolver.query(uri, filePathColumn, null, null, null)
+            cursor?.moveToFirst()
 
-        try {
-            file.createNewFile()
-            os = FileOutputStream(file)
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, os)
-
-            (activity as SignupActivity).request.file = file
-        } catch (e: Exception) {
-            e.printStackTrace()
-        } finally {
-            try {
-                os?.close()
-            } catch (e: Exception) {
-                e.printStackTrace()
+            val columnIndex = cursor?.getColumnIndex(filePathColumn[0])
+            val picturePath = columnIndex?.let {
+                cursor.getString(it)
             }
+            cursor?.close()
+
+            return Uri.fromFile(File(picturePath ?: ""))
         }
+        return null
     }
 
-    fun getRealPathFromUri(uri: Uri): String {
-        var proj = MediaStore.Images.Media.DATA
-        val cursor = requireContext().contentResolver.query(uri, arrayOf(proj), null, null, null)
-        var idx = 0
-        if (cursor != null) {
-            if (cursor.moveToFirst()) {
-                idx = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
-            }
-
-            return cursor.getString(idx)
-        }
-        return ""
-    }
 }

@@ -1,8 +1,10 @@
 package kr.hs.dgsw.kakaobank.view.fragment.openup
 
 import android.content.Intent
+import android.util.Log
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import kr.hs.dgsw.kakaobank.R
@@ -35,10 +37,10 @@ class OpenupInputFragment : BaseFragment<FragmentOpenupInputBinding, OpenupInput
             })
 
             inputRegisterFront.observe(this@OpenupInputFragment, Observer {
-                if(it.length == 6){
-                    if(isValidResident(it)){
+                if (it.length == 6) {
+                    if (isValidResident(it)) {
                         mBinding.openIEtResistBack.requestFocus()
-                        if(inputRegisterBack.value?.length == 1){
+                        if (inputRegisterBack.value?.length == 1) {
                             check[1] = 1;
                             isAvilableNextBtn()
                         }
@@ -57,7 +59,7 @@ class OpenupInputFragment : BaseFragment<FragmentOpenupInputBinding, OpenupInput
             })
 
             inputRegisterBack.observe(this@OpenupInputFragment, Observer {
-                if(inputRegisterFront.value?.length == 6 && it.length == 1){
+                if (inputRegisterFront.value?.length == 6 && it.length == 1) {
                     check[1] = 1;
                     isAvilableNextBtn()
                 } else {
@@ -67,14 +69,14 @@ class OpenupInputFragment : BaseFragment<FragmentOpenupInputBinding, OpenupInput
             })
 
             positiveRadioBtn.observe(this@OpenupInputFragment, Observer {
-                if(it){
+                if (it) {
                     check[2] = 1;
                     isAvilableNextBtn()
                 }
             })
 
             negativeRadioBtn.observe(this@OpenupInputFragment, Observer {
-                if(it){
+                if (it) {
                     check[2] = 0;
                     isAvilableNextBtn()
                 }
@@ -98,14 +100,17 @@ class OpenupInputFragment : BaseFragment<FragmentOpenupInputBinding, OpenupInput
             }
         }
 
-        if(result){
+        if (result) {
             mBinding.openINextBtn.setBackgroundColor(ContextCompat.getColor(requireContext(),
                 R.color.kakao))
             mBinding.openINextBtn.setTextColor(ContextCompat.getColor(requireContext(),
                 R.color.text_mainColor))
             mBinding.openINextBtn.setOnClickListener {
+                Log.e("dasfsdf", "${mViewModel.inputName.value}")
+                val bundle = bundleOf("name" to mViewModel.inputName.value,
+                    "residentNumber" to "${mViewModel.inputRegisterFront.value} - ${mViewModel.inputRegisterBack.value}******")
                 this.findNavController()
-                    .navigate(R.id.action_openupInputFragment_to_bankbookNickFragment)
+                    .navigate(R.id.action_openupInputFragment_to_bankbookNickFragment, bundle)
             }
         } else {
             mBinding.openINextBtn.setBackgroundColor(ContextCompat.getColor(requireContext(),

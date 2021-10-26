@@ -7,7 +7,10 @@ import kr.hs.dgsw.kakaobank.viewmodel.SignupViewModel
 import androidx.lifecycle.Observer
 import kr.hs.dgsw.domain.request.LoginRequest
 import kr.hs.dgsw.domain.request.RegisterRequest
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import org.koin.android.ext.android.inject
+import java.io.File
 
 class SignupActivity : BaseActivity<ActivitySignupBinding, SignupViewModel>() {
     override val mViewModel: SignupViewModel by inject()
@@ -15,6 +18,7 @@ class SignupActivity : BaseActivity<ActivitySignupBinding, SignupViewModel>() {
         get() = R.layout.activity_signup
 
     var request = RegisterRequest()
+    var file: File? = null
 
     override fun observerViewModel() {
         with(mViewModel) {

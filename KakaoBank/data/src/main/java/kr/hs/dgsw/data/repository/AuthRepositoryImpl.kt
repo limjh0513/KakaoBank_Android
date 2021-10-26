@@ -6,12 +6,13 @@ import kr.hs.dgsw.data.network.remote.AuthRemote
 import kr.hs.dgsw.domain.repository.AuthRepository
 import kr.hs.dgsw.domain.request.LoginRequest
 import kr.hs.dgsw.domain.request.RegisterRequest
+import okhttp3.MultipartBody
 
 class AuthRepositoryImpl(private val authRemote: AuthRemote) : AuthRepository {
     override fun login(loginRequest: LoginRequest): Single<String> = authRemote.login(loginRequest)
 
-    override fun register(registerRequest: RegisterRequest): Completable =
-        authRemote.register(registerRequest).ignoreElement()
+    override fun register(registerRequest: RegisterRequest, file: MultipartBody.Part?): Completable =
+        authRemote.register(registerRequest, file).ignoreElement()
 
     override fun available(id: String): Single<Boolean> =
         authRemote.available(id)

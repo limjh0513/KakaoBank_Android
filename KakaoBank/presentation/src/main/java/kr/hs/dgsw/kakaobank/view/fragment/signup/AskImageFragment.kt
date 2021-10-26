@@ -37,21 +37,10 @@ class AskImageFragment : BaseFragment<FragmentAskImageBinding, AskImageViewModel
             })
 
             positiveBtn.observe(this@AskImageFragment, Observer {
-                bitmapToImage()
+                (activity as SignupActivity).file = null
                 this@AskImageFragment.findNavController()
                     .navigate(R.id.action_askImageFragment_to_signupPasswordFramgent)
             })
         }
-    }
-
-    fun bitmapToImage(){
-        val bitmap = BitmapFactory.decodeResource(requireContext().resources, R.drawable.default_profile)
-
-        val file = File("path")
-        val os: OutputStream = BufferedOutputStream(FileOutputStream(file))
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, os)
-        os.close()
-
-        (activity as SignupActivity).request.file = file
     }
 }

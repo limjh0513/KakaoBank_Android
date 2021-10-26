@@ -3,7 +3,6 @@ package kr.hs.dgsw.domain.request
 import java.io.File
 
 data class RegisterRequest(
-    var file: File?,
     var id: String?,
     var name: String?,
     var nickName: String?,
@@ -12,5 +11,5 @@ data class RegisterRequest(
     var residentRegistrationNumber: String?,
     var simpleNumber: Int?,
 ) {
-    constructor(): this(null, null, null,null, null, null, null, null)
+    constructor(): this(null, null,null, null, null, null, null)
 }

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kr.hs.dgsw.domain.model.Account
 import kr.hs.dgsw.kakaobank.R
 import kr.hs.dgsw.kakaobank.databinding.AccountItemBinding
+import kr.hs.dgsw.kakaobank.widget.getRestNumber
 
 class AccountItemAdapter : RecyclerView.Adapter<AccountItemAdapter.ViewHolder>() {
 
@@ -37,7 +38,7 @@ class AccountItemAdapter : RecyclerView.Adapter<AccountItemAdapter.ViewHolder>()
         fun bind(context: Context, account: Account, position: Int) {
             binding.itemTvNick.text = account.nickname
             binding.itemTvNumber.text = account.accountNumber
-            binding.itemMoney.text = account.money.toString()
+            binding.itemMoney.text = getRestNumber(account.money.toString())
             binding.itemBringBtn.setOnClickListener {
 
             }

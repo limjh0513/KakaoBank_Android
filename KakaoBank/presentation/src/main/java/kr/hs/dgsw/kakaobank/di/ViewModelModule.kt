@@ -31,7 +31,7 @@ val viewModelModule = module {
     viewModel { OpenupInputViewModel() }
     viewModel { OpenupPasswordViewModel() }
     viewModel { OpenupTermsViewModel() }
-    viewModel { OpenupRePasswordViewModel() }
+    viewModel { OpenupRePasswordViewModel(get()) }
 
     //transfer Fragment
     viewModel { TransferInputViewModel() }

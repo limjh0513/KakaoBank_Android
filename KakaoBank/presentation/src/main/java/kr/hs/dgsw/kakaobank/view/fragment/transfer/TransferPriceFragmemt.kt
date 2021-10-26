@@ -1,8 +1,9 @@
-package kr.hs.dgsw.kakaobank.viewmodel.transfer
+package kr.hs.dgsw.kakaobank.view.fragment.transfer
 
 import kr.hs.dgsw.kakaobank.R
 import kr.hs.dgsw.kakaobank.base.BaseFragment
 import kr.hs.dgsw.kakaobank.databinding.FragmentTransferPriceBinding
+import kr.hs.dgsw.kakaobank.viewmodel.transfer.TransferPriceViewModel
 import org.koin.android.ext.android.inject
 
 class TransferPriceFragmemt : BaseFragment<FragmentTransferPriceBinding, TransferPriceViewModel>() {

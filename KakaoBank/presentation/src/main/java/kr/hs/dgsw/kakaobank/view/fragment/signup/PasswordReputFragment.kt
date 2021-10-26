@@ -9,9 +9,13 @@ import kr.hs.dgsw.kakaobank.R
 import kr.hs.dgsw.kakaobank.base.BaseFragment
 import kr.hs.dgsw.kakaobank.databinding.FragmentPasswordReputBinding
 import kr.hs.dgsw.kakaobank.view.activity.SignupActivity
-import kr.hs.dgsw.kakaobank.view.activity.StartActivity
 import kr.hs.dgsw.kakaobank.view.activity.WelcomeActivity
 import kr.hs.dgsw.kakaobank.viewmodel.signup.PasswordReputViewModel
+import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.Request
+import okhttp3.RequestBody
 import org.koin.android.ext.android.inject
 
 
@@ -26,9 +30,29 @@ class PasswordReputFragment : BaseFragment<FragmentPasswordReputBinding, Passwor
                 showSecretPassword(it.length)
                 if (it.length == 6) {
                     if ((activity as SignupActivity).request.simpleNumber!! == Integer.parseInt(it)) {
-                        mViewModel.signUp((activity as SignupActivity).request)
+                        var requestBody: RequestBody? = null
+                        if ((activity as SignupActivity).file == null) {
+                            val file = RequestBody.create(MultipartBody.FORM, "")
+                            requestBody = MultipartBody.Builder()
+                                .setType(MultipartBody.FORM)
+                                .addFormDataPart("file", "", file)
+                                .build()
+                        } else {
+                            val file = (activity as SignupActivity).file
+                            requestBody = MultipartBody.Builder()
+                                .setType(MultipartBody.FORM)
+                                .addFormDataPart("file",
+                                    file!!.name,
+                                    RequestBody.create("image/png".toMediaTypeOrNull(), file))
+                                .build()
+                        }
+
+                        mViewModel.signUp((activity as SignupActivity).request, null)
+
                     } else {
-                        Toast.makeText(requireContext(), "비밀번호를 잘못 입력했습니다. 다시 설정해주세요.", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(),
+                            "비밀번호를 잘못 입력했습니다. 다시 설정해주세요.",
+                            Toast.LENGTH_SHORT).show()
                         this@PasswordReputFragment.findNavController()
                             .navigate(R.id.action_passwordReputFragment_to_signupPasswordFramgent)
                     }
@@ -47,7 +71,9 @@ class PasswordReputFragment : BaseFragment<FragmentPasswordReputBinding, Passwor
             })
 
             onErrorEvent.observe(this@PasswordReputFragment, Observer {
-                Toast.makeText(requireContext(), "회원가입 정보를 전송하지 못했습니다. 다시 시도해주세요", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(),
+                    "회원가입 정보를 전송하지 못했습니다. 다시 시도해주세요",
+                    Toast.LENGTH_SHORT).show()
             })
 
             onSuccessEvent.observe(this@PasswordReputFragment, Observer {
