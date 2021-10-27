@@ -18,7 +18,7 @@ class SignupActivity : BaseActivity<ActivitySignupBinding, SignupViewModel>() {
         get() = R.layout.activity_signup
 
     var request = RegisterRequest()
-    var file: File? = null
+    var file: MultipartBody.Part? = null
 
     override fun observerViewModel() {
         with(mViewModel) {

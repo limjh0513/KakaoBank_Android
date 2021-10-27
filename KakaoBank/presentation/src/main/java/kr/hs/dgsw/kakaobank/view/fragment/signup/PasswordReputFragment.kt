@@ -30,25 +30,7 @@ class PasswordReputFragment : BaseFragment<FragmentPasswordReputBinding, Passwor
                 showSecretPassword(it.length)
                 if (it.length == 6) {
                     if ((activity as SignupActivity).request.simpleNumber!! == Integer.parseInt(it)) {
-                        var requestBody: RequestBody? = null
-                        if ((activity as SignupActivity).file == null) {
-                            val file = RequestBody.create(MultipartBody.FORM, "")
-                            requestBody = MultipartBody.Builder()
-                                .setType(MultipartBody.FORM)
-                                .addFormDataPart("file", "", file)
-                                .build()
-                        } else {
-                            val file = (activity as SignupActivity).file
-                            requestBody = MultipartBody.Builder()
-                                .setType(MultipartBody.FORM)
-                                .addFormDataPart("file",
-                                    file!!.name,
-                                    RequestBody.create("image/png".toMediaTypeOrNull(), file))
-                                .build()
-                        }
-
                         mViewModel.signUp((activity as SignupActivity).request, null)
-
                     } else {
                         Toast.makeText(requireContext(),
                             "비밀번호를 잘못 입력했습니다. 다시 설정해주세요.",

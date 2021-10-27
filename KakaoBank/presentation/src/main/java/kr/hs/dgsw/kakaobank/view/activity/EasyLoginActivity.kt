@@ -2,7 +2,9 @@ package kr.hs.dgsw.kakaobank.view.activity
 
 import android.content.Intent
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.Observer
+import kr.hs.dgsw.data.util.SharedPreferenceManager
 import kr.hs.dgsw.kakaobank.R
 import kr.hs.dgsw.kakaobank.base.BaseActivity
 import kr.hs.dgsw.kakaobank.databinding.ActivityEasyLoginBinding
@@ -15,7 +17,7 @@ class EasyLoginActivity : BaseActivity<ActivityEasyLoginBinding, EasyLoginViewMo
         get() = R.layout.activity_easy_login
 
     override fun observerViewModel() {
-        with(mViewModel){
+        with(mViewModel) {
             backBtn.observe(this@EasyLoginActivity, Observer {
                 finish()
             })
@@ -23,7 +25,8 @@ class EasyLoginActivity : BaseActivity<ActivityEasyLoginBinding, EasyLoginViewMo
             password.observe(this@EasyLoginActivity, Observer {
                 showSecretPassword(it.length)
                 if (it.length == 6) {
-                    // 간편 비밀번호가 일치하는지 확인
+                    mViewModel.easyLogin(SharedPreferenceManager.getToken(this@EasyLoginActivity)!!,
+                        Integer.parseInt(it))
                 }
             })
 
@@ -36,8 +39,20 @@ class EasyLoginActivity : BaseActivity<ActivityEasyLoginBinding, EasyLoginViewMo
                     showSecretPassword(password.value!!.length)
                 }
             })
+
+            easyLoginSuccess.observe(this@EasyLoginActivity, Observer {
+                val intent = Intent(this@EasyLoginActivity, MainActivity::class.java)
+                startActivity(intent)
+            })
+
+            easyLoginFail.observe(this@EasyLoginActivity, Observer {
+                Toast.makeText(this@EasyLoginActivity,
+                    "로그인에 실패했습니다. 비밀번호가 일치하지 않거나 네트워크 오류",
+                    Toast.LENGTH_SHORT).show()
+            })
         }
     }
+
     fun showSecretPassword(cnt: Int) {
         when (cnt) {
             1 -> {

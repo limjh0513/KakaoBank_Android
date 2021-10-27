@@ -4,12 +4,16 @@ import io.reactivex.Completable
 import io.reactivex.Single
 import kr.hs.dgsw.data.network.remote.AuthRemote
 import kr.hs.dgsw.domain.repository.AuthRepository
+import kr.hs.dgsw.domain.request.EasyLoginRequest
 import kr.hs.dgsw.domain.request.LoginRequest
 import kr.hs.dgsw.domain.request.RegisterRequest
 import okhttp3.MultipartBody
 
 class AuthRepositoryImpl(private val authRemote: AuthRemote) : AuthRepository {
     override fun login(loginRequest: LoginRequest): Single<String> = authRemote.login(loginRequest)
+
+    override fun easyLogin(token: String, easyLoginRequest: EasyLoginRequest): Completable =
+        authRemote.easyLogin(token, easyLoginRequest).ignoreElement()
 
     override fun register(registerRequest: RegisterRequest, file: MultipartBody.Part?): Completable =
         authRemote.register(registerRequest, file).ignoreElement()

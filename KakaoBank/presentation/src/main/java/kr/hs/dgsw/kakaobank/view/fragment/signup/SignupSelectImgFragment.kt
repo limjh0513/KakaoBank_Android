@@ -62,30 +62,39 @@ class SignupSelectImgFragment :
         super.onActivityResult(requestCode, resultCode, data)
 
         if (resultCode == Activity.RESULT_OK) {
-            if (requestCode == OPEN_GALLARY) {
-                var currentImageUri: Uri? = data?.data
-                try {
-                    currentImageUri.let {
-                        if (Build.VERSION.SDK_INT < 28) {
-                            val bitmap =
-                                MediaStore.Images.Media.getBitmap(activity?.contentResolver, it)
-                            mBinding.signupSProfileImage.setImageBitmap(bitmap)
-                        } else {
-                            val source =
-                                ImageDecoder.createSource(activity?.contentResolver!!, it!!)
-                            val bitmap = ImageDecoder.decodeBitmap(source)
-                            mBinding.signupSProfileImage.setImageBitmap(bitmap)
-                        }
+            if (requestCode == OPEN_GALLARY && data != null) {
+                var currentImageUri: Uri = data?.data!!
+                if (Build.VERSION.SDK_INT < 28) {
+                    val bitmap =
+                        MediaStore.Images.Media.getBitmap(activity?.contentResolver,
+                            currentImageUri)
+                    mBinding.signupSProfileImage.setImageBitmap(bitmap)
+                } else {
+                    val source =
+                        ImageDecoder.createSource(activity?.contentResolver!!, currentImageUri)
+                    val bitmap = ImageDecoder.decodeBitmap(source)
+                    mBinding.signupSProfileImage.setImageBitmap(bitmap)
+                }
 
-                        val path = getRealPathFromUri(currentImageUri)
+                val path = createCopyAndReturnRealPath(currentImageUri)
 
-                        if (path != null) {
-                            (activity as SignupActivity).file = File(path.toString())
-                            imageCheck = true
-                        }
-                    }
-                } catch (e: Exception) {
-                    e.printStackTrace()
+                if (path != null) {
+                    val file = File(path)
+
+                    val fileBody = RequestBody.create("image/jpeg".toMediaTypeOrNull
+                        (), file)
+
+                    (activity as SignupActivity).file = MultipartBody.Part.createFormData("file",
+                        file.name,
+                        fileBody)
+                    imageCheck = true
+                } else {
+                    val fileBody = RequestBody.create("image/jpeg".toMediaTypeOrNull
+                        (), "")
+
+                    (activity as SignupActivity).file = MultipartBody.Part.createFormData("file",
+                        "",
+                        fileBody)
                 }
             }
         } else if (requestCode == Activity.RESULT_CANCELED) {
@@ -93,21 +102,25 @@ class SignupSelectImgFragment :
         }
     }
 
-    private fun getRealPathFromUri(uri: Uri?): Uri? {
-        if (uri != null) {
+    fun createCopyAndReturnRealPath(uri: Uri): String? {
+        val context = requireContext()
+        val contentResolver = context.contentResolver ?: return null
 
-            val filePathColumn = arrayOf(MediaStore.Images.Media.DATA)
-            val cursor =
-                requireContext().contentResolver.query(uri, filePathColumn, null, null, null)
-            cursor?.moveToFirst()
-
-            val columnIndex = cursor?.getColumnIndex(filePathColumn[0])
-            val picturePath = columnIndex?.let {
-                cursor.getString(it)
-            }
-            cursor?.close()
-
-            return Uri.fromFile(File(picturePath ?: ""))
+        // Create file path inside app's data dir
+        val filePath = (context.applicationInfo.dataDir + File.separator
+                + System.currentTimeMillis())
+        val file = File(filePath)
+        try {
+            val inputStream = contentResolver.openInputStream(uri) ?: return null
+            val outputStream: OutputStream = FileOutputStream(file)
+            val buf = ByteArray(1024)
+            var len: Int
+            while (inputStream.read(buf).also { len = it } > 0) outputStream.write(buf, 0, len)
+            outputStream.close()
+            inputStream.close()
+            return file.getAbsolutePath()
+        } catch (e: Exception) {
+            return null
         }
         return null
     }

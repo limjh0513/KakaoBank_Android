@@ -4,6 +4,7 @@ import io.reactivex.Single
 import kr.hs.dgsw.data.network.Response
 import kr.hs.dgsw.data.network.response.AvailableData
 import kr.hs.dgsw.data.network.response.LoginData
+import kr.hs.dgsw.domain.request.EasyLoginRequest
 import kr.hs.dgsw.domain.request.LoginRequest
 import kr.hs.dgsw.domain.request.RegisterRequest
 import okhttp3.MultipartBody
@@ -13,8 +14,13 @@ import retrofit2.http.Multipart
 import retrofit2.http.POST
 
 interface AuthService {
+    //로그인
     @POST("auth/login")
     fun login(@Body request: LoginRequest): Single<retrofit2.Response<Response<LoginData>>>
+
+    //간편 로그인
+    @POST("user/certify")
+    fun easyLogin(@Header("Authorization") token: String, @Body request: EasyLoginRequest): Single<retrofit2.Response<Response<Any>>>
 
     //회원가입
     @Multipart

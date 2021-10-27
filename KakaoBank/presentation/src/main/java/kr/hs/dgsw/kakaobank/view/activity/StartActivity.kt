@@ -2,6 +2,7 @@ package kr.hs.dgsw.kakaobank.view.activity
 
 import android.content.Intent
 import androidx.lifecycle.Observer
+import kr.hs.dgsw.data.util.SharedPreferenceManager
 import kr.hs.dgsw.kakaobank.R
 import kr.hs.dgsw.kakaobank.base.BaseActivity
 import kr.hs.dgsw.kakaobank.databinding.ActivityStartBinding
@@ -18,9 +19,13 @@ class StartActivity : BaseActivity<ActivityStartBinding, StartViewModel>() {
 
         with(mViewModel) {
             onClickSignInBtn.observe(this@StartActivity, Observer{
-
-                val intent = Intent(this@StartActivity, LoginActivity::class.java)
-                startActivity(intent)
+                if(SharedPreferenceManager.getToken(this@StartActivity).equals(null)){
+                    val intent = Intent(this@StartActivity, LoginActivity::class.java)
+                    startActivity(intent)
+                } else {
+                    val intent = Intent(this@StartActivity, EasyLoginActivity::class.java)
+                    startActivity(intent)
+                }
             })
 
             onClickSignUpBtn.observe(this@StartActivity, Observer {
