@@ -114,24 +114,37 @@ class SignupInputFragment : BaseFragment<FragmentSignupInputBinding, SignupInput
             })
 
             residentBackNumber.observe(this@SignupInputFragment, Observer {
-                if (residentFrontNumber.value?.length == 6 && it.length == 1) {
-                    mBinding.registNumCheckImg.setImageResource(R.drawable.is_checked)
-                    imageCheck[5] = 1
-                    isAvilableNextBtn()
-                } else {
-                    mBinding.registNumCheckImg.setImageResource(R.drawable.is_cancel)
-                    imageCheck[5] = 0
-                    isAvilableNextBtn()
+                if (!it.equals("")) {
+                    val numberParseInt = Integer.parseInt(it)
+                    if (numberParseInt in 1..4) {
+                        if (residentFrontNumber.value?.length == 6 && it.length == 1) {
+                            mBinding.registNumCheckImg.setImageResource(R.drawable.is_checked)
+                            imageCheck[5] = 1
+                            isAvilableNextBtn()
+                        } else {
+                            mBinding.registNumCheckImg.setImageResource(R.drawable.is_cancel)
+                            imageCheck[5] = 0
+                            isAvilableNextBtn()
+                        }
+                    } else {
+                        Toast.makeText(requireContext(),
+                            "잘못된 주민번호 뒷자리를 입력했습니다.",
+                            Toast.LENGTH_SHORT).show()
+                        residentBackNumber.value = ""
+                        imageCheck[5] = 0
+                        isAvilableNextBtn()
+                    }
                 }
             })
 
             onAvailableErrorEvent.observe(this@SignupInputFragment, Observer {
-                Toast.makeText(requireContext(), "아이디 중복확인 중 문제가 발생했습니다.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "아이디 중복확인 중 문제가 발생했습니다.", Toast.LENGTH_SHORT)
+                    .show()
             })
 
             onAvailableSuccessEvent.observe(this@SignupInputFragment, Observer {
                 Log.e("aaaaa", "${it}")
-                if(it){
+                if (it) {
                     imageCheck[0] = 1
                     mBinding.idCheckImg.setImageResource(R.drawable.is_checked)
                 } else {
@@ -171,7 +184,8 @@ class SignupInputFragment : BaseFragment<FragmentSignupInputBinding, SignupInput
             mBinding.signupINextBtn.setTextColor(ContextCompat.getColor(requireContext(),
                 R.color.text_mainColor))
             mBinding.signupINextBtn.setOnClickListener {
-                val residentNum = "${mViewModel.residentBackNumber.value}${mViewModel.residentBackNumber.value}"
+                val residentNum =
+                    "${mViewModel.residentBackNumber.value}${mViewModel.residentBackNumber.value}"
 
                 (activity as SignupActivity).request.id = mViewModel.inputId.value
                 (activity as SignupActivity).request.name = mViewModel.inputName.value

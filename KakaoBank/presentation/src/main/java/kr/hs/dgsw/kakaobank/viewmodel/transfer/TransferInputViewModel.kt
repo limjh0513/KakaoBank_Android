@@ -8,6 +8,12 @@ class TransferInputViewModel: BaseViewModel() {
     val cancelBtn = SingleLiveEvent<Any>()
     val backBtn = SingleLiveEvent<Any>()
     val bankBookNumber = MutableLiveData<String>()
+    val bankSelectBtn = SingleLiveEvent<Any>()
+
+
+    fun onClickBankSelectBtn(){
+        bankSelectBtn.call()
+    }
 
 
     fun onClickCancelBtn(){

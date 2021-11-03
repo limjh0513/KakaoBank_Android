@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="kr.hs.dgsw.kakaobank.viewmodel.transfer.TransferBankViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".view.fragment.transfer.TransferBankFragment">
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/kakao_regular"
+            android:onClick="@{() -> vm.onClickBackBtn()}"
+            android:text="취소"
+            android:textColor="@color/text_mainColor"
+            android:textFontWeight="400"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_bankSelect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/kakao_bold"
+            android:text="은행 선택"
+            android:textColor="@color/text_mainColor"
+            android:textFontWeight="700"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button4" />
+
+        <Button
+            android:id="@+id/button_kakao"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/show_kakaobank"
+            android:fontFamily="@font/kakao_regular"
+            android:onClick="@{() -> vm.onClickKakaoBankBtn()}"
+            android:text="카카오 뱅크"
+            android:textColor="@color/point_color"
+            android:textFontWeight="700"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_bankSelect" />
+
+        <Button
+            android:id="@+id/button_toss"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/show_toss"
+            android:fontFamily="@font/kakao_regular"
+            android:onClick="@{() -> vm.onClickTossBankBtn()}"
+            android:text="토스"
+            android:textColor="@color/point_color"
+            android:textFontWeight="700"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_bankSelect" />
+
+        <Button
+            android:id="@+id/button_deagu"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/show_deagu"
+            android:fontFamily="@font/kakao_regular"
+            android:onClick="@{() -> vm.onClickDeaguBankBtn()}"
+            android:text="대구 은행"
+            android:textColor="@color/point_color"
+            android:textFontWeight="700"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_kakao" />
+
+        <Button
+            android:id="@+id/button_kbank"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/show_kbank"
+            android:fontFamily="@font/kakao_regular"
+            android:onClick="@{() -> vm.onClickKBankBtn()}"
+            android:text="K 뱅크"
+            android:textColor="@color/point_color"
+            android:textFontWeight="700"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_toss" />
+
+        <Button
+            android:id="@+id/button_busan"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/show_busan"
+            android:fontFamily="@font/kakao_regular"
+            android:onClick="@{() -> vm.onClickBusanBankBtn()}"
+            android:text="부산 은행"
+            android:textColor="@color/point_color"
+            android:textFontWeight="700"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_deagu" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

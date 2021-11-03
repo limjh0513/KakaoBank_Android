@@ -50,6 +50,11 @@ class EasyLoginActivity : BaseActivity<ActivityEasyLoginBinding, EasyLoginViewMo
                     "로그인에 실패했습니다. 비밀번호가 일치하지 않거나 네트워크 오류",
                     Toast.LENGTH_SHORT).show()
             })
+
+            basicLoginBtn.observe(this@EasyLoginActivity, Observer {
+                val intent = Intent(this@EasyLoginActivity, LoginActivity::class.java)
+                startActivity(intent)
+            })
         }
     }
 

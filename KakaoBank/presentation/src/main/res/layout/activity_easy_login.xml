@@ -13,8 +13,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.activity.EasyLoginActivity"
-        android:background="@color/view_background">
+        android:background="@color/view_background"
+        tools:context=".view.activity.EasyLoginActivity">
 
         <ImageButton
             android:id="@+id/easyL_backBtn"
@@ -41,6 +41,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
+            android:id="@+id/linearLayout15"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -320,5 +321,22 @@
                     android:textSize="18sp" />
             </TableRow>
         </TableLayout>
+
+        <Button
+            android:id="@+id/basic_loginBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/kakao_regular"
+            android:text="일반 로그인으로 이동"
+            android:textColor="@color/text_mainColor"
+            android:textFontWeight="400"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/tableLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout15" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

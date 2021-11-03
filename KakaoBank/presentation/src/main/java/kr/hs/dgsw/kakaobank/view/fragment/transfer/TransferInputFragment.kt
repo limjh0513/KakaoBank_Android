@@ -32,6 +32,11 @@ class TransferInputFragment : BaseFragment<FragmentTransferInputBinding, Transfe
                 }
             })
 
+            bankSelectBtn.observe(this@TransferInputFragment, Observer {
+                val dialog = TransferBankFragment()
+                dialog.show(requireActivity().supportFragmentManager, dialog.tag)
+            })
+
         }
     }
 }

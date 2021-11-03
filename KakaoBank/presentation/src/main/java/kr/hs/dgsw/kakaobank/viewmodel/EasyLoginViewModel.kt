@@ -11,6 +11,7 @@ class EasyLoginViewModel(private val easyLoginUseCase: EasyLoginUseCase) : BaseV
     val backBtn = SingleLiveEvent<Any>()
     val password = MutableLiveData<String>()
     val passwordBackBtn = SingleLiveEvent<Any>()
+    val basicLoginBtn = SingleLiveEvent<Any>()
 
     val easyLoginSuccess = SingleLiveEvent<Any>()
     val easyLoginFail = SingleLiveEvent<Throwable>()
@@ -31,6 +32,10 @@ class EasyLoginViewModel(private val easyLoginUseCase: EasyLoginUseCase) : BaseV
             }
 
         })
+    }
+
+    fun onClickBasicBtn(){
+        basicLoginBtn.call()
     }
 
     fun onClickBackBtn(){

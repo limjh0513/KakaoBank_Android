@@ -21,6 +21,18 @@
         <action
             android:id="@+id/action_transferConfirmFragment_to_transferPriceFragmemt"
             app:destination="@id/transferPriceFragmemt" />
+        <argument
+            android:name="name"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="bankname"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="accountNumber"
+            app:argType="string"
+            app:nullable="true" />
     </fragment>
     <fragment
         android:id="@+id/transferPriceFragmemt"

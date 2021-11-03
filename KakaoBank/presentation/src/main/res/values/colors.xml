@@ -37,4 +37,7 @@
     <color name="transfer_input">#9F9F9F</color>
 
     <color name="toss_color">#004EF7</color>
+    <color name="deagu_color">#0A4DA6</color>
+    <color name="kbank_color">#D6516D</color>
+    <color name="busan_color">#D01820</color>
 </resources>

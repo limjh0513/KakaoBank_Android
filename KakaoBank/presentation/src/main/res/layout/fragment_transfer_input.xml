@@ -107,6 +107,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:onClick="@{() -> vm.onClickBankSelectBtn()}"
             android:background="@android:color/transparent"
             android:src="@drawable/ic_more_btn"
             app:layout_constraintBottom_toBottomOf="parent"
