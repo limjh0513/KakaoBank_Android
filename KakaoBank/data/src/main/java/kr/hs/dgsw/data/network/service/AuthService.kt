@@ -16,13 +16,6 @@ interface AuthService {
     @POST("auth/login")
     fun login(@Body request: LoginRequest): Single<retrofit2.Response<Response<LoginData>>>
 
-    //간편 로그인
-    @POST("user/certify")
-    fun easyLogin(
-        @Header("Authorization") token: String,
-        @Body request: EasyLoginRequest,
-    ): Single<retrofit2.Response<Response<Any>>>
-
     //회원가입
     @Multipart
     @POST("auth/register")

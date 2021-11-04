@@ -10,7 +10,6 @@ import okhttp3.RequestBody
 
 interface AuthRepository {
     fun login(loginRequest: LoginRequest): Single<String>
-    fun easyLogin(token: String, easyLoginRequest: EasyLoginRequest): Completable
     fun register(request: HashMap<String, RequestBody>, file: MultipartBody.Part?): Completable
     fun available(id: String): Single<Boolean>
 }

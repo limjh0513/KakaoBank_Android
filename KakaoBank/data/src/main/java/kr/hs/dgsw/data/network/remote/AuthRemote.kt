@@ -16,9 +16,6 @@ class AuthRemote(override val service: AuthService) : BaseRemote<AuthService>() 
     fun login(request: LoginRequest): Single<String> =
         service.login(request).map(getResponseData()).map(LoginData::token)
 
-    fun easyLogin(token: String, request: EasyLoginRequest): Single<String> =
-        service.easyLogin(token, request).map(getResponseMessage())
-
     fun register(request: HashMap<String, RequestBody>, file: MultipartBody.Part?): Single<String> =
         service.register(request , file).map(getResponseMessage())
 

@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import kr.hs.dgsw.data.util.SharedPreferenceManager
 import kr.hs.dgsw.kakaobank.R
 import kr.hs.dgsw.kakaobank.base.BaseFragment
 import kr.hs.dgsw.kakaobank.databinding.FragmentOpenupInputBinding
@@ -81,6 +82,22 @@ class OpenupInputFragment : BaseFragment<FragmentOpenupInputBinding, OpenupInput
                     isAvilableNextBtn()
                 }
             })
+
+            certifySuccess.observe(this@OpenupInputFragment, Observer {
+                if (it) {
+                    Log.e("dasfsdf", "${mViewModel.inputName.value}")
+                    val bundle = bundleOf("name" to mViewModel.inputName.value,
+                        "residentNumber" to "${mViewModel.inputRegisterFront.value} - ${mViewModel.inputRegisterBack.value}******")
+                    this@OpenupInputFragment.findNavController()
+                        .navigate(R.id.action_openupInputFragment_to_bankbookNickFragment, bundle)
+                } else {
+                    Toast.makeText(requireContext(), "본인 인증을 실패했습니다... 입력한 정보를 다시 확인해주세요", Toast.LENGTH_SHORT).show()
+                }
+            })
+
+            certifyFail.observe(this@OpenupInputFragment, Observer {
+                Toast.makeText(requireContext(), "본인 인증에 문제가 발생했습니다.", Toast.LENGTH_SHORT).show()
+            })
         }
     }
 
@@ -106,11 +123,8 @@ class OpenupInputFragment : BaseFragment<FragmentOpenupInputBinding, OpenupInput
             mBinding.openINextBtn.setTextColor(ContextCompat.getColor(requireContext(),
                 R.color.text_mainColor))
             mBinding.openINextBtn.setOnClickListener {
-                Log.e("dasfsdf", "${mViewModel.inputName.value}")
-                val bundle = bundleOf("name" to mViewModel.inputName.value,
-                    "residentNumber" to "${mViewModel.inputRegisterFront.value} - ${mViewModel.inputRegisterBack.value}******")
-                this.findNavController()
-                    .navigate(R.id.action_openupInputFragment_to_bankbookNickFragment, bundle)
+                mViewModel.startCertification(SharedPreferenceManager.getToken(requireActivity())
+                    .toString())
             }
         } else {
             mBinding.openINextBtn.setBackgroundColor(ContextCompat.getColor(requireContext(),

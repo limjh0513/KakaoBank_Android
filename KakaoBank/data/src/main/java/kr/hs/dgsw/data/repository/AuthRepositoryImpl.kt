@@ -13,9 +13,6 @@ import okhttp3.RequestBody
 class AuthRepositoryImpl(private val authRemote: AuthRemote) : AuthRepository {
     override fun login(loginRequest: LoginRequest): Single<String> = authRemote.login(loginRequest)
 
-    override fun easyLogin(token: String, easyLoginRequest: EasyLoginRequest): Completable =
-        authRemote.easyLogin(token, easyLoginRequest).ignoreElement()
-
     override fun register(
         request: HashMap<String, RequestBody>,
         file: MultipartBody.Part?,

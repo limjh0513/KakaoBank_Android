@@ -3,7 +3,7 @@ package kr.hs.dgsw.kakaobank.viewmodel
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import io.reactivex.observers.DisposableCompletableObserver
-import kr.hs.dgsw.domain.usecase.auth.EasyLoginUseCase
+import kr.hs.dgsw.domain.usecase.user.EasyLoginUseCase
 import kr.hs.dgsw.kakaobank.base.BaseViewModel
 import kr.hs.dgsw.kakaobank.widget.SingleLiveEvent
 

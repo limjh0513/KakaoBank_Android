@@ -28,7 +28,7 @@ val viewModelModule = module {
 
     //openup Fragment
     viewModel { BankBookNickViewModel() }
-    viewModel { OpenupInputViewModel() }
+    viewModel { OpenupInputViewModel(get()) }
     viewModel { OpenupPasswordViewModel() }
     viewModel { OpenupTermsViewModel() }
     viewModel { OpenupRePasswordViewModel(get()) }
