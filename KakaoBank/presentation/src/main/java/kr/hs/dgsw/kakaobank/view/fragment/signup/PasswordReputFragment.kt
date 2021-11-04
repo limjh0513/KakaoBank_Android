@@ -30,7 +30,7 @@ class PasswordReputFragment : BaseFragment<FragmentPasswordReputBinding, Passwor
                 showSecretPassword(it.length)
                 if (it.length == 6) {
                     if ((activity as SignupActivity).request.simpleNumber!! == Integer.parseInt(it)) {
-                        mViewModel.signUp((activity as SignupActivity).request, null)
+                        mViewModel.signUp((activity as SignupActivity).request, (activity as SignupActivity).file)
                     } else {
                         Toast.makeText(requireContext(),
                             "비밀번호를 잘못 입력했습니다. 다시 설정해주세요.",

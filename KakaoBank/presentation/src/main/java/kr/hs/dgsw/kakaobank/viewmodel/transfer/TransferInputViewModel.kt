@@ -10,6 +10,9 @@ class TransferInputViewModel: BaseViewModel() {
     val bankBookNumber = MutableLiveData<String>()
     val bankSelectBtn = SingleLiveEvent<Any>()
 
+    init {
+        bankBookNumber.value = "";
+    }
 
     fun onClickBankSelectBtn(){
         bankSelectBtn.call()

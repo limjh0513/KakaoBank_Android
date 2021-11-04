@@ -89,12 +89,8 @@ class SignupSelectImgFragment :
                         fileBody)
                     imageCheck = true
                 } else {
-                    val fileBody = RequestBody.create("image/jpeg".toMediaTypeOrNull
-                        (), "")
 
-                    (activity as SignupActivity).file = MultipartBody.Part.createFormData("file",
-                        "",
-                        fileBody)
+                    (activity as SignupActivity).file = null
                 }
             }
         } else if (requestCode == Activity.RESULT_CANCELED) {

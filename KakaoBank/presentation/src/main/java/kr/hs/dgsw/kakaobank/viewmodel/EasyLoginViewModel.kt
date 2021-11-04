@@ -21,7 +21,7 @@ class EasyLoginViewModel(private val easyLoginUseCase: EasyLoginUseCase) : BaseV
     }
 
     fun easyLogin(token: String, password: Int){
-        addDisposable(easyLoginUseCase.buildUseCaseObservable(EasyLoginUseCase.Params(token, password)), object: DisposableCompletableObserver(){
+        addDisposable(easyLoginUseCase.buildUseCaseObservable(EasyLoginUseCase.Params("Bearer $token", password)), object: DisposableCompletableObserver(){
             override fun onComplete() {
                 easyLoginSuccess.call()
             }

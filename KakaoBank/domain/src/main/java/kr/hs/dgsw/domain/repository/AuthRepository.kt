@@ -6,10 +6,11 @@ import kr.hs.dgsw.domain.request.EasyLoginRequest
 import kr.hs.dgsw.domain.request.LoginRequest
 import kr.hs.dgsw.domain.request.RegisterRequest
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 
 interface AuthRepository {
     fun login(loginRequest: LoginRequest): Single<String>
     fun easyLogin(token: String, easyLoginRequest: EasyLoginRequest): Completable
-    fun register(registerRequest: RegisterRequest, file: MultipartBody.Part?): Completable
+    fun register(request: HashMap<String, RequestBody>, file: MultipartBody.Part?): Completable
     fun available(id: String): Single<Boolean>
 }

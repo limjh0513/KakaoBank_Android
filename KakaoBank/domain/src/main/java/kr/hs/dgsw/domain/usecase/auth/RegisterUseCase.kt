@@ -1,25 +1,42 @@
 package kr.hs.dgsw.domain.usecase.auth
 
 import io.reactivex.Completable
-import io.reactivex.Single
 import kr.hs.dgsw.domain.base.ParamsUseCase
 import kr.hs.dgsw.domain.repository.AuthRepository
-import kr.hs.dgsw.domain.request.RegisterRequest
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
-import java.io.File
+import okhttp3.RequestBody
+
 
 class RegisterUseCase(private val authRepository: AuthRepository) :
     ParamsUseCase<RegisterUseCase.Params, Completable>() {
 
     override fun buildUseCaseObservable(params: Params): Completable {
-        return authRepository.register(RegisterRequest(
-            params.id,
-            params.name,
-            params.nickName,
-            params.password,
-            params.phoneNumber,
-            params.residentRegistrationNumber,
-        params.simpleNumber), params.file)
+        var map = HashMap<String, RequestBody>()
+        val id: RequestBody = RequestBody.create("text/plain".toMediaTypeOrNull(), params.id)
+        val name: RequestBody = RequestBody.create("text/plain".toMediaTypeOrNull(), params.name)
+        val nickName: RequestBody =
+            RequestBody.create("text/plain".toMediaTypeOrNull(), params.nickName)
+        val password: RequestBody =
+            RequestBody.create("text/plain".toMediaTypeOrNull(), params.password);
+        val phoneNumber: RequestBody =
+            RequestBody.create("text/plain".toMediaTypeOrNull(), params.phoneNumber)
+        val residentRegistrationNumber: RequestBody =
+            RequestBody.create("text/plain".toMediaTypeOrNull(), params.residentRegistrationNumber)
+        val simpleNumber: RequestBody =
+            RequestBody.create("text/plain".toMediaTypeOrNull(),
+                java.lang.String.valueOf(params.simpleNumber))
+
+        map["id"] = id
+        map["name"] = name
+        map["nickname"] = nickName
+        map["password"] = password
+        map["phoneNumber"] = phoneNumber
+        map["residentRegistrationNumber"] = residentRegistrationNumber
+        map["simpleNumber"] = simpleNumber
+
+        return authRepository.register(
+            map, params.file)
     }
 
     data class Params(
@@ -30,6 +47,6 @@ class RegisterUseCase(private val authRepository: AuthRepository) :
         val phoneNumber: String,
         val residentRegistrationNumber: String,
         val simpleNumber: Int,
-        val file: MultipartBody.Part?
+        val file: MultipartBody.Part?,
     )
 }

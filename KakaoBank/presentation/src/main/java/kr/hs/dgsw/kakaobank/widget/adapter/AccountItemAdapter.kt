@@ -1,6 +1,7 @@
 package kr.hs.dgsw.kakaobank.widget.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kr.hs.dgsw.domain.model.Account
 import kr.hs.dgsw.kakaobank.R
 import kr.hs.dgsw.kakaobank.databinding.AccountItemBinding
+import kr.hs.dgsw.kakaobank.view.activity.TransferActivity
 import kr.hs.dgsw.kakaobank.widget.getRestNumber
 
 class AccountItemAdapter : RecyclerView.Adapter<AccountItemAdapter.ViewHolder>() {
@@ -43,7 +45,8 @@ class AccountItemAdapter : RecyclerView.Adapter<AccountItemAdapter.ViewHolder>()
 
             }
             binding.itemSendBtn.setOnClickListener {
-
+                val intent = Intent(context, TransferActivity::class.java)
+                context.startActivity(intent)
             }
             when (position % 5) {
                 0 -> binding.itemView.background =

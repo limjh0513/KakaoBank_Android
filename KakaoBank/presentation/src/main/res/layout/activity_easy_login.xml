@@ -330,6 +330,7 @@
             android:layout_marginBottom="16dp"
             android:background="@android:color/transparent"
             android:fontFamily="@font/kakao_regular"
+            android:onClick="@{() -> vm.onClickBasicBtn()}"
             android:text="일반 로그인으로 이동"
             android:textColor="@color/text_mainColor"
             android:textFontWeight="400"
