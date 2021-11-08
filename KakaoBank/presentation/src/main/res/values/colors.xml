@@ -35,6 +35,7 @@
     <color name="open_terms_color">#F7F7F7</color>
     <color name="hint_text">#6D6D6D</color>
     <color name="transfer_input">#9F9F9F</color>
+    <color name="current_money_view">#E9E9E9</color>
 
     <color name="toss_color">#004EF7</color>
     <color name="deagu_color">#0A4DA6</color>

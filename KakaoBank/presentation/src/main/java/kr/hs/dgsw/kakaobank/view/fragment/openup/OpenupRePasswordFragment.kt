@@ -10,6 +10,7 @@ import kr.hs.dgsw.kakaobank.base.BaseFragment
 import kr.hs.dgsw.kakaobank.databinding.FragmentOpenupRePasswordBinding
 import kr.hs.dgsw.kakaobank.view.activity.OpenUpSuccessActivity
 import kr.hs.dgsw.kakaobank.view.activity.OpenupActivity
+import kr.hs.dgsw.kakaobank.view.activity.SignupActivity
 import kr.hs.dgsw.kakaobank.viewmodel.openup.OpenupRePasswordViewModel
 import org.koin.android.ext.android.inject
 
@@ -53,6 +54,8 @@ class OpenupRePasswordFragment :
 
             insertSuccess.observe(this@OpenupRePasswordFragment, Observer {
                 val intent = Intent(requireActivity(), OpenUpSuccessActivity::class.java)
+                intent.putExtra("image", (activity as SignupActivity).profileImage)
+                intent.putExtra("name", (activity as SignupActivity).request.name)
                 startActivity(intent)
                 requireActivity().finish()
             })

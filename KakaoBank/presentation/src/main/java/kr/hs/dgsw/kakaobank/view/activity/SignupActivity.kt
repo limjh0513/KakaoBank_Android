@@ -1,5 +1,7 @@
 package kr.hs.dgsw.kakaobank.view.activity
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import kr.hs.dgsw.kakaobank.R
 import kr.hs.dgsw.kakaobank.base.BaseActivity
 import kr.hs.dgsw.kakaobank.databinding.ActivitySignupBinding
@@ -19,6 +21,8 @@ class SignupActivity : BaseActivity<ActivitySignupBinding, SignupViewModel>() {
 
     var request = RegisterRequest()
     var file: MultipartBody.Part? = null
+    var profileImage: Bitmap? =
+        BitmapFactory.decodeResource(this.resources, R.drawable.default_profile)
 
     override fun observerViewModel() {
         with(mViewModel) {

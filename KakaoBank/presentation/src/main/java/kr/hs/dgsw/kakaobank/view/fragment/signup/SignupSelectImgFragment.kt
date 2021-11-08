@@ -69,11 +69,13 @@ class SignupSelectImgFragment :
                         MediaStore.Images.Media.getBitmap(activity?.contentResolver,
                             currentImageUri)
                     mBinding.signupSProfileImage.setImageBitmap(bitmap)
+                    (activity as SignupActivity).profileImage = bitmap
                 } else {
                     val source =
                         ImageDecoder.createSource(activity?.contentResolver!!, currentImageUri)
                     val bitmap = ImageDecoder.decodeBitmap(source)
                     mBinding.signupSProfileImage.setImageBitmap(bitmap)
+                    (activity as SignupActivity).profileImage = bitmap
                 }
 
                 val path = createCopyAndReturnRealPath(currentImageUri)
@@ -89,7 +91,6 @@ class SignupSelectImgFragment :
                         fileBody)
                     imageCheck = true
                 } else {
-
                     (activity as SignupActivity).file = null
                 }
             }
