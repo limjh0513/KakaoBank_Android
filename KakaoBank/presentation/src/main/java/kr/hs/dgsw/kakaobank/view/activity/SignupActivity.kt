@@ -21,10 +21,11 @@ class SignupActivity : BaseActivity<ActivitySignupBinding, SignupViewModel>() {
 
     var request = RegisterRequest()
     var file: MultipartBody.Part? = null
-    var profileImage: Bitmap? =
-        BitmapFactory.decodeResource(this.resources, R.drawable.default_profile)
+    var profileImage: Bitmap? = null
 
     override fun observerViewModel() {
+        profileImage =
+            BitmapFactory.decodeResource(this.resources, R.drawable.default_profile)
         with(mViewModel) {
             cancelBtn.observe(this@SignupActivity, Observer {
                 this@SignupActivity.finish()

@@ -12,6 +12,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kr.hs.dgsw.kakaobank.R
 import kr.hs.dgsw.kakaobank.databinding.FragmentTransferBankBinding
 import kr.hs.dgsw.kakaobank.viewmodel.transfer.TransferBankViewModel
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class TransferBankFragment : BottomSheetDialogFragment() {
 
@@ -43,22 +44,32 @@ class TransferBankFragment : BottomSheetDialogFragment() {
             })
 
             kakaoBankBtn.observe(this@TransferBankFragment, Observer {
+                val bankBundle: Bundle = Bundle()
+                bankBundle.putInt("bankNumber", 2)
                 dismiss()
             })
 
             tossBankBtn.observe(this@TransferBankFragment, Observer {
+                val bankBundle: Bundle = Bundle()
+                bankBundle.putInt("bankNumber", 1)
                 dismiss()
             })
 
             deaguBankBtn.observe(this@TransferBankFragment, Observer {
+                val bankBundle: Bundle = Bundle()
+                bankBundle.putInt("bankNumber", 4)
                 dismiss()
             })
 
             kBankBtn.observe(this@TransferBankFragment, Observer {
+                val bankBundle: Bundle = Bundle()
+                bankBundle.putInt("bankNumber", 3)
                 dismiss()
             })
 
             busanBankBtn.observe(this@TransferBankFragment, Observer {
+                val bankBundle: Bundle = Bundle()
+                bankBundle.putInt("bankNumber", 5)
                 dismiss()
             })
         }

@@ -1,6 +1,8 @@
 package kr.hs.dgsw.kakaobank.di
 
 import kr.hs.dgsw.kakaobank.viewmodel.*
+import kr.hs.dgsw.kakaobank.viewmodel.impor.ImportMoneyViewModel
+import kr.hs.dgsw.kakaobank.viewmodel.impor.ImportSelectViewModel
 import kr.hs.dgsw.kakaobank.viewmodel.openup.*
 import kr.hs.dgsw.kakaobank.viewmodel.signup.*
 import kr.hs.dgsw.kakaobank.viewmodel.transfer.TransferInputViewModel
@@ -17,6 +19,7 @@ val viewModelModule = module {
     viewModel { EasyLoginViewModel(get()) }
     viewModel { MainViewModel(get()) }
     viewModel { OpenupViewModel() }
+    viewModel { ImportViewModel() }
 
     //signup Fragment
     viewModel { AskImageViewModel() }
@@ -37,4 +40,8 @@ val viewModelModule = module {
     viewModel { TransferInputViewModel() }
     viewModel { TransferPasswordViewModel() }
     viewModel { TransferPriceViewModel() }
+
+    //Import Fragment
+    viewModel { ImportSelectViewModel(get()) }
+    viewModel { ImportMoneyViewModel() }
 }

@@ -27,7 +27,6 @@ class PasswordReputViewModel(
 
     fun onClickPasswordBtn(number: Int) {
         password.value += "$number"
-        Log.e("password", "${password.value}")
     }
 
     fun onClickBackBtn() {
@@ -45,8 +44,8 @@ class PasswordReputViewModel(
             request.simpleNumber!!,
             file),), object : DisposableCompletableObserver() {
             override fun onComplete() {
-                onSuccessEvent.call()
                 userName.value = request.name
+                onSuccessEvent.call()
             }
 
             override fun onError(e: Throwable) {

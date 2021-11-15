@@ -25,6 +25,6 @@ interface AuthService {
     ): Single<retrofit2.Response<Response<Any>>>
 
     //아이디 중복확인
-    @POST("auth/available/id")
-    fun available(@Body id: String): Single<retrofit2.Response<Response<AvailableData>>>
+    @POST("auth/available/id/{id}")
+    fun available(@Path("id") id: String): Single<retrofit2.Response<Response<AvailableData>>>
 }

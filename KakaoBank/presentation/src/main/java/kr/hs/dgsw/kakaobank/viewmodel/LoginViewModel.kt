@@ -1,9 +1,7 @@
 package kr.hs.dgsw.kakaobank.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import io.reactivex.observers.DisposableSingleObserver
-import kr.hs.dgsw.data.network.response.LoginData
 import kr.hs.dgsw.domain.usecase.auth.LoginUseCase
 import kr.hs.dgsw.kakaobank.base.BaseViewModel
 import kr.hs.dgsw.kakaobank.widget.SingleLiveEvent
@@ -23,7 +21,6 @@ class LoginViewModel(private val loginUseCase: LoginUseCase) : BaseViewModel() {
                 inputPw.value!!)), object: DisposableSingleObserver<String>(){
                 override fun onSuccess(t: String) {
                     onSuccessEvent.value = t
-                    Log.e("1235126", t)
                 }
 
                 override fun onError(e: Throwable) {

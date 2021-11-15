@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="vm"
+            type="kr.hs.dgsw.kakaobank.viewmodel.impor.ImportSelectViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -34,6 +36,7 @@
             android:background="@android:color/transparent"
             android:fontFamily="@font/kakao_regular"
             android:text="취소"
+            android:onClick="@{() -> vm.onClickCancelBtn()}"
             android:textColor="@color/text_mainColor"
             android:textFontWeight="700"
             android:textSize="18sp"
@@ -54,5 +57,37 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/importS_cancelBtn"
             tools:listitem="@layout/account_item" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/importS_viewHint"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/border_item3"
+            android:orientation="vertical"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/importS_cancelBtn">
+
+            <TextView
+                android:id="@+id/importS_tvHint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:fontFamily="@font/kakao_bold"
+                android:gravity="center"
+                android:text="가져오기 기능을 이용할\n다른 계좌가 존재하지 않습니다."
+                android:textColor="@color/text_mainColor"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

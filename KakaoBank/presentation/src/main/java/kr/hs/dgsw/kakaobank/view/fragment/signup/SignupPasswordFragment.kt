@@ -32,7 +32,6 @@ class SignupPasswordFragment :
                     val str = password.value!!.substring(0, password.value!!.length - 1)
                     password.value = str
                     showInitPassword()
-                    Log.e("afds", "${password.value!!.length} ${password.value!!}")
                     showSecretPassword(password.value!!.length)
                 }
             })

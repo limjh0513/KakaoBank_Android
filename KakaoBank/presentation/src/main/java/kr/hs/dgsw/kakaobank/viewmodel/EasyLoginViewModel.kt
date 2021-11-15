@@ -44,7 +44,6 @@ class EasyLoginViewModel(private val easyLoginUseCase: EasyLoginUseCase) : BaseV
 
     fun onClickPasswordBtn(number: Int){
         password.value += "$number"
-        Log.e("password", "${password.value}")
     }
 
     fun onClickPasswordBackBtn(){

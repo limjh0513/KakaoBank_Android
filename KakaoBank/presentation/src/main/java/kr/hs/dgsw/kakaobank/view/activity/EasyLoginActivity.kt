@@ -25,8 +25,6 @@ class EasyLoginActivity : BaseActivity<ActivityEasyLoginBinding, EasyLoginViewMo
             password.observe(this@EasyLoginActivity, Observer {
                 showSecretPassword(it.length)
                 if (it.length == 6) {
-                    Log.e("12322", "${it} ${Integer.parseInt(it)}")
-
                     mViewModel.easyLogin(SharedPreferenceManager.getToken(this@EasyLoginActivity)!!,
                         Integer.parseInt(it))
                 }
@@ -37,13 +35,13 @@ class EasyLoginActivity : BaseActivity<ActivityEasyLoginBinding, EasyLoginViewMo
                     val str = password.value!!.substring(0, password.value!!.length - 1)
                     password.value = str
                     showInitPassword()
-                    Log.e("afds", "${password.value!!.length} ${password.value!!}")
                     showSecretPassword(password.value!!.length)
                 }
             })
 
             easyLoginSuccess.observe(this@EasyLoginActivity, Observer {
                 val intent = Intent(this@EasyLoginActivity, MainActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(intent)
                 finish()
             })

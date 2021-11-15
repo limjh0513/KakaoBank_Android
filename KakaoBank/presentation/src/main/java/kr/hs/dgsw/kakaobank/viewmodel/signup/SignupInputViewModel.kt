@@ -1,15 +1,8 @@
 package kr.hs.dgsw.kakaobank.viewmodel.signup
 
-import android.app.Application
-import android.util.Log
-import android.view.View
 import androidx.lifecycle.MutableLiveData
-import io.reactivex.observers.DisposableCompletableObserver
 import io.reactivex.observers.DisposableSingleObserver
-import kr.hs.dgsw.domain.request.RegisterRequest
 import kr.hs.dgsw.domain.usecase.auth.IdAvailableUseCase
-import kr.hs.dgsw.domain.usecase.auth.LoginUseCase
-import kr.hs.dgsw.domain.usecase.auth.RegisterUseCase
 import kr.hs.dgsw.kakaobank.base.BaseViewModel
 import kr.hs.dgsw.kakaobank.widget.SingleLiveEvent
 
@@ -39,7 +32,6 @@ class SignupInputViewModel(
         addDisposable(idAvailableUseCase.buildUseCaseObservable(IdAvailableUseCase.Params(inputId.value!!)),
             object : DisposableSingleObserver<Boolean>() {
                 override fun onSuccess(t: Boolean) {
-                    Log.e("12213", "${t}")
                     onAvailableSuccessEvent.value = t
                 }
 

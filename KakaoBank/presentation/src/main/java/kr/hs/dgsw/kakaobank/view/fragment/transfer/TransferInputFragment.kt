@@ -19,8 +19,43 @@ class TransferInputFragment : BaseFragment<FragmentTransferInputBinding, Transfe
     override val layoutRes: Int
         get() = R.layout.fragment_transfer_input
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View? {
+        val bankNumber = arguments?.getInt("bankNumber")
+
+        if(bankNumber != null){
+            when(bankNumber){
+                1 -> {
+                    mBinding.transferIBankImage.setImageResource(R.drawable.toss)
+                    mBinding.transferITvBankChoice.text = "토스"
+                }
+                2 -> {
+                    mBinding.transferIBankImage.setImageResource(R.drawable.kakao)
+                    mBinding.transferITvBankChoice.text = "카카오뱅크"
+                }
+                3 ->{
+                    mBinding.transferIBankImage.setImageResource(R.drawable.kbank)
+                    mBinding.transferITvBankChoice.text = "K뱅크"
+                }
+                4->{
+                    mBinding.transferIBankImage.setImageResource(R.drawable.deagu)
+                    mBinding.transferITvBankChoice.text = "대구은행"
+                }
+                5->{
+                    mBinding.transferIBankImage.setImageResource(R.drawable.busan)
+                    mBinding.transferITvBankChoice.text = "부산은행"
+                }
+            }
+        }
+
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
+
     override fun observerViewModel() {
-        with(mViewModel){
+        with(mViewModel) {
             cancelBtn.observe(this@TransferInputFragment, Observer {
                 requireActivity().finish()
             })
@@ -32,10 +67,19 @@ class TransferInputFragment : BaseFragment<FragmentTransferInputBinding, Transfe
                 }
             })
 
+            bankBookNumber.observe(this@TransferInputFragment, Observer {
+                if(it.isNotEmpty()){
+                    mBinding.transferINumber.text = it
+                } else {
+                    mBinding.transferINumber.text = ""
+                }
+            })
+
             bankSelectBtn.observe(this@TransferInputFragment, Observer {
                 val dialog = TransferBankFragment()
                 dialog.show(requireActivity().supportFragmentManager, dialog.tag)
             })
+
 
         }
     }

@@ -1,10 +1,13 @@
 package kr.hs.dgsw.kakaobank.view.activity
 
 import android.content.Intent
+import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import kr.hs.dgsw.data.util.SharedPreferenceManager
 import kr.hs.dgsw.kakaobank.R
@@ -35,6 +38,12 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
             })
 
             accountList.observe(this@MainActivity, Observer {
+                if(it.size <= 0){
+                    mBinding.mainViewHint.visibility = View.VISIBLE
+                } else {
+                    mBinding.mainViewHint.visibility = View.INVISIBLE
+                }
+
                 val accountAdapter = AccountItemAdapter()
                 accountAdapter.items = it
                 accountAdapter.context = this@MainActivity

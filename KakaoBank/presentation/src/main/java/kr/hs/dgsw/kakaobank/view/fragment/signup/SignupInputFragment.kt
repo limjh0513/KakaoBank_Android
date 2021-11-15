@@ -1,7 +1,10 @@
 package kr.hs.dgsw.kakaobank.view.fragment.signup
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Context.INPUT_METHOD_SERVICE
 import android.text.Layout
+import android.util.Log
 import androidx.lifecycle.Observer
 import kr.hs.dgsw.kakaobank.R
 import kr.hs.dgsw.kakaobank.base.BaseFragment
@@ -10,8 +13,8 @@ import kr.hs.dgsw.kakaobank.viewmodel.signup.SignupInputViewModel
 import org.koin.android.ext.android.inject
 import java.util.*
 import java.util.regex.Pattern
-import android.util.Log
 import android.view.MotionEvent
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
@@ -40,6 +43,13 @@ class SignupInputFragment : BaseFragment<FragmentSignupInputBinding, SignupInput
                 }
             })
 
+            inputId.observe(this@SignupInputFragment, Observer {
+                if (imageCheck[0] == 1) {
+                    imageCheck[0] = 0
+                    mBinding.idCheckImg.setImageResource(R.drawable.is_cancel)
+                }
+            })
+
             inputPw.observe(this@SignupInputFragment, Observer {
                 if (isValidPw(it.toString())) {
                     mBinding.pwCheckImg.setImageResource(R.drawable.is_checked)
@@ -61,7 +71,6 @@ class SignupInputFragment : BaseFragment<FragmentSignupInputBinding, SignupInput
             inputPhoneNumber.observe(this@SignupInputFragment, Observer {
                 if (it.length == 11) {
                     inputPhoneNumber.value = "${isValidPhoneNumber(it)}"
-                    Log.e("123", isValidPhoneNumber(it))
                     mBinding.phoneCheckImg.setImageResource(R.drawable.is_checked)
                     mBinding.signupIPhoneEdText.clearFocus()
                     imageCheck[3] = 1
@@ -143,7 +152,6 @@ class SignupInputFragment : BaseFragment<FragmentSignupInputBinding, SignupInput
             })
 
             onAvailableSuccessEvent.observe(this@SignupInputFragment, Observer {
-                Log.e("aaaaa", "${it}")
                 if (it) {
                     imageCheck[0] = 1
                     mBinding.idCheckImg.setImageResource(R.drawable.is_checked)
@@ -193,6 +201,11 @@ class SignupInputFragment : BaseFragment<FragmentSignupInputBinding, SignupInput
                 (activity as SignupActivity).request.password = mViewModel.inputPw.value
                 (activity as SignupActivity).request.phoneNumber = mViewModel.inputPhoneNumber.value
                 (activity as SignupActivity).request.residentRegistrationNumber = residentNum
+
+                val manager: InputMethodManager =
+                    requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                manager.hideSoftInputFromWindow(view?.windowToken, 0);
+                view?.clearFocus()
 
                 this@SignupInputFragment.findNavController()
                     .navigate(R.id.action_signup_input_to_signupSelectImgFramgent)

@@ -21,6 +21,4 @@ class AuthRepositoryImpl(private val authRemote: AuthRemote) : AuthRepository {
 
     override fun available(id: String): Single<Boolean> =
         authRemote.available(id)
-
-
 }

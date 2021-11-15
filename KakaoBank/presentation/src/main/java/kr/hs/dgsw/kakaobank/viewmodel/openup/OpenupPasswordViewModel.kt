@@ -15,7 +15,6 @@ class OpenupPasswordViewModel: BaseViewModel() {
 
     fun onClickPasswordBtn(number: Int) {
         password.value += "$number"
-        Log.e("password", "${password.value}")
     }
 
     fun onClickBackBtn() {

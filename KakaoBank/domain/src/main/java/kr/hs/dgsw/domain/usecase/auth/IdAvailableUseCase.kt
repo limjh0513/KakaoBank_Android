@@ -1,5 +1,6 @@
 package kr.hs.dgsw.domain.usecase.auth
 
+import android.util.Log
 import io.reactivex.Single
 import kr.hs.dgsw.domain.base.ParamsUseCase
 import kr.hs.dgsw.domain.repository.AuthRepository

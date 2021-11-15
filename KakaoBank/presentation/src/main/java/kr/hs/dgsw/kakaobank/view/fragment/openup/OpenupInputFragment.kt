@@ -85,7 +85,7 @@ class OpenupInputFragment : BaseFragment<FragmentOpenupInputBinding, OpenupInput
 
             certifySuccess.observe(this@OpenupInputFragment, Observer {
                 if (it) {
-                    Log.e("dasfsdf", "${mViewModel.inputName.value}")
+
                     val bundle = bundleOf("name" to mViewModel.inputName.value,
                         "residentNumber" to "${mViewModel.inputRegisterFront.value} - ${mViewModel.inputRegisterBack.value}******")
                     this@OpenupInputFragment.findNavController()

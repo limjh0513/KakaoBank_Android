@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="vm"
             type="kr.hs.dgsw.kakaobank.viewmodel.MainViewModel" />
@@ -46,8 +45,9 @@
                 android:layout_weight="1"
                 android:background="@drawable/border_gray_view"
                 android:fontFamily="@font/kakao_regular"
+                android:gravity="center"
                 android:padding="15dp"
-                android:text="내 계좌"
+                android:text="다른 은행 계좌\n가져오기"
                 android:textColor="@color/state_black"
                 android:textFontWeight="400"
                 android:textSize="14sp" />
@@ -70,7 +70,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_profile">
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/main_recyclerview"
@@ -96,5 +96,37 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/main_viewHint"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/border_item3"
+            android:orientation="vertical"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            <TextView
+                android:id="@+id/main_tvHint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:fontFamily="@font/kakao_bold"
+                android:gravity="center"
+                android:text="아래 버튼을 이용해 카카오뱅크의\n새로운 계좌를 만들어 보세요!"
+                android:textColor="@color/text_mainColor"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

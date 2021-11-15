@@ -13,9 +13,18 @@ class ImportActivity : BaseActivity<ActivityImportBinding, ImportViewModel>() {
     override val layoutRes: Int
         get() = R.layout.activity_import
 
+    lateinit var accountNumber: String
+    var importAccountNumber: String? = null
+
     override fun observerViewModel() {
-        with(mViewModel){
+        getAccountNumber()
+
+        with(mViewModel) {
 
         }
+    }
+
+    private fun getAccountNumber() {
+        accountNumber = intent.getStringExtra("accountNumber").toString()
     }
 }

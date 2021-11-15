@@ -13,7 +13,7 @@
         tools:context=".view.activity.ImportActivity">
 
         <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/openUp_nav_host_fragment"
+            android:id="@+id/import_nav_host_fragment"
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

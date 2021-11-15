@@ -21,7 +21,6 @@ class SignupTermsFragment : BaseFragment<FragmentSignupTermsBinding, SignupTerms
     override fun observerViewModel() {
         with(mViewModel) {
             termsIsCheck.observe(this@SignupTermsFragment, Observer {
-                Log.d("text", "${it} ${mBinding.signTNextBtn.background}")
                 if (it) {
                     mBinding.signTNextBtn.setBackgroundColor(ContextCompat.getColor(requireContext(),
                         R.color.kakao))

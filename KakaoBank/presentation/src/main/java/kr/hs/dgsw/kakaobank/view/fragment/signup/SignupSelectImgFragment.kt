@@ -87,7 +87,7 @@ class SignupSelectImgFragment :
                         (), file)
 
                     (activity as SignupActivity).file = MultipartBody.Part.createFormData("file",
-                        file.name,
+                        "${file.name}.jpeg",
                         fileBody)
                     imageCheck = true
                 } else {
