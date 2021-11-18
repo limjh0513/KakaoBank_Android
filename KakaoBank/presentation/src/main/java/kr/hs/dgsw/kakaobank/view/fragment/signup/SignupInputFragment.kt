@@ -30,6 +30,8 @@ class SignupInputFragment : BaseFragment<FragmentSignupInputBinding, SignupInput
 
     private var imageCheck = IntArray(6)
 
+    private var phoneNumber: String = ""
+
     override fun observerViewModel() {
         with(mViewModel) {
             overlapCheckBtn.observe(this@SignupInputFragment, Observer {
@@ -74,11 +76,13 @@ class SignupInputFragment : BaseFragment<FragmentSignupInputBinding, SignupInput
                     mBinding.phoneCheckImg.setImageResource(R.drawable.is_checked)
                     mBinding.signupIPhoneEdText.clearFocus()
                     imageCheck[3] = 1
+                    phoneNumber = it
                     isAvilableNextBtn()
                 } else if (it.length == 12) {
                     inputPhoneNumber.value = ""
                     mBinding.phoneCheckImg.setImageResource(R.drawable.is_cancel)
                     imageCheck[3] = 0
+                    phoneNumber = ""
                     isAvilableNextBtn()
                 } else if (it.length == 13) {
                     isAvilableNextBtn()
@@ -199,7 +203,7 @@ class SignupInputFragment : BaseFragment<FragmentSignupInputBinding, SignupInput
                 (activity as SignupActivity).request.name = mViewModel.inputName.value
                 (activity as SignupActivity).request.nickName = mViewModel.inputNickName.value
                 (activity as SignupActivity).request.password = mViewModel.inputPw.value
-                (activity as SignupActivity).request.phoneNumber = mViewModel.inputPhoneNumber.value
+                (activity as SignupActivity).request.phoneNumber = phoneNumber
                 (activity as SignupActivity).request.residentRegistrationNumber = residentNum
 
                 val manager: InputMethodManager =

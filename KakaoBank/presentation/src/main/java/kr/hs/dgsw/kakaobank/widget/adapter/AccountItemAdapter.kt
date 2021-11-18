@@ -51,6 +51,7 @@ class AccountItemAdapter : RecyclerView.Adapter<AccountItemAdapter.ViewHolder>()
                 val intent = Intent(context, TransferActivity::class.java)
                 context.startActivity(intent)
             }
+            binding.itemBankName.text = account.kindOfBank
             when (position % 5) {
                 0 -> binding.itemView.background =
                     ContextCompat.getDrawable(context, R.drawable.border_item1)

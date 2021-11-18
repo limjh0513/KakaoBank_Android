@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="kr.hs.dgsw.kakaobank.viewmodel.OtherViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/view_background">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/other_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="0dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+
+            <TextView
+                android:id="@+id/other_otherTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/kakao_bold"
+                android:gravity="center"
+                android:lineHeight="28dp"
+                android:text="@string/other"
+                android:textColor="@color/black"
+                android:textFontWeight="700"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/other_cancleBtn"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.511" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/other_cancleBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/kakao_regular"
+                android:lineHeight="21dp"
+                android:onClick="@{() -> vm.onClickCancelBtn()}"
+                android:text="@string/cancel"
+                android:textColor="@color/cancleBtn"
+                android:textFontWeight="700"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/other_nav_host_fragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/other_toolbar"
+            android:layout_marginTop="1dp"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/nav_graph_other">
+
+        </androidx.fragment.app.FragmentContainerView>
+    </RelativeLayout>
+</layout>

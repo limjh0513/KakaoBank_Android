@@ -7,6 +7,7 @@
     <string name="next">다음 단계로</string>
     <string name="login">로그인</string>
     <string name="open_up">계좌 개설</string>
+    <string name="other">다른 은행 계좌 추가</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

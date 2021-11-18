@@ -16,4 +16,8 @@ interface AccountService {
     //계좌 생성
     @POST("/account")
     fun insertAccount(@Header("Authorization") token: String, @Body accountDto: AccountRequest): Single<retrofit2.Response<Response<Any>>>
+
+    //타 은행에서 내 계좌 보기
+    @GET("/account/other")
+    fun getOtherBankAccount(@Header("Authorization") token: String): Single<retrofit2.Response<Response<List<Account>>>>
 }

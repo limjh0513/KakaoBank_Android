@@ -11,7 +11,7 @@ class TransferBankViewModel: BaseViewModel() {
     val tossBankBtn = SingleLiveEvent<Any>()
     val deaguBankBtn = SingleLiveEvent<Any>()
     val kBankBtn = SingleLiveEvent<Any>()
-    val busanBankBtn = SingleLiveEvent<Any>()
+    val magguBtn = SingleLiveEvent<Any>()
 
     fun onClickKakaoBankBtn(){
         kakaoBankBtn.call()
@@ -29,8 +29,8 @@ class TransferBankViewModel: BaseViewModel() {
         kBankBtn.call()
     }
 
-    fun onClickBusanBankBtn(){
-        busanBankBtn.call()
+    fun onClickMaaguBankBtn(){
+        magguBtn.call()
     }
 
     fun onClickBackBtn(){

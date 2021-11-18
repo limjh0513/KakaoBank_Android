@@ -62,6 +62,8 @@ class OpenupRePasswordFragment :
 
             insertFail.observe(this@OpenupRePasswordFragment, Observer {
                 Toast.makeText(requireContext(), "계좌 생성 중 문제가 발생했습니다.", Toast.LENGTH_SHORT).show()
+                password.value = ""
+                showInitPassword()
             })
         }
     }

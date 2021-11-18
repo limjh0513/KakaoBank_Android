@@ -50,14 +50,13 @@ class PasswordReputFragment : BaseFragment<FragmentPasswordReputBinding, Passwor
                 Toast.makeText(requireContext(),
                     "회원가입 정보를 전송하지 못했습니다. 다시 시도해주세요",
                     Toast.LENGTH_SHORT).show()
-
+                password.value = ""
+                showInitPassword()
             })
 
             onSuccessEvent.observe(this@PasswordReputFragment, Observer {
                 val intent = Intent(requireContext(), WelcomeActivity::class.java)
                 val a = mViewModel.userName.value
-                intent.putExtra("userName", mViewModel.userName.value)
-                intent.putExtra("userName", "fdooafdnidfaninin")
                 intent.putExtra("userName", a)
                 startActivity(intent)
                 requireActivity().finish()

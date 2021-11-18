@@ -16,10 +16,22 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
     override val layoutRes: Int
         get() = R.layout.activity_login
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+
+        finishActivity()
+    }
+
+    private fun finishActivity(){
+        val intent = Intent(this, StartActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
     override fun observerViewModel() {
         with(mViewModel) {
             backBtn.observe(this@LoginActivity, Observer {
-                finish()
+                finishActivity()
             })
 
             onErrorEvent.observe(this@LoginActivity, Observer {
@@ -30,8 +42,9 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
                 SharedPreferenceManager.setToken(this@LoginActivity.applicationContext, it)
 
                 val intent = Intent(this@LoginActivity, MainActivity::class.java)
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
                 startActivity(intent)
+                finish()
             })
         }
     }

@@ -104,6 +104,19 @@
                 android:textColor="@color/text_mainColor"
                 android:textFontWeight="700"
                 android:textSize="24sp" />
+
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/item_bankName"
+            android:layout_width="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/kakao_regular"
+            android:textColor="@color/text_mainColor"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="카카오뱅크" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

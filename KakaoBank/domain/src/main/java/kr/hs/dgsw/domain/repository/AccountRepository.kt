@@ -10,4 +10,6 @@ interface AccountRepository {
     fun getAccount(token: String): Single<List<Account>>
 
     fun insertAccount(token: String, request: AccountRequest): Completable
+
+    fun getOtherBankAccount(token: String): Single<List<Account>>
 }

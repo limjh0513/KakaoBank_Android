@@ -23,6 +23,23 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     override val layoutRes: Int
         get() = R.layout.activity_main
 
+
+    private var backPressedTime: Long = 0
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+
+        val tempTime = System.currentTimeMillis()
+        val intervalTime = tempTime - backPressedTime
+
+        if(intervalTime in 0..2000){
+            finish()
+        } else {
+            backPressedTime = tempTime;
+            Toast.makeText(this, "한번 더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show()
+        }
+    }
+
     override fun observerViewModel() {
         getAccount()
 
@@ -38,7 +55,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
             })
 
             accountList.observe(this@MainActivity, Observer {
-                if(it.size <= 0){
+                if (it.size <= 0) {
                     mBinding.mainViewHint.visibility = View.VISIBLE
                 } else {
                     mBinding.mainViewHint.visibility = View.INVISIBLE
@@ -54,6 +71,11 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
             getErrorEvent.observe(this@MainActivity, Observer {
                 Toast.makeText(this@MainActivity, "계좌 목록을 가져오는 중 문제가 발생했습니다.", Toast.LENGTH_SHORT)
                     .show()
+            })
+
+            otherAccountView.observe(this@MainActivity, Observer {
+                val intent = Intent(this@MainActivity, OtherActivity::class.java)
+                startActivity(intent)
             })
         }
     }

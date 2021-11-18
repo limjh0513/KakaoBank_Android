@@ -67,7 +67,7 @@ class TransferBankFragment : BottomSheetDialogFragment() {
                 dismiss()
             })
 
-            busanBankBtn.observe(this@TransferBankFragment, Observer {
+            magguBtn.observe(this@TransferBankFragment, Observer {
                 val bankBundle: Bundle = Bundle()
                 bankBundle.putInt("bankNumber", 5)
                 dismiss()

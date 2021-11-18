@@ -4,6 +4,8 @@ import kr.hs.dgsw.kakaobank.viewmodel.*
 import kr.hs.dgsw.kakaobank.viewmodel.impor.ImportMoneyViewModel
 import kr.hs.dgsw.kakaobank.viewmodel.impor.ImportSelectViewModel
 import kr.hs.dgsw.kakaobank.viewmodel.openup.*
+import kr.hs.dgsw.kakaobank.viewmodel.other.OtherSelectViewModel
+import kr.hs.dgsw.kakaobank.viewmodel.other.OtherTermsViewModel
 import kr.hs.dgsw.kakaobank.viewmodel.signup.*
 import kr.hs.dgsw.kakaobank.viewmodel.transfer.TransferInputViewModel
 import kr.hs.dgsw.kakaobank.viewmodel.transfer.TransferPasswordViewModel
@@ -20,6 +22,7 @@ val viewModelModule = module {
     viewModel { MainViewModel(get()) }
     viewModel { OpenupViewModel() }
     viewModel { ImportViewModel() }
+    viewModel { OtherViewModel() }
 
     //signup Fragment
     viewModel { AskImageViewModel() }
@@ -44,4 +47,9 @@ val viewModelModule = module {
     //Import Fragment
     viewModel { ImportSelectViewModel(get()) }
     viewModel { ImportMoneyViewModel() }
+
+    //Other Fragment
+    viewModel { OtherTermsViewModel() }
+    viewModel { OtherSelectViewModel(get()) }
+
 }

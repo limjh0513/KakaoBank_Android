@@ -44,6 +44,8 @@ class AccountImportItemAdapter : RecyclerView.Adapter<AccountImportItemAdapter.V
 
             }
 
+            binding.itemImpBankName.text = account.kindOfBank
+
             when (position % 5) {
                 0 -> binding.itemImpView.background =
                     ContextCompat.getDrawable(context, R.drawable.border_item1)

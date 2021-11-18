@@ -16,10 +16,22 @@ class EasyLoginActivity : BaseActivity<ActivityEasyLoginBinding, EasyLoginViewMo
     override val layoutRes: Int
         get() = R.layout.activity_easy_login
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+
+        finishActivity()
+    }
+
+    private fun finishActivity(){
+        val intent = Intent(this, StartActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
     override fun observerViewModel() {
         with(mViewModel) {
             backBtn.observe(this@EasyLoginActivity, Observer {
-                finish()
+                finishActivity()
             })
 
             password.observe(this@EasyLoginActivity, Observer {
@@ -41,7 +53,7 @@ class EasyLoginActivity : BaseActivity<ActivityEasyLoginBinding, EasyLoginViewMo
 
             easyLoginSuccess.observe(this@EasyLoginActivity, Observer {
                 val intent = Intent(this@EasyLoginActivity, MainActivity::class.java)
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
                 startActivity(intent)
                 finish()
             })

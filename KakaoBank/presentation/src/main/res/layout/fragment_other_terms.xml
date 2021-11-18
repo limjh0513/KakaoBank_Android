@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="kr.hs.dgsw.kakaobank.viewmodel.other.OtherTermsViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".OtherTermsFragment">
+
+        <TextView
+            android:id="@+id/otherT_tvMain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/kakao_regular"
+            android:gravity="center"
+            android:text="안전하고 투명한 금융거래를 위해\n아래 내용을 확인해주세요"
+            android:textColor="@color/text_mainColor"
+            android:textFontWeight="400"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/otherT_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/kakao_border_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/otherT_tvMain">
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/otherT_mainCheck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_weight="1"
+                android:checked="@={vm.isChecked()}"
+                android:fontFamily="@font/kakao_regular"
+                android:paddingLeft="10dp"
+                android:text="계좌 통합 관리 서비스 약관"
+                android:textColorLink="@color/text_mainColor"
+                android:textFontWeight="400"
+                android:textSize="16sp"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <ImageButton
+                android:id="@+id/otherT_mainShow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="10dp"
+                android:background="@android:color/transparent"
+                android:onClick="@{() -> vm.onClickTermsShowBtn()}"
+                app:srcCompat="@drawable/ic_click_intent" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/otherT_tvMain2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/kakao_regular"
+            android:gravity="center"
+            android:text="*상품설명서의 내용을 반드시 확인해주세요"
+            android:textColor="@color/text_mainColor"
+            android:textFontWeight="400"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/otherT_view" />
+
+
+
+        <Button
+            android:id="@+id/otherT_nextBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/disabled"
+            android:fontFamily="@font/kakao_regular"
+            android:lineHeight="21px"
+            android:text="@string/next"
+            android:textColor="@color/disabled_text"
+            android:textFontWeight="400"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

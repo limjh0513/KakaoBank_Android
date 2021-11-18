@@ -14,4 +14,7 @@ class AccountRepositoryImpl(private val remote: AccountRemote): AccountRepositor
 
     override fun insertAccount(token: String, request: AccountRequest): Completable =
         remote.insertAccount(token, request).ignoreElement()
+
+    override fun getOtherBankAccount(token: String): Single<List<Account>> =
+        remote.getOtherBankAccount(token)
 }

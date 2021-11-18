@@ -47,6 +47,7 @@
                 android:fontFamily="@font/kakao_regular"
                 android:gravity="center"
                 android:padding="15dp"
+                android:onClick="@{() -> vm.onClickOtherAccountView()}"
                 android:text="다른 은행 계좌\n가져오기"
                 android:textColor="@color/state_black"
                 android:textFontWeight="400"
@@ -58,7 +59,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_margin="15dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_setting"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/default_profile" />
 
@@ -128,5 +129,16 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageButton
+            android:id="@+id/btn_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintBottom_toTopOf="@+id/main_refresh"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_setting" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

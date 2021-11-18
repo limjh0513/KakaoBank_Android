@@ -22,9 +22,11 @@ class StartActivity : BaseActivity<ActivityStartBinding, StartViewModel>() {
                 if(SharedPreferenceManager.getToken(this@StartActivity).equals(null)){
                     val intent = Intent(this@StartActivity, LoginActivity::class.java)
                     startActivity(intent)
+                    finish()
                 } else {
                     val intent = Intent(this@StartActivity, EasyLoginActivity::class.java)
                     startActivity(intent)
+                    finish()
                 }
             })
 

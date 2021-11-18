@@ -45,8 +45,8 @@ class TransferInputFragment : BaseFragment<FragmentTransferInputBinding, Transfe
                     mBinding.transferITvBankChoice.text = "대구은행"
                 }
                 5->{
-                    mBinding.transferIBankImage.setImageResource(R.drawable.busan)
-                    mBinding.transferITvBankChoice.text = "부산은행"
+                    mBinding.transferIBankImage.setImageResource(R.drawable.maggu)
+                    mBinding.transferITvBankChoice.text = "머구은행"
                 }
             }
         }

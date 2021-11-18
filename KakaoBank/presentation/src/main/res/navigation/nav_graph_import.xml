@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/importSelectFragment"
-        android:name="kr.hs.dgsw.kakaobank.ImportSelectFragment"
+        android:name="kr.hs.dgsw.kakaobank.view.fragment.impor.ImportSelectFragment"
         android:label="fragment_import_select"
-        tools:layout="@layout/fragment_import_select" >
+        tools:layout="@layout/fragment_import_select">
         <action
             android:id="@+id/action_importSelectFragment_to_importMoneyFragment"
             app:destination="@id/importMoneyFragment" />
@@ -20,7 +20,7 @@
         android:label="ImportActivity" />
     <fragment
         android:id="@+id/importMoneyFragment"
-        android:name="kr.hs.dgsw.kakaobank.ImportMoneyFragment"
+        android:name="kr.hs.dgsw.kakaobank.view.fragment.impor.ImportMoneyFragment"
         android:label="fragment_import_money"
         tools:layout="@layout/fragment_import_money" />
 </navigation>

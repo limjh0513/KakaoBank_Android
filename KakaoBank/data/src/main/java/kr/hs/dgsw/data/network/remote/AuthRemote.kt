@@ -13,12 +13,15 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody
 
 class AuthRemote(override val service: AuthService) : BaseRemote<AuthService>() {
+    //로그인
     fun login(request: LoginRequest): Single<String> =
         service.login(request).map(getResponseData()).map(LoginData::token)
 
+    //회원 가입
     fun register(request: HashMap<String, RequestBody>, file: MultipartBody.Part?): Single<String> =
         service.register(request , file).map(getResponseMessage())
 
+    //아이디 중복 확인
     fun available(id: String): Single<Boolean> =
         service.available(id).map(getResponseData()).map(AvailableData::available)
 }
