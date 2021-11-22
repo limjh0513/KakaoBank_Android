@@ -19,7 +19,7 @@ val viewModelModule = module {
     viewModel { SignupViewModel() }
     viewModel { LoginViewModel(get()) }
     viewModel { EasyLoginViewModel(get()) }
-    viewModel { MainViewModel(get()) }
+    viewModel { MainViewModel(get(), get()) }
     viewModel { OpenupViewModel() }
     viewModel { ImportViewModel() }
     viewModel { OtherViewModel() }

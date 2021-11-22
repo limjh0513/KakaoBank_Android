@@ -24,6 +24,8 @@ class ImportSelectFragment : BaseFragment<FragmentImportSelectBinding, ImportSel
         getAccount()
         with(mViewModel){
             onErrorEvent.observe(this@ImportSelectFragment, Observer {
+                mBinding.importSViewHint.visibility = View.VISIBLE
+                mBinding.importSTvHint.text = "계좌 목록을 받아오지 못했습니다...\n다시 시도해주세요"
                 Toast.makeText(requireContext(), "계좌 목록을 받아오지 못했습니다...", Toast.LENGTH_SHORT).show()
             })
 
@@ -32,13 +34,14 @@ class ImportSelectFragment : BaseFragment<FragmentImportSelectBinding, ImportSel
 
                 if(accountList.size <= 0){
                     mBinding.importSViewHint.visibility = View.VISIBLE
+                    mBinding.importSTvHint.text = "가져오기 기능을 이용할\n다른 계좌가 존재하지 않습니다."
                 } else {
                     mBinding.importSViewHint.visibility = View.INVISIBLE
                 }
 
                 val accountImportItemAdapter = AccountImportItemAdapter()
 
-                accountImportItemAdapter.items = it
+                accountImportItemAdapter.items = accountList
                 accountImportItemAdapter.context = requireContext()
 
                 mBinding.importSRecyclerview.adapter = accountImportItemAdapter

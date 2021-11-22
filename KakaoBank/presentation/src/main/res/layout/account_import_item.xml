@@ -82,5 +82,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="카카오뱅크" />
+
+        <CheckBox
+            android:id="@+id/itemImp_importCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="16dp"
+            android:text="가져오기"
+            android:textColor="@color/text_mainColor"
+            android:textSize="16sp"
+            android:fontFamily="@font/kakao_regular"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

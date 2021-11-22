@@ -1,5 +1,6 @@
 package kr.hs.dgsw.kakaobank.viewmodel.other
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import io.reactivex.observers.DisposableSingleObserver
 import kr.hs.dgsw.domain.model.Account
@@ -17,6 +18,7 @@ class OtherSelectViewModel(private val getOtherBankAccountUseCase: GetOtherBankA
         addDisposable(getOtherBankAccountUseCase.buildUseCaseObservable(GetOtherBankAccount.Params(
             token)), object : DisposableSingleObserver<List<Account>>(){
             override fun onSuccess(t: List<Account>) {
+                Log.e("asdf", "${t.size} ${t}")
                 otherBankList.value = t
             }
 

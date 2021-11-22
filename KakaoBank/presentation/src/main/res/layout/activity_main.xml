@@ -55,7 +55,7 @@
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/tv_profile"
+            android:id="@+id/image_profile"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_margin="15dp"
@@ -140,5 +140,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_setting" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

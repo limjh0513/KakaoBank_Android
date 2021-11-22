@@ -39,7 +39,7 @@ class AccountOtherItemAdapter : RecyclerView.Adapter<AccountOtherItemAdapter.Vie
         return items.size
     }
 
-    inner class ViewHolder(binding: AccountImportItemBinding) :
+    inner class ViewHolder(mBinding: AccountImportItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(context: Context, account: Account, position: Int) {
             binding.itemImpMoney.text = getRestNumber(account.money.toString())
@@ -49,24 +49,20 @@ class AccountOtherItemAdapter : RecyclerView.Adapter<AccountOtherItemAdapter.Vie
 
             binding.itemImpBankName.text = account.kindOfBank
 
-            binding.itemImpView.setOnClickListener {
-                if (checkIsSelect(account)) {
+            binding.itemImpImportCheckBox.setOnCheckedChangeListener { buttonView, isChecked ->
+                Log.e("asdfasdf", account.accountNumber.toString())
+                if (isChecked) {
                     selectList.add(account)
-                    Log.e("asdfasdf", account.accountNumber.toString())
-                    binding.itemImpView.background =
-                        ContextCompat.getDrawable(context, R.drawable.other_show_select)
                 } else {
                     selectList.remove(account)
-                    getBankground(account.kindOfBank)
                 }
 
                 mViewModel.selectList.value = selectList.toList()
             }
-
         }
     }
 
-    fun getBankground(bank: String){
+    fun getBankground(bank: String) {
         if (bank.equals("KBANK")) {
             binding.itemImpView.background =
                 ContextCompat.getDrawable(context, R.drawable.other_show_kbank)

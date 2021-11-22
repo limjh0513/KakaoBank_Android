@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
+import com.bumptech.glide.Glide
 import kr.hs.dgsw.data.util.SharedPreferenceManager
 import kr.hs.dgsw.kakaobank.R
 import kr.hs.dgsw.kakaobank.base.BaseActivity
@@ -30,18 +31,17 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         super.onBackPressed()
 
         val tempTime = System.currentTimeMillis()
-        val intervalTime = tempTime - backPressedTime
 
-        if(intervalTime in 0..2000){
-            finish()
-        } else {
-            backPressedTime = tempTime;
+        if (System.currentTimeMillis() > backPressedTime + 2000) {
+            backPressedTime = System.currentTimeMillis()
             Toast.makeText(this, "한번 더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show()
+        } else if (System.currentTimeMillis() <= backPressedTime + 2000) {
+            finish()
         }
     }
 
     override fun observerViewModel() {
-        getAccount()
+        getInit()
 
         mBinding.mainRefresh.setOnRefreshListener {
             mBinding.mainRefresh.isRefreshing = false
@@ -77,6 +77,35 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
                 val intent = Intent(this@MainActivity, OtherActivity::class.java)
                 startActivity(intent)
             })
+
+            getUserErrorEvent.observe(this@MainActivity, Observer {
+                Toast.makeText(this@MainActivity, "유저 정보를 가져오는 중 문제가 발생했습니다..", Toast.LENGTH_SHORT)
+                    .show()
+            })
+
+            getUserData.observe(this@MainActivity, Observer {
+                mBinding.mainTvName.text = it.name
+
+                Log.e("dfadf", it.profileImg)
+
+                Glide.with(this@MainActivity.applicationContext)
+                    .load("http://${it.profileImg}")
+                    .override(50, 50)
+                    .error(R.drawable.default_profile)
+                    .into(mBinding.imageProfile)
+            })
+        }
+    }
+
+    private fun getInit() {
+        var token: String? = SharedPreferenceManager.getToken(this)
+
+        if (token != null) {
+            mViewModel.getUser("Bearer $token")
+            mViewModel.getAccountList("Bearer $token")
+        } else {
+            Toast.makeText(this, "토큰이 존재하지 않습니다. 다시 로그인해주세요", Toast.LENGTH_SHORT).show()
+            finish()
         }
     }
 

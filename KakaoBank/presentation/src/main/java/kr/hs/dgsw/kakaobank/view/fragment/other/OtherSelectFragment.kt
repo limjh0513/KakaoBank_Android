@@ -28,8 +28,12 @@ class OtherSelectFragment : BaseFragment<FragmentOtherSelectBinding, OtherSelect
 
         with(mViewModel) {
             otherBankList.observe(this@OtherSelectFragment, Observer {
-                if(it.isEmpty()){
+
+                Log.e("asdfasdff", it.size.toString())
+
+                if (it.size <= 0) {
                     mBinding.otherSViewHint.visibility = View.VISIBLE
+                    mBinding.importSTvHint.text = "카카오 뱅크로 가져올\n다른 은행 계좌가\n존재하지 않습니다."
                 } else {
                     mBinding.otherSViewHint.visibility = View.INVISIBLE
                     val accountAdapter = AccountOtherItemAdapter()
@@ -42,6 +46,8 @@ class OtherSelectFragment : BaseFragment<FragmentOtherSelectBinding, OtherSelect
             })
 
             onErrorEvent.observe(this@OtherSelectFragment, Observer {
+                mBinding.otherSViewHint.visibility = View.VISIBLE
+                mBinding.importSTvHint.text = "다른 데이터를 전달 받는 중\n문제가 발생했습니다.\n다시 시도해주세요"
                 Toast.makeText(requireContext(), "다른 은행의 계좌를 전달받지 못했습니다.", Toast.LENGTH_SHORT)
                     .show()
             })
@@ -54,7 +60,7 @@ class OtherSelectFragment : BaseFragment<FragmentOtherSelectBinding, OtherSelect
                         R.color.text_mainColor))
                     mBinding.otherSNextBtn.setOnClickListener {
                         val accounts: List<Account>? = mViewModel.selectList.value
-                        for(ac in accounts!!){
+                        for (ac in accounts!!) {
                             Log.e("dafd", ac.accountNumber)
                         }
                     }

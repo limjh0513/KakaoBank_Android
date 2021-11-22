@@ -62,6 +62,7 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxjava_version"
     implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroid_version"
 
+    //koin
     implementation "org.koin:koin-core:$rootProject.koin_version"
     testImplementation "org.koin:koin-test:$rootProject.koin_version"
     implementation "org.koin:koin-androidx-scope:$rootProject.koin_version"
@@ -80,6 +81,10 @@ dependencies {
 
     //android support v4(refreshView)
     implementation "com.android.support:support-v4:$rootProject.supportV4_version"
+
+    //glide
+    implementation "com.github.bumptech.glide:glide:$rootProject.glide_version"
+    annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.glide_version"
 
     implementation project(":data")
     implementation project(":domain")

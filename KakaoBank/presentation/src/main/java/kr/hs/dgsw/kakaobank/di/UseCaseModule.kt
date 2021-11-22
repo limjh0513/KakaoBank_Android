@@ -8,6 +8,7 @@ import kr.hs.dgsw.domain.usecase.auth.IdAvailableUseCase
 import kr.hs.dgsw.domain.usecase.auth.LoginUseCase
 import kr.hs.dgsw.domain.usecase.auth.RegisterUseCase
 import kr.hs.dgsw.domain.usecase.user.CertificationUserCase
+import kr.hs.dgsw.domain.usecase.user.GetUserUseCase
 import org.koin.dsl.module
 
 val useCaseModule = module {
@@ -24,4 +25,5 @@ val useCaseModule = module {
     //User
     single { EasyLoginUseCase(get()) }
     single { CertificationUserCase(get()) }
+    single { GetUserUseCase(get()) }
 }
