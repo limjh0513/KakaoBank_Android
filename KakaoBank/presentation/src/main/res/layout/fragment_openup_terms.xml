@@ -93,7 +93,7 @@
                 android:checked="@={vm.termsIsChecked1}"
                 android:fontFamily="@font/kakao_regular"
                 android:paddingLeft="10dp"
-                android:text="카카오뱅크 이용약관 전체 동의"
+                android:text="입출금통장 개설 동의"
                 android:textColorLink="@color/text_mainColor"
                 android:textFontWeight="400"
                 android:textSize="16sp"

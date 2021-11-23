@@ -24,7 +24,7 @@
             app:layout_constraintBottom_toTopOf="@+id/otherS_nextBtn"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:listitem="@layout/account_import_item">
+            tools:listitem="@layout/account_other_item">
 
 
         </androidx.recyclerview.widget.RecyclerView>

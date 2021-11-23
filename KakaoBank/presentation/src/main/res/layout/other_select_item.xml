@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/otherSelect_view"
+        android:layout_width="match_parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/other_show_maggu"
+        android:layout_marginTop="24dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/otherI_bank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            tools:text="MAGGU"
+            android:fontFamily="@font/kakao_regular"
+            android:textColor="@color/text_mainColor"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/otherI_bank"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/otherI_accountName"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/kakao_bold"
+                android:textSize="14sp"
+                android:textColor="@color/text_mainColor"
+                android:layout_height="wrap_content"
+                tools:text="재현이의 계좌" />
+
+            <TextView
+                android:id="@+id/otherI_accountNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@color/text_gray"
+                tools:text="1234-56-789101" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/image_isSuccess"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/is_cancel" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

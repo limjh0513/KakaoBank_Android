@@ -11,11 +11,12 @@ import androidx.recyclerview.widget.RecyclerView
 import kr.hs.dgsw.domain.model.Account
 import kr.hs.dgsw.kakaobank.R
 import kr.hs.dgsw.kakaobank.databinding.AccountImportItemBinding
+import kr.hs.dgsw.kakaobank.databinding.AccountOtherItemBinding
 import kr.hs.dgsw.kakaobank.viewmodel.other.OtherSelectViewModel
 import kr.hs.dgsw.kakaobank.widget.getRestNumber
 
 class AccountOtherItemAdapter : RecyclerView.Adapter<AccountOtherItemAdapter.ViewHolder>() {
-    lateinit var binding: AccountImportItemBinding
+    lateinit var binding: AccountOtherItemBinding
     lateinit var items: List<Account>
     lateinit var context: Context
     lateinit var mViewModel: OtherSelectViewModel
@@ -24,7 +25,7 @@ class AccountOtherItemAdapter : RecyclerView.Adapter<AccountOtherItemAdapter.Vie
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         binding = DataBindingUtil.inflate(LayoutInflater.from(parent.context),
-            R.layout.account_import_item,
+            R.layout.account_other_item,
             parent,
             false)
 
@@ -32,24 +33,24 @@ class AccountOtherItemAdapter : RecyclerView.Adapter<AccountOtherItemAdapter.Vie
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(context, items[position], position)
+        holder.bind(items[position])
     }
 
     override fun getItemCount(): Int {
         return items.size
     }
 
-    inner class ViewHolder(mBinding: AccountImportItemBinding) :
+    inner class ViewHolder(mBinding: AccountOtherItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(context: Context, account: Account, position: Int) {
-            binding.itemImpMoney.text = getRestNumber(account.money.toString())
-            binding.itemImpTvNick.text = account.nickname
-            binding.itemImpTvNumber.text = account.accountNumber
+        fun bind(account: Account) {
+            binding.itemOtherMoney.text = getRestNumber(account.money.toString())
+            binding.itemOtherTvNick.text = account.nickname
+            binding.itemOtherTvNumber.text = account.accountNumber
             getBankground(account.kindOfBank)
 
-            binding.itemImpBankName.text = account.kindOfBank
+            binding.itemOtherBankName.text = account.kindOfBank
 
-            binding.itemImpImportCheckBox.setOnCheckedChangeListener { buttonView, isChecked ->
+            binding.itemOtherImportCheckBox.setOnCheckedChangeListener { buttonView, isChecked ->
                 Log.e("asdfasdf", account.accountNumber.toString())
                 if (isChecked) {
                     selectList.add(account)
@@ -64,19 +65,19 @@ class AccountOtherItemAdapter : RecyclerView.Adapter<AccountOtherItemAdapter.Vie
 
     fun getBankground(bank: String) {
         if (bank.equals("KBANK")) {
-            binding.itemImpView.background =
+            binding.itemOtherView.background =
                 ContextCompat.getDrawable(context, R.drawable.other_show_kbank)
         } else if (bank.equals("TOSS")) {
-            binding.itemImpView.background =
+            binding.itemOtherView.background =
                 ContextCompat.getDrawable(context, R.drawable.other_show_toss)
         } else if (bank.equals("DAEGU")) {
-            binding.itemImpView.background =
+            binding.itemOtherView.background =
                 ContextCompat.getDrawable(context, R.drawable.other_show_deagu)
         } else if (bank.equals("MAAGU")) {
-            binding.itemImpView.background =
+            binding.itemOtherView.background =
                 ContextCompat.getDrawable(context, R.drawable.other_show_maggu)
         } else {
-            binding.itemImpView.background =
+            binding.itemOtherView.background =
                 ContextCompat.getDrawable(context, R.drawable.kakao_border_view)
         }
     }

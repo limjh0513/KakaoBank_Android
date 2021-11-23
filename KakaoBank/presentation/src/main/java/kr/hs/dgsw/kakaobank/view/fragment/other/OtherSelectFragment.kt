@@ -1,27 +1,32 @@
 package kr.hs.dgsw.kakaobank.view.fragment.other
 
+import android.content.Intent
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
 import kr.hs.dgsw.data.util.SharedPreferenceManager
 import kr.hs.dgsw.domain.model.Account
+import kr.hs.dgsw.domain.model.OtherAccount
+import kr.hs.dgsw.domain.request.OtherAccountRequest
 import kr.hs.dgsw.kakaobank.R
 import kr.hs.dgsw.kakaobank.base.BaseFragment
 import kr.hs.dgsw.kakaobank.databinding.FragmentOtherSelectBinding
-import kr.hs.dgsw.kakaobank.databinding.FragmentOtherTermsBinding
+import kr.hs.dgsw.kakaobank.view.activity.OtherSuccessActivity
 import kr.hs.dgsw.kakaobank.viewmodel.other.OtherSelectViewModel
-import kr.hs.dgsw.kakaobank.widget.adapter.AccountItemAdapter
 import kr.hs.dgsw.kakaobank.widget.adapter.AccountOtherItemAdapter
 import org.koin.android.ext.android.inject
+import java.io.Serializable
 
 
 class OtherSelectFragment : BaseFragment<FragmentOtherSelectBinding, OtherSelectViewModel>() {
     override val mViewModel: OtherSelectViewModel by inject()
     override val layoutRes: Int
         get() = R.layout.fragment_other_select
+
+    var postResultList: ArrayList<OtherAccount> = ArrayList()
+    var isEnded: Boolean = false
 
     override fun observerViewModel() {
         mViewModel.getOtherBankAccount("Bearer ${SharedPreferenceManager.getToken(requireContext())}")
@@ -61,8 +66,13 @@ class OtherSelectFragment : BaseFragment<FragmentOtherSelectBinding, OtherSelect
                     mBinding.otherSNextBtn.setOnClickListener {
                         val accounts: List<Account>? = mViewModel.selectList.value
                         for (ac in accounts!!) {
-                            Log.e("dafd", ac.accountNumber)
+                            val request = OtherAccountRequest(ac.accountNumber,
+                                ac.kindOfBank,
+                                ac.money,
+                                ac.nickname)
+                            sendPostOtherRequest(request)
                         }
+                        isEnded = true
                     }
 
                 } else {
@@ -74,6 +84,40 @@ class OtherSelectFragment : BaseFragment<FragmentOtherSelectBinding, OtherSelect
                     }
                 }
             })
+
+            postOnSuccess.observe(this@OtherSelectFragment, Observer {
+                postResultList.add(it)
+
+
+                Log.e("adsf", postResultList.size.toString())
+                if (isEnded) {
+                    val intent = Intent(requireContext(), OtherSuccessActivity::class.java)
+                    intent.putExtra("postResultList", postResultList)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                    startActivity(intent)
+                    requireActivity().finish()
+                }
+            })
+
+            postOnError.observe(this@OtherSelectFragment, Observer {
+                postResultList.add(it)
+                Log.e("adsf", postResultList.size.toString())
+                if (isEnded) {
+                    val intent = Intent(requireContext(), OtherSuccessActivity::class.java)
+                    intent.putExtra("postResultList", postResultList)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                    startActivity(intent)
+                    requireActivity().finish()
+                }
+            })
+        }
+    }
+
+    fun sendPostOtherRequest(request: OtherAccountRequest) {
+        val token = SharedPreferenceManager.getToken(requireContext())
+
+        if (token != null) {
+            mViewModel.postOtherBankAccount("Bearer $token", request)
         }
     }
 

@@ -50,6 +50,6 @@ val viewModelModule = module {
 
     //Other Fragment
     viewModel { OtherTermsViewModel() }
-    viewModel { OtherSelectViewModel(get()) }
+    viewModel { OtherSelectViewModel(get(), get()) }
 
 }

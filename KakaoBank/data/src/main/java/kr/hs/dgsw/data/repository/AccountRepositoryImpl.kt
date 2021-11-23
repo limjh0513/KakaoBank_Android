@@ -6,7 +6,7 @@ import kr.hs.dgsw.data.network.remote.AccountRemote
 import kr.hs.dgsw.domain.model.Account
 import kr.hs.dgsw.domain.repository.AccountRepository
 import kr.hs.dgsw.domain.request.AccountRequest
-import okhttp3.MultipartBody
+import kr.hs.dgsw.domain.request.OtherAccountRequest
 
 class AccountRepositoryImpl(private val remote: AccountRemote): AccountRepository {
     override fun getAccount(token: String): Single<List<Account>> =
@@ -17,4 +17,7 @@ class AccountRepositoryImpl(private val remote: AccountRemote): AccountRepositor
 
     override fun getOtherBankAccount(token: String): Single<List<Account>> =
         remote.getOtherBankAccount(token)
+
+    override fun postOtherBankAccount(token: String, request: OtherAccountRequest): Completable =
+        remote.postOtherBankAccount(token, request).ignoreElement()
 }

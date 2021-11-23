@@ -197,7 +197,7 @@ class SignupInputFragment : BaseFragment<FragmentSignupInputBinding, SignupInput
                 R.color.text_mainColor))
             mBinding.signupINextBtn.setOnClickListener {
                 val residentNum =
-                    "${mViewModel.residentBackNumber.value}${mViewModel.residentBackNumber.value}"
+                    "${mViewModel.residentFrontNumber.value}${mViewModel.residentBackNumber.value}"
 
                 (activity as SignupActivity).request.id = mViewModel.inputId.value
                 (activity as SignupActivity).request.name = mViewModel.inputName.value

@@ -1,8 +1,9 @@
 package kr.hs.dgsw.kakaobank.di
 
 import kr.hs.dgsw.domain.usecase.account.GetAccountUseCase
-import kr.hs.dgsw.domain.usecase.account.GetOtherBankAccount
+import kr.hs.dgsw.domain.usecase.account.GetOtherBankUseCase
 import kr.hs.dgsw.domain.usecase.account.InsertAccountUseCase
+import kr.hs.dgsw.domain.usecase.account.PostOtherBankUseCase
 import kr.hs.dgsw.domain.usecase.user.EasyLoginUseCase
 import kr.hs.dgsw.domain.usecase.auth.IdAvailableUseCase
 import kr.hs.dgsw.domain.usecase.auth.LoginUseCase
@@ -20,7 +21,8 @@ val useCaseModule = module {
     //Account
     single { GetAccountUseCase(get()) }
     single { InsertAccountUseCase(get()) }
-    single { GetOtherBankAccount(get()) }
+    single { GetOtherBankUseCase(get()) }
+    single { PostOtherBankUseCase(get()) }
 
     //User
     single { EasyLoginUseCase(get()) }

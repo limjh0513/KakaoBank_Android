@@ -18,7 +18,7 @@
             android:id="@+id/linearLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="16dp"
             android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -46,15 +46,16 @@
                 android:background="@drawable/border_gray_view"
                 android:fontFamily="@font/kakao_regular"
                 android:gravity="center"
-                android:padding="15dp"
                 android:onClick="@{() -> vm.onClickOtherAccountView()}"
+                android:padding="15dp"
                 android:text="다른 은행 계좌\n가져오기"
                 android:textColor="@color/state_black"
                 android:textFontWeight="400"
                 android:textSize="14sp" />
         </LinearLayout>
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/image_profile"
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -67,6 +68,7 @@
             android:id="@+id/main_refresh"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintBottom_toTopOf="@+id/main_addBtn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -134,9 +136,9 @@
             android:id="@+id/btn_setting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:background="@android:color/transparent"
-            app:layout_constraintBottom_toTopOf="@+id/main_refresh"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_setting" />

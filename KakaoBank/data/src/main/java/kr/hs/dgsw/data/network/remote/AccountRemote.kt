@@ -5,6 +5,7 @@ import kr.hs.dgsw.data.base.BaseRemote
 import kr.hs.dgsw.data.network.service.AccountService
 import kr.hs.dgsw.domain.model.Account
 import kr.hs.dgsw.domain.request.AccountRequest
+import kr.hs.dgsw.domain.request.OtherAccountRequest
 import okhttp3.MultipartBody
 
 class AccountRemote(override val service: AccountService) : BaseRemote<AccountService>() {
@@ -19,4 +20,8 @@ class AccountRemote(override val service: AccountService) : BaseRemote<AccountSe
     //다른 은행에서 내 계좌 보기
     fun getOtherBankAccount(token: String): Single<List<Account>> =
         service.getOtherBankAccount(token).map(getResponseData())
+
+    //다른 은행 계좌 추가하기
+    fun postOtherBankAccount(token: String, request: OtherAccountRequest): Single<String> =
+        service.postOtherBankAccount(token, request).map(getResponseMessage())
 }
