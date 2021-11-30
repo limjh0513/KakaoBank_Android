@@ -23,6 +23,8 @@ val viewModelModule = module {
     viewModel { OpenupViewModel() }
     viewModel { ImportViewModel() }
     viewModel { OtherViewModel() }
+    viewModel { TransferViewModel() }
+    viewModel { SettingViewModel() }
 
     //signup Fragment
     viewModel { AskImageViewModel() }

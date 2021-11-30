@@ -17,6 +17,9 @@
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".view.activity.SettingActivity"
+            android:exported="true" />
+        <activity
             android:name=".view.activity.OtherSuccessActivity"
             android:exported="true" />
         <activity
@@ -41,9 +44,6 @@
             android:name=".view.activity.OpenupActivity"
             android:exported="true" />
         <activity
-            android:name=".view.activity.OpenUpAccountActivity"
-            android:exported="true" />
-        <activity
             android:name=".view.activity.terms.BorrowAccountActivity"
             android:exported="true" />
         <activity
@@ -57,6 +57,12 @@
             android:exported="true" />
         <activity
             android:name=".view.activity.StartActivity"
+            android:exported="true" />
+        <activity
+            android:name=".view.activity.SignupActivity"
+            android:exported="true" />
+        <activity
+            android:name=".view.activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -64,12 +70,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".view.activity.SignupActivity"
-            android:exported="true" />
-        <activity
-            android:name=".view.activity.MainActivity"
-            android:exported="true" />
     </application>
 
 </manifest>

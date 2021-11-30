@@ -65,7 +65,7 @@
                 android:fontFamily="@font/kakao_bold"
                 android:text="@string/sign_up"
                 android:onClick="@{() -> vm.onClicksSignUp()}"
-                android:textColor="@color/black"
+                android:textColor="@color/text_mainColor"
                 android:background="@android:color/transparent"
                 android:gravity="center"
                 android:textFontWeight="700"

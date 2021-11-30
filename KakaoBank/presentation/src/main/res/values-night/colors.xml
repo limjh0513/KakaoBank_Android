@@ -10,12 +10,12 @@
 
     <color name="disabled">#DDDDDD</color>
     <color name="line">#B0B0B0</color>
-    <color name="input_background">#C0C0C0</color>
+    <color name="input_background">#949494</color>
     <color name="text_gray">#FCFCFC</color>
     <color name="view_background">#121212</color>
     <color name="cancleBtn">#EBEBEB</color>
-    <color name="disabled_text">#FFFFFF</color>
-    <color name="text_mainColor">#474747</color>
+    <color name="disabled_text">#474747</color>
+    <color name="text_mainColor">#FFFFFF</color>
     <color name="overlap_btn">#FFFFFF</color>
     <color name="hint_color">#C7C7C7</color>
 

@@ -1,12 +1,12 @@
 package kr.hs.dgsw.kakaobank.view.activity
 
 import android.content.Intent
-import android.graphics.Bitmap
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
+import kr.hs.dgsw.data.util.SharedPreferenceManager
 import kr.hs.dgsw.kakaobank.R
 import kr.hs.dgsw.kakaobank.databinding.ActivityWelcomBinding
 
@@ -23,6 +23,25 @@ class WelcomeActivity : AppCompatActivity() {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish()
+        }
+
+        getCurrentMode()
+    }
+
+    private fun getCurrentMode() {
+        if (SharedPreferenceManager.getMode(this) == null) {
+            val currentMode = AppCompatDelegate.getDefaultNightMode()
+            if (currentMode == AppCompatDelegate.MODE_NIGHT_YES) {
+                SharedPreferenceManager.setMode(this, true)
+            } else if (currentMode == AppCompatDelegate.MODE_NIGHT_NO) {
+                SharedPreferenceManager.setMode(this, false)
+            }
+        } else {
+            if(SharedPreferenceManager.getMode(this).equals("dark")){
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            } else if(SharedPreferenceManager.getMode(this).equals("light")) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
         }
     }
 }

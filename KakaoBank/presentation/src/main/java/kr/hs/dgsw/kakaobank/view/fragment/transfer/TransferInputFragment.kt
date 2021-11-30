@@ -1,12 +1,12 @@
 package kr.hs.dgsw.kakaobank.view.fragment.transfer
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import kr.hs.dgsw.kakaobank.R
 import kr.hs.dgsw.kakaobank.base.BaseFragment
 import kr.hs.dgsw.kakaobank.databinding.FragmentTransferInputBinding
@@ -26,8 +26,8 @@ class TransferInputFragment : BaseFragment<FragmentTransferInputBinding, Transfe
     ): View? {
         val bankNumber = arguments?.getInt("bankNumber")
 
-        if(bankNumber != null){
-            when(bankNumber){
+        if (bankNumber != null) {
+            when (bankNumber) {
                 1 -> {
                     mBinding.transferIBankImage.setImageResource(R.drawable.toss)
                     mBinding.transferITvBankChoice.text = "토스"
@@ -36,15 +36,15 @@ class TransferInputFragment : BaseFragment<FragmentTransferInputBinding, Transfe
                     mBinding.transferIBankImage.setImageResource(R.drawable.kakao)
                     mBinding.transferITvBankChoice.text = "카카오뱅크"
                 }
-                3 ->{
+                3 -> {
                     mBinding.transferIBankImage.setImageResource(R.drawable.kbank)
                     mBinding.transferITvBankChoice.text = "K뱅크"
                 }
-                4->{
+                4 -> {
                     mBinding.transferIBankImage.setImageResource(R.drawable.deagu)
                     mBinding.transferITvBankChoice.text = "대구은행"
                 }
-                5->{
+                5 -> {
                     mBinding.transferIBankImage.setImageResource(R.drawable.maggu)
                     mBinding.transferITvBankChoice.text = "머구은행"
                 }
@@ -68,10 +68,21 @@ class TransferInputFragment : BaseFragment<FragmentTransferInputBinding, Transfe
             })
 
             bankBookNumber.observe(this@TransferInputFragment, Observer {
-                if(it.isNotEmpty()){
+                if (it.isNotEmpty()) {
                     mBinding.transferINumber.text = it
                 } else {
                     mBinding.transferINumber.text = ""
+                }
+
+                if (it.length > 11) {
+                    mBinding.transferIConfirmBtn.setBackgroundColor(ContextCompat.getColor(
+                        requireContext(),
+                        R.color.kakao))
+                    mBinding.transferIConfirmBtn.setTextColor(ContextCompat.getColor(requireContext(),
+                        R.color.text_mainColor))
+                    mBinding.transferIConfirmBtn.setOnClickListener {
+                        this@TransferInputFragment.findNavController().navigate(R.id.)
+                    }
                 }
             })
 

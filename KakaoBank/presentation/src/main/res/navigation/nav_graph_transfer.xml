@@ -48,4 +48,8 @@
         android:name="kr.hs.dgsw.kakaobank.view.fragment.transfer.TransferPasswordFragment"
         android:label="fragment_transfer_password"
         tools:layout="@layout/fragment_transfer_password" />
+    <activity
+        android:id="@+id/transferActivity"
+        android:name="kr.hs.dgsw.kakaobank.view.activity.TransferActivity"
+        android:label="TransferActivity" />
 </navigation>

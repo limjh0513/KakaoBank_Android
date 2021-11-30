@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="kr.hs.dgsw.kakaobank.viewmodel.SettingViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.activity.SettingActivity">
+
+        <ImageButton
+            android:id="@+id/setting_backBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:onClick="@{() -> vm.onClickBackBtn()}"
+            android:layout_marginTop="8dp"
+            android:background="@android:color/transparent"
+            android:padding="15dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_back_image" />
+
+        <Switch
+            android:id="@+id/mode_toggle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:padding="10dp"
+            android:checked="@={vm.modeSwitch}"
+            android:fontFamily="@font/kakao_regular"
+            android:minHeight="78dp"
+            android:text="@string/mode"
+            android:textColor="@color/text_mainColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/setting_backBtn" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

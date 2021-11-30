@@ -78,6 +78,11 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
                     .error(R.drawable.default_profile)
                     .into(mBinding.imageProfile)
             })
+
+            settingBtn.observe(this@MainActivity, Observer {
+                val intent = Intent(this@MainActivity, SettingActivity::class.java)
+                startActivity(intent)
+            })
         }
     }
 

@@ -20,6 +20,8 @@ class MainViewModel(private val getAccountUseCase: GetAccountUseCase, private va
     val getUserData = MutableLiveData<User>()
     val getUserErrorEvent = MutableLiveData<Throwable>()
 
+    val settingBtn = SingleLiveEvent<Any>()
+
     fun getAccountList(token: String) {
         addDisposable(getAccountUseCase.buildUseCaseObservable(GetAccountUseCase.Params(token)),
             object : DisposableSingleObserver<List<Account>>() {
@@ -46,6 +48,10 @@ class MainViewModel(private val getAccountUseCase: GetAccountUseCase, private va
             }
 
         })
+    }
+
+    fun onClickSettingBtn(){
+        settingBtn.call()
     }
 
     fun onClickOpenUpBtn() {
