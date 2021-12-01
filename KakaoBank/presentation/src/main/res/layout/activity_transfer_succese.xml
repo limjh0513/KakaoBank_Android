@@ -99,7 +99,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="@font/kakao_regular"
-                android:text="계좌"
+                android:text="받은 계좌"
                 android:textColor="@color/hint_text"
                 android:textFontWeight="400"
                 android:textSize="20sp" />

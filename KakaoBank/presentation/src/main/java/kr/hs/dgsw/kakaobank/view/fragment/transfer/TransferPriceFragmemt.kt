@@ -34,7 +34,6 @@ class TransferPriceFragmemt : BaseFragment<FragmentTransferPriceBinding, Transfe
             transferMoney.observe(this@TransferPriceFragmemt, Observer {
                 if (it.isNotEmpty()) {
                     mBinding.transferPPrice.text = getRestNumber(it)
-                    (activity as TransferActivity).request.toMoney = Integer.parseInt(it)
                 } else {
                     mBinding.transferPPrice.text = ""
                 }
@@ -46,9 +45,18 @@ class TransferPriceFragmemt : BaseFragment<FragmentTransferPriceBinding, Transfe
                     mBinding.transferPConfirmBtn.setTextColor(ContextCompat.getColor(requireContext(),
                         R.color.text_mainColor))
                     mBinding.transferPConfirmBtn.setOnClickListener {
-                        (activity as TransferActivity).request.toAccountNumber = "$it"
+                        (activity as TransferActivity).request.toMoney =
+                            Integer.parseInt(transferMoney.value)
                         this@TransferPriceFragmemt.findNavController()
                             .navigate(R.id.action_transferPriceFragmemt_to_transferPasswordFragment)
+                    }
+                } else {
+                    mBinding.transferPConfirmBtn.setBackgroundColor(ContextCompat.getColor(
+                        requireContext(),
+                        R.color.disabled))
+                    mBinding.transferPConfirmBtn.setTextColor(ContextCompat.getColor(requireContext(),
+                        R.color.disabled_text))
+                    mBinding.transferPConfirmBtn.setOnClickListener {
                     }
                 }
             })

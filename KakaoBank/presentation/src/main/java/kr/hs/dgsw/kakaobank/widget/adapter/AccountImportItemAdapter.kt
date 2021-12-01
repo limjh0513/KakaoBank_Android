@@ -4,7 +4,9 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import kr.hs.dgsw.domain.model.Account
 import kr.hs.dgsw.kakaobank.R
@@ -39,12 +41,15 @@ class AccountImportItemAdapter : RecyclerView.Adapter<AccountImportItemAdapter.V
             binding.itemImpMoney.text = getRestNumber(account.money.toString())
             binding.itemImpTvNick.text = account.nickname
             binding.itemImpTvNumber.text = account.accountNumber
+            binding.itemImpBankName.text = account.kindOfBank
 
             binding.itemImpView.setOnClickListener {
-
+                val bundle = bundleOf("accountNumber" to account.accountNumber,
+                    "money" to account.money,
+                    "nickname" to account.nickname)
+                it.findNavController()
+                    .navigate(R.id.action_importSelectFragment_to_importMoneyFragment, bundle)
             }
-
-            binding.itemImpBankName.text = account.kindOfBank
 
             when (position % 5) {
                 0 -> binding.itemImpView.background =

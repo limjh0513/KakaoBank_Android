@@ -7,24 +7,23 @@ import kr.hs.dgsw.kakaobank.widget.SingleLiveEvent
 class ImportMoneyViewModel : BaseViewModel() {
     val cancelBtn = SingleLiveEvent<Any>()
     val backBtn = SingleLiveEvent<Any>()
-    val bankBookNumber = MutableLiveData<String>()
-    val bankSelectBtn = SingleLiveEvent<Any>()
+    val importMoney = MutableLiveData<String>()
+    val bankSubmitBtn = SingleLiveEvent<Any>()
 
     init {
-        bankBookNumber.value = "";
+        importMoney.value = "";
     }
 
-    fun onClickBankSelectBtn(){
-        bankSelectBtn.call()
+    fun onClickbankSubmitBtn(){
+        bankSubmitBtn.call()
     }
-
 
     fun onClickCancelBtn(){
         cancelBtn.call()
     }
 
     fun onClickNumberBtn(number: Int){
-        bankBookNumber.value = "${bankBookNumber.value}${number}"
+        importMoney.value = "${importMoney.value}${number}"
     }
 
     fun onClickBackBtn(){

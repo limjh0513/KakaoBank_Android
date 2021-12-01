@@ -54,12 +54,12 @@ class ImportSelectFragment : BaseFragment<FragmentImportSelectBinding, ImportSel
     }
 
     private fun currentAccountDelete(accounts: List<Account>?): List<Account> {
-        val currentNumber = (activity as ImportActivity).accountNumber
+        val currentNumber = (activity as ImportActivity).request.fromAccountNum
         var accountList: ArrayList<Account> = ArrayList<Account>()
 
         if (accounts != null) {
             for (account in accounts) {
-                if (!account.accountNumber.equals(currentNumber)) {
+                if (account.accountNumber != currentNumber && account.kindOfBank == "KAKAO") {
                     accountList.add(account)
                 }
             }

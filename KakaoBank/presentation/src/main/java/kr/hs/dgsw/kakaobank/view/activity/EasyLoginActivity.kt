@@ -62,6 +62,7 @@ class EasyLoginActivity : BaseActivity<ActivityEasyLoginBinding, EasyLoginViewMo
                 Toast.makeText(this@EasyLoginActivity,
                     "로그인에 실패했습니다. 비밀번호가 일치하지 않거나 네트워크 오류",
                     Toast.LENGTH_SHORT).show()
+                password.value = ""
             })
 
             basicLoginBtn.observe(this@EasyLoginActivity, Observer {

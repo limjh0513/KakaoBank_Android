@@ -45,6 +45,7 @@ class AccountItemAdapter : RecyclerView.Adapter<AccountItemAdapter.ViewHolder>()
             binding.itemBringBtn.setOnClickListener {
                 val intent = Intent(context, ImportActivity::class.java)
                 intent.putExtra("accountNumber", account.accountNumber)
+                intent.putExtra("name", account.nickname)
                 context.startActivity(intent)
             }
             binding.itemSendBtn.setOnClickListener {

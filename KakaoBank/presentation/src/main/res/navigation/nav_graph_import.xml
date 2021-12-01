@@ -13,6 +13,16 @@
         <action
             android:id="@+id/action_importSelectFragment_to_importMoneyFragment"
             app:destination="@id/importMoneyFragment" />
+        <argument
+            android:name="accountNumber"
+            app:argType="string" />
+        <argument
+            android:name="money"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="nickname"
+            app:argType="string" />
     </fragment>
     <activity
         android:id="@+id/importActivity"
@@ -22,5 +32,14 @@
         android:id="@+id/importMoneyFragment"
         android:name="kr.hs.dgsw.kakaobank.view.fragment.impor.ImportMoneyFragment"
         android:label="fragment_import_money"
-        tools:layout="@layout/fragment_import_money" />
+        tools:layout="@layout/fragment_import_money" >
+        <action
+            android:id="@+id/action_importMoneyFragment_to_importPasswordFragment"
+            app:destination="@id/importPasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/importPasswordFragment"
+        android:name="kr.hs.dgsw.kakaobank.ImportPasswordFragment"
+        android:label="fragment_import_password"
+        tools:layout="@layout/fragment_import_password" />
 </navigation>

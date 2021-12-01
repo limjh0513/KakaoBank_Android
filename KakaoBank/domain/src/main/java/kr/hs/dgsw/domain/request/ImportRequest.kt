@@ -1,7 +1,9 @@
 package kr.hs.dgsw.domain.request
 
 data class ImportRequest(
-    val fromAccountNum: String,
-    val money: Int,
-    val toAccountNum: String,
-)
+    var fromAccountNum: String?,
+    var money: Int?,
+    var toAccountNum: String?,
+) {
+    constructor(): this(null, null, null)
+}

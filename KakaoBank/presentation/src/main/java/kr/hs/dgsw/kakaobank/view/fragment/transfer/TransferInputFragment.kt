@@ -86,7 +86,7 @@ class TransferInputFragment : BaseFragment<FragmentTransferInputBinding, Transfe
                     mBinding.transferINumber.text = ""
                 }
 
-                if (it.length > 11) {
+                if (it.length >= 11) {
                     mBinding.transferIConfirmBtn.setBackgroundColor(ContextCompat.getColor(
                         requireContext(),
                         R.color.kakao))
@@ -96,6 +96,14 @@ class TransferInputFragment : BaseFragment<FragmentTransferInputBinding, Transfe
                         (activity as TransferActivity).request.toAccountNumber = "$it"
                         this@TransferInputFragment.findNavController()
                             .navigate(R.id.action_transferInputFragment_to_transferConfirmFragment)
+                    }
+                } else{
+                    mBinding.transferIConfirmBtn.setBackgroundColor(ContextCompat.getColor(
+                        requireContext(),
+                        R.color.disabled))
+                    mBinding.transferIConfirmBtn.setTextColor(ContextCompat.getColor(requireContext(),
+                        R.color.disabled_text))
+                    mBinding.transferIConfirmBtn.setOnClickListener {
                     }
                 }
             })

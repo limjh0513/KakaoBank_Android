@@ -2,6 +2,7 @@ package kr.hs.dgsw.kakaobank.view.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import kr.hs.dgsw.domain.request.ImportRequest
 import kr.hs.dgsw.kakaobank.R
 import kr.hs.dgsw.kakaobank.base.BaseActivity
 import kr.hs.dgsw.kakaobank.databinding.ActivityImportBinding
@@ -13,8 +14,10 @@ class ImportActivity : BaseActivity<ActivityImportBinding, ImportViewModel>() {
     override val layoutRes: Int
         get() = R.layout.activity_import
 
-    lateinit var accountNumber: String
-    var importAccountNumber: String? = null
+    var request = ImportRequest()
+    var toNickName: String = ""
+    var fromNickName: String = ""
+    var fromMoney: Int = 0
 
     override fun observerViewModel() {
         getAccountNumber()
@@ -25,6 +28,7 @@ class ImportActivity : BaseActivity<ActivityImportBinding, ImportViewModel>() {
     }
 
     private fun getAccountNumber() {
-        accountNumber = intent.getStringExtra("accountNumber").toString()
+        request.toAccountNum = intent.getStringExtra("accountNumber").toString()
+        toNickName = intent.getStringExtra("name").toString()
     }
 }

@@ -2,6 +2,7 @@ package kr.hs.dgsw.kakaobank.di
 
 import kr.hs.dgsw.kakaobank.viewmodel.*
 import kr.hs.dgsw.kakaobank.viewmodel.impor.ImportMoneyViewModel
+import kr.hs.dgsw.kakaobank.viewmodel.impor.ImportPasswordViewModel
 import kr.hs.dgsw.kakaobank.viewmodel.impor.ImportSelectViewModel
 import kr.hs.dgsw.kakaobank.viewmodel.openup.*
 import kr.hs.dgsw.kakaobank.viewmodel.other.OtherSelectViewModel
@@ -49,6 +50,7 @@ val viewModelModule = module {
     //Import Fragment
     viewModel { ImportSelectViewModel(get()) }
     viewModel { ImportMoneyViewModel() }
+    viewModel { ImportPasswordViewModel(get(), get()) }
 
     //Other Fragment
     viewModel { OtherTermsViewModel() }
