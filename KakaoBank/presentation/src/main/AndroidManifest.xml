@@ -17,6 +17,9 @@
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".view.activity.TransferActivity2"
+            android:exported="true" />
+        <activity
             android:name=".view.activity.ImportSuccessActivity"
             android:exported="true" />
         <activity
@@ -61,7 +64,6 @@
         <activity
             android:name=".view.activity.StartActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -73,7 +75,7 @@
             android:exported="true" />
         <activity
             android:name=".view.activity.MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>

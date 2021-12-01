@@ -54,85 +54,23 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <ImageView
-            android:id="@+id/transferI_bankImage"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.2"
-            tools:src="@tools:sample/avatars" />
-
-        <LinearLayout
-            android:id="@+id/linearLayout13"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/transferI_bankImage"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.2">
-
-            <TextView
-                android:id="@+id/transferI_tvBankChoice"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_weight="700"
-                android:fontFamily="@font/kakao_regular"
-                android:gravity="center"
-                android:text="은행 선택"
-                android:textColor="@color/text_mainColor"
-                android:textFontWeight="700"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/transferI_bankName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/kakao_regular"
-                android:gravity="center"
-                android:text="입금 은행"
-                android:textColor="@color/text_mainColor"
-                android:textFontWeight="400"
-                android:textSize="14sp" />
-
-        </LinearLayout>
-
-        <ImageButton
-            android:id="@+id/transferI_BankChoiceBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:onClick="@{() -> vm.onClickBankSelectBtn()}"
-            android:background="@android:color/transparent"
-            android:src="@drawable/ic_more_btn"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/linearLayout13"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.2" />
-
         <TextView
             android:id="@+id/transferI_number"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="24dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/transfer_inputs"
             android:fontFamily="@font/kakao_regular"
-            android:padding="24dp"
-            android:text="@={vm.bankBookNumber}"
             android:hint="입금 할 계좌번호 입력"
-            android:textColor="@color/transfer_input"
+            android:padding="24dp"
+            android:textColor="@color/text_mainColor"
             android:textFontWeight="400"
             android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/transferI_tableLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/transferI_bankImage" />
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
         <TableLayout
             android:id="@+id/transferI_tableLayout"
@@ -141,15 +79,14 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
+            android:layout_marginBottom="16dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:paddingBottom="20dp"
             app:layout_constraintBottom_toTopOf="@+id/transferI_confirmBtn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/transferI_number"
-            app:layout_constraintVertical_bias="0.75">
+            app:layout_constraintStart_toStartOf="parent">
 
             <TableRow
                 android:layout_width="match_parent"
@@ -371,6 +308,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

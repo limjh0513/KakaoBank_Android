@@ -24,6 +24,11 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     override val layoutRes: Int
         get() = R.layout.activity_main
 
+    override fun onRestart() {
+        super.onRestart()
+        getAccount()
+    }
+
     override fun observerViewModel() {
         getInit()
 

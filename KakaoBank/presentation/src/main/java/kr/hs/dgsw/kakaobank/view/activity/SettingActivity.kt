@@ -2,6 +2,7 @@ package kr.hs.dgsw.kakaobank.view.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.Observer
 import kr.hs.dgsw.data.util.SharedPreferenceManager
@@ -17,6 +18,8 @@ class SettingActivity : BaseActivity<ActivitySettingBinding, SettingViewModel>()
         get() = R.layout.activity_setting
 
     override fun observerViewModel() {
+        getCurrentMode()
+
         with(mViewModel){
             backBtn.observe(this@SettingActivity, Observer {
                 finish()
@@ -32,5 +35,11 @@ class SettingActivity : BaseActivity<ActivitySettingBinding, SettingViewModel>()
                 }
             })
         }
+    }
+
+    private fun getCurrentMode() {
+        val mode = SharedPreferenceManager.getMode(this)
+
+        mViewModel.modeSwitch.value = mode.equals("dark")
     }
 }

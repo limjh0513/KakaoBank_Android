@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph_transfer"
+    android:id="@+id/nav_graph_transfer.xml"
     app:startDestination="@id/transferInputFragment">
 
     <fragment
@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_transferInputFragment_to_transferConfirmFragment"
             app:destination="@id/transferConfirmFragment" />
+        <action
+            android:id="@+id/action_transferInputFragment_to_transferBankFragment"
+            app:destination="@id/transferBankFragment" />
     </fragment>
     <fragment
         android:id="@+id/transferConfirmFragment"
@@ -36,7 +39,7 @@
     </fragment>
     <fragment
         android:id="@+id/transferPriceFragmemt"
-        android:name="kr.hs.dgsw.kakaobank.view.fragment.transfer.TransferPriceFragmemt"
+        android:name="kr.hs.dgsw.kakaobank.view.fragment.transfer.TransferPriceFragment"
         android:label="fragment_transfer_price"
         tools:layout="@layout/fragment_transfer_price" >
         <action
@@ -52,4 +55,12 @@
         android:id="@+id/transferActivity"
         android:name="kr.hs.dgsw.kakaobank.view.activity.TransferActivity"
         android:label="TransferActivity" />
+    <fragment
+        android:id="@+id/transferBankFragment"
+        android:name="kr.hs.dgsw.kakaobank.view.fragment.transfer.TransferBankFragment"
+        android:label="TransferBankFragment" >
+        <action
+            android:id="@+id/action_transferBankFragment_to_transferPriceFragmemt"
+            app:destination="@id/transferPriceFragmemt" />
+    </fragment>
 </navigation>

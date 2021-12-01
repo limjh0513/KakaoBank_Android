@@ -39,7 +39,7 @@
     </fragment>
     <fragment
         android:id="@+id/importPasswordFragment"
-        android:name="kr.hs.dgsw.kakaobank.ImportPasswordFragment"
+        android:name="kr.hs.dgsw.kakaobank.view.fragment.impor.ImportPasswordFragment"
         android:label="fragment_import_password"
         tools:layout="@layout/fragment_import_password" />
 </navigation>

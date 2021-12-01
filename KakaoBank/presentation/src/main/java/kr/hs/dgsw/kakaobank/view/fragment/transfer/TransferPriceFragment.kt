@@ -11,7 +11,7 @@ import kr.hs.dgsw.kakaobank.viewmodel.transfer.TransferPriceViewModel
 import kr.hs.dgsw.kakaobank.widget.getRestNumber
 import org.koin.android.ext.android.inject
 
-class TransferPriceFragmemt : BaseFragment<FragmentTransferPriceBinding, TransferPriceViewModel>() {
+class TransferPriceFragment : BaseFragment<FragmentTransferPriceBinding, TransferPriceViewModel>() {
     override val mViewModel: TransferPriceViewModel by inject()
     override val layoutRes: Int
         get() = R.layout.fragment_transfer_price
@@ -20,25 +20,20 @@ class TransferPriceFragmemt : BaseFragment<FragmentTransferPriceBinding, Transfe
         setTransferInformation()
 
         with(mViewModel) {
-            cancelBtn.observe(this@TransferPriceFragmemt, Observer {
+            cancelBtn.observe(this@TransferPriceFragment, Observer {
                 requireActivity().finish()
             })
 
-            backBtn.observe(this@TransferPriceFragmemt, Observer {
+            backBtn.observe(this@TransferPriceFragment, Observer {
                 if (transferMoney.value?.length!! > 0) {
                     val str = transferMoney.value!!.substring(0, transferMoney.value!!.length - 1)
                     transferMoney.value = str
                 }
             })
 
-            transferMoney.observe(this@TransferPriceFragmemt, Observer {
-                if (it.isNotEmpty()) {
+            transferMoney.observe(this@TransferPriceFragment, Observer {
+                if (it.length > 0) {
                     mBinding.transferPPrice.text = getRestNumber(it)
-                } else {
-                    mBinding.transferPPrice.text = ""
-                }
-
-                if (it.isNotEmpty()) {
                     mBinding.transferPConfirmBtn.setBackgroundColor(ContextCompat.getColor(
                         requireContext(),
                         R.color.kakao))
@@ -47,10 +42,11 @@ class TransferPriceFragmemt : BaseFragment<FragmentTransferPriceBinding, Transfe
                     mBinding.transferPConfirmBtn.setOnClickListener {
                         (activity as TransferActivity).request.toMoney =
                             Integer.parseInt(transferMoney.value)
-                        this@TransferPriceFragmemt.findNavController()
+                        this@TransferPriceFragment.findNavController()
                             .navigate(R.id.action_transferPriceFragmemt_to_transferPasswordFragment)
                     }
                 } else {
+                    mBinding.transferPPrice.text = it
                     mBinding.transferPConfirmBtn.setBackgroundColor(ContextCompat.getColor(
                         requireContext(),
                         R.color.disabled))

@@ -9,13 +9,16 @@ class TransferPriceViewModel: BaseViewModel() {
     val backBtn = SingleLiveEvent<Any>()
     val transferMoney = MutableLiveData<String>()
 
+    init{
+        transferMoney.value = ""
+    }
 
     fun onClickCancelBtn(){
         cancelBtn.call()
     }
 
     fun onClickNumberBtn(number: Int){
-        transferMoney.value = "${transferMoney.value}${number}"
+        transferMoney.value += "$number"
     }
 
     fun onClickBackBtn(){

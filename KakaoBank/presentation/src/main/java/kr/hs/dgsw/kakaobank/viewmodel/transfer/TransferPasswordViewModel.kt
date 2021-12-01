@@ -21,6 +21,10 @@ class TransferPasswordViewModel(private val passwordCheckUseCase: PasswordCheckU
     val transferMoneySuccess = SingleLiveEvent<Any>()
     val transferMoneyError = MutableLiveData<Throwable>()
 
+    init{
+        password.value = ""
+    }
+
     fun passwordCheck(token: String, accountNumber: String, password: String){
         addDisposable(passwordCheckUseCase.buildUseCaseObservable(PasswordCheckUseCase.Params(token, accountNumber, password)), object : DisposableSingleObserver<Boolean>(){
             override fun onSuccess(t: Boolean) {

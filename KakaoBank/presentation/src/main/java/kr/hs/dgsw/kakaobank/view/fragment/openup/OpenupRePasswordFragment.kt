@@ -54,8 +54,6 @@ class OpenupRePasswordFragment :
 
             insertSuccess.observe(this@OpenupRePasswordFragment, Observer {
                 val intent = Intent(requireActivity(), OpenUpSuccessActivity::class.java)
-                intent.putExtra("image", (activity as SignupActivity).profileImage)
-                intent.putExtra("name", (activity as SignupActivity).request.name)
                 startActivity(intent)
                 requireActivity().finish()
             })

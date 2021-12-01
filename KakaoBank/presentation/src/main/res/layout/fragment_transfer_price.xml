@@ -12,7 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.fragment.transfer.TransferPriceFragmemt">
+        tools:context=".view.fragment.transfer.TransferPriceFragment">
 
         <TextView
             android:id="@+id/transferP_sendNumber"
@@ -50,6 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="48dp"
             android:fontFamily="@font/kakao_regular"
+            android:gravity="center"
             android:hint="보낼 금액"
             android:textColor="@color/text_mainColor"
             android:textFontWeight="400"

@@ -1,76 +1,59 @@
 package kr.hs.dgsw.kakaobank.view.fragment.transfer
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import androidx.navigation.fragment.findNavController
 import kr.hs.dgsw.kakaobank.R
+import kr.hs.dgsw.kakaobank.base.BaseFragment
 import kr.hs.dgsw.kakaobank.databinding.FragmentTransferBankBinding
+import kr.hs.dgsw.kakaobank.view.activity.TransferActivity
 import kr.hs.dgsw.kakaobank.viewmodel.transfer.TransferBankViewModel
-import org.koin.androidx.viewmodel.ext.android.getViewModel
+import org.koin.android.ext.android.inject
 
-class TransferBankFragment : BottomSheetDialogFragment() {
+class TransferBankFragment : BaseFragment<FragmentTransferBankBinding, TransferBankViewModel>() {
+    override val mViewModel: TransferBankViewModel by inject()
+    override val layoutRes: Int
+        get() = R.layout.fragment_transfer_bank
 
-    lateinit var mBinding: FragmentTransferBankBinding
-    lateinit var mViewModel: TransferBankViewModel
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setStyle(STYLE_NORMAL, R.style.CustomBottomSheetDialogTheme)
-    }
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?, ): View? {
-        mBinding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_transfer_bank, container, false)
-        mViewModel = ViewModelProvider(this).get(TransferBankViewModel::class.java)
-
-        mBinding.lifecycleOwner = this
-        mBinding.vm = mViewModel
-
-        observeViewModel()
-
-        return mBinding.root
-    }
-
-    private fun observeViewModel() {
-        with(mViewModel){
+    override fun observerViewModel() {
+        with(mViewModel) {
             backBtn.observe(this@TransferBankFragment, Observer {
-                dismiss()
+                requireActivity().finish()
             })
 
             kakaoBankBtn.observe(this@TransferBankFragment, Observer {
-                val bankBundle: Bundle = Bundle()
-                bankBundle.putInt("bankNumber", 2)
-                dismiss()
+                (activity as TransferActivity).request.toBank = "KAKAO"
+                (activity as TransferActivity).bank = "카카오"
+                this@TransferBankFragment.findNavController()
+                    .navigate(R.id.action_transferBankFragment_to_transferPriceFragmemt)
+
             })
 
             tossBankBtn.observe(this@TransferBankFragment, Observer {
-                val bankBundle: Bundle = Bundle()
-                bankBundle.putInt("bankNumber", 1)
-                dismiss()
+                (activity as TransferActivity).request.toBank = "TOSS"
+                (activity as TransferActivity).bank = "토스"
+                this@TransferBankFragment.findNavController()
+                    .navigate(R.id.action_transferBankFragment_to_transferPriceFragmemt)
             })
 
             deaguBankBtn.observe(this@TransferBankFragment, Observer {
-                val bankBundle: Bundle = Bundle()
-                bankBundle.putInt("bankNumber", 4)
-                dismiss()
+                (activity as TransferActivity).request.toBank = "DEAGU"
+                (activity as TransferActivity).bank = "대구은행"
+                this@TransferBankFragment.findNavController()
+                    .navigate(R.id.action_transferBankFragment_to_transferPriceFragmemt)
             })
 
             kBankBtn.observe(this@TransferBankFragment, Observer {
-                val bankBundle: Bundle = Bundle()
-                bankBundle.putInt("bankNumber", 3)
-                dismiss()
+                (activity as TransferActivity).request.toBank = "KBANK"
+                (activity as TransferActivity).bank = "케이뱅크"
+                this@TransferBankFragment.findNavController()
+                    .navigate(R.id.action_transferBankFragment_to_transferPriceFragmemt)
             })
 
             magguBtn.observe(this@TransferBankFragment, Observer {
-                val bankBundle: Bundle = Bundle()
-                bankBundle.putInt("bankNumber", 5)
-                dismiss()
+                (activity as TransferActivity).request.toBank = "MAGGU"
+                (activity as TransferActivity).bank = "머구은행"
+                this@TransferBankFragment.findNavController()
+                    .navigate(R.id.action_transferBankFragment_to_transferPriceFragmemt)
             })
         }
     }

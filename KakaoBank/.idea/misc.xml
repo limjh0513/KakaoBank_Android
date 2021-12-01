@@ -100,7 +100,7 @@
         <entry key="..\:/Users/ljh04/Documents/GitHub/KakaoBank_Android/KakaoBank/presentation/src/main/res/layout/activity_borrow_account.xml" value="0.20625" />
         <entry key="..\:/Users/ljh04/Documents/GitHub/KakaoBank_Android/KakaoBank/presentation/src/main/res/layout/activity_easy_login.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/ljh04/Documents/GitHub/KakaoBank_Android/KakaoBank/presentation/src/main/res/layout/activity_import.xml" value="0.36614583333333334" />
-        <entry key="..\:/Users/ljh04/Documents/GitHub/KakaoBank_Android/KakaoBank/presentation/src/main/res/layout/activity_import_success.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/ljh04/Documents/GitHub/KakaoBank_Android/KakaoBank/presentation/src/main/res/layout/activity_import_success.xml" value="0.22" />
         <entry key="..\:/Users/ljh04/Documents/GitHub/KakaoBank_Android/KakaoBank/presentation/src/main/res/layout/activity_infor_account.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/ljh04/Documents/GitHub/KakaoBank_Android/KakaoBank/presentation/src/main/res/layout/activity_login.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/ljh04/Documents/GitHub/KakaoBank_Android/KakaoBank/presentation/src/main/res/layout/activity_main.xml" value="0.25" />
@@ -112,11 +112,12 @@
         <entry key="..\:/Users/ljh04/Documents/GitHub/KakaoBank_Android/KakaoBank/presentation/src/main/res/layout/activity_signup.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/ljh04/Documents/GitHub/KakaoBank_Android/KakaoBank/presentation/src/main/res/layout/activity_start.xml" value="0.2557291666666667" />
         <entry key="..\:/Users/ljh04/Documents/GitHub/KakaoBank_Android/KakaoBank/presentation/src/main/res/layout/activity_transfer.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/ljh04/Documents/GitHub/KakaoBank_Android/KakaoBank/presentation/src/main/res/layout/activity_transfer2.xml" value="0.28854166666666664" />
         <entry key="..\:/Users/ljh04/Documents/GitHub/KakaoBank_Android/KakaoBank/presentation/src/main/res/layout/activity_transfer_succese.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/ljh04/Documents/GitHub/KakaoBank_Android/KakaoBank/presentation/src/main/res/layout/activity_welcom.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/ljh04/Documents/GitHub/KakaoBank_Android/KakaoBank/presentation/src/main/res/layout/fragment_bankbook_nick.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/ljh04/Documents/GitHub/KakaoBank_Android/KakaoBank/presentation/src/main/res/layout/fragment_import_money.xml" value="0.36614583333333334" />
-        <entry key="..\:/Users/ljh04/Documents/GitHub/KakaoBank_Android/KakaoBank/presentation/src/main/res/layout/fragment_import_password.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/ljh04/Documents/GitHub/KakaoBank_Android/KakaoBank/presentation/src/main/res/layout/fragment_import_password.xml" value="0.18" />
         <entry key="..\:/Users/ljh04/Documents/GitHub/KakaoBank_Android/KakaoBank/presentation/src/main/res/layout/fragment_import_select.xml" value="0.33" />
         <entry key="..\:/Users/ljh04/Documents/GitHub/KakaoBank_Android/KakaoBank/presentation/src/main/res/layout/fragment_ohter_terms.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/ljh04/Documents/GitHub/KakaoBank_Android/KakaoBank/presentation/src/main/res/layout/fragment_openup_input.xml" value="0.21145833333333333" />

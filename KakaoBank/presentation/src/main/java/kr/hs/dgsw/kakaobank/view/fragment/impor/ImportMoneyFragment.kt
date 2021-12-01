@@ -1,5 +1,6 @@
 package kr.hs.dgsw.kakaobank.view.fragment.impor
 
+import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import kr.hs.dgsw.kakaobank.R
@@ -31,10 +32,13 @@ class ImportMoneyFragment : BaseFragment<FragmentImportMoneyBinding, ImportMoney
             })
 
             importMoney.observe(this@ImportMoneyFragment, Observer {
-                mBinding.importMEtMoney.setText(getRestNumber(it))
+                if(it.length > 0){
+                    mBinding.importMEtMoney.setText(getRestNumber(it))
+                }
             })
 
             bankSubmitBtn.observe(this@ImportMoneyFragment, Observer {
+                Log.e("dsf", "${importMoney.value}")
                 if (importMoney.value != null) {
                     if (importMoney.value?.length!! > 0) {
                         (activity as ImportActivity).request.money =
@@ -53,6 +57,9 @@ class ImportMoneyFragment : BaseFragment<FragmentImportMoneyBinding, ImportMoney
             arguments?.getString("accountNumber")
         (activity as ImportActivity).fromMoney = arguments?.getInt("money", 0)!!
         (activity as ImportActivity).fromNickName = arguments?.getString("nickname")!!
+
+        mBinding.importMTvMain.text = "${(activity as ImportActivity).toNickName}(으)로 가져오기"
+        mBinding.textView5.text = "${(activity as ImportActivity).fromNickName} : ${(activity as ImportActivity).fromMoney}원"
 
         mBinding.importMEtMoney.isFocusable = false
         mBinding.importMEtMoney.isClickable = false

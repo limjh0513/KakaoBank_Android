@@ -1,6 +1,7 @@
 package kr.hs.dgsw.kakaobank.view.fragment.transfer
 
 import android.content.Intent
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import kr.hs.dgsw.data.util.SharedPreferenceManager
@@ -29,10 +30,16 @@ class TransferPasswordFragment :
                 if (password.value?.length!! > 0) {
                     val str = password.value!!.substring(0, password.value!!.length - 1)
                     password.value = str
+
+                    showInitPassword()
+                    showSecretPassword(password.value?.length!!)
                 }
             })
 
             password.observe(this@TransferPasswordFragment, Observer {
+                Log.e("dfa", it.length.toString())
+                Log.e("dfa", it.toString())
+                showSecretPassword(it.length)
                 if (it.length == 4) {
                     checkPassword()
                 }
@@ -59,7 +66,7 @@ class TransferPasswordFragment :
                 intent.putExtra("from", (activity as TransferActivity).request.fromAccountNumber)
                 intent.putExtra("to", (activity as TransferActivity).request.toAccountNumber)
                 intent.putExtra("money",
-                    (activity as TransferActivity).money)
+                    (activity as TransferActivity).request.toMoney)
                 intent.putExtra("fees",
                     (activity as TransferActivity).fees)
                 startActivity(intent)
@@ -96,6 +103,36 @@ class TransferPasswordFragment :
             Toast.makeText(requireContext(), "토큰이 존재하지 않습니다. 다시 로그인해주세요", Toast.LENGTH_SHORT).show()
             requireActivity().finish()
         }
+    }
+
+    fun showSecretPassword(cnt: Int) {
+        when (cnt) {
+            1 -> {
+                mBinding.transferPwPassword1.text = "*"
+            }
+            2 -> {
+                mBinding.transferPwPassword1.text = "*"
+                mBinding.transferPwPassword2.text = "*"
+            }
+            3 -> {
+                mBinding.transferPwPassword1.text = "*"
+                mBinding.transferPwPassword2.text = "*"
+                mBinding.transferPwPassword3.text = "*"
+            }
+            4 -> {
+                mBinding.transferPwPassword1.text = "*"
+                mBinding.transferPwPassword2.text = "*"
+                mBinding.transferPwPassword3.text = "*"
+                mBinding.transferPwPassword4.text = "*"
+            }
+        }
+    }
+
+    fun showInitPassword() {
+        mBinding.transferPwPassword1.text = ""
+        mBinding.transferPwPassword2.text = ""
+        mBinding.transferPwPassword3.text = ""
+        mBinding.transferPwPassword4.text = ""
     }
 
 }
