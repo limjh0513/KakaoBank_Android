@@ -49,6 +49,9 @@ class AccountItemAdapter : RecyclerView.Adapter<AccountItemAdapter.ViewHolder>()
             }
             binding.itemSendBtn.setOnClickListener {
                 val intent = Intent(context, TransferActivity::class.java)
+                intent.putExtra("number", account.accountNumber)
+                intent.putExtra("money", account.money)
+                intent.putExtra("name", account.nickname)
                 context.startActivity(intent)
             }
             binding.itemBankName.text = account.kindOfBank

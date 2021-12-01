@@ -6,9 +6,11 @@ import kr.hs.dgsw.data.network.remote.AccountRemote
 import kr.hs.dgsw.domain.model.Account
 import kr.hs.dgsw.domain.repository.AccountRepository
 import kr.hs.dgsw.domain.request.AccountRequest
+import kr.hs.dgsw.domain.request.ImportRequest
 import kr.hs.dgsw.domain.request.OtherAccountRequest
+import kr.hs.dgsw.domain.request.TransferRequest
 
-class AccountRepositoryImpl(private val remote: AccountRemote): AccountRepository {
+class AccountRepositoryImpl(private val remote: AccountRemote) : AccountRepository {
     override fun getAccount(token: String): Single<List<Account>> =
         remote.getAccountList(token)
 
@@ -20,4 +22,14 @@ class AccountRepositoryImpl(private val remote: AccountRemote): AccountRepositor
 
     override fun postOtherBankAccount(token: String, request: OtherAccountRequest): Completable =
         remote.postOtherBankAccount(token, request).ignoreElement()
+
+    override fun transferMoney(token: String, request: TransferRequest): Completable =
+        remote.transferMoney(token, request).ignoreElement()
+
+    override fun importMoney(token: String, request: ImportRequest): Completable =
+        remote.importMoney(token, request).ignoreElement()
+
+    override fun checkPassword(token: String, accountNumber: String, password: String, ): Single<Boolean> =
+        remote.checkPassword(token, accountNumber, password)
+
 }

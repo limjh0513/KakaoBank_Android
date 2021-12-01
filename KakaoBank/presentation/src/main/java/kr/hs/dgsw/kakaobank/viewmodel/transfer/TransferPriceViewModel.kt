@@ -7,7 +7,7 @@ import kr.hs.dgsw.kakaobank.widget.SingleLiveEvent
 class TransferPriceViewModel: BaseViewModel() {
     val cancelBtn = SingleLiveEvent<Any>()
     val backBtn = SingleLiveEvent<Any>()
-    val bankBookNumber = MutableLiveData<String>()
+    val transferMoney = MutableLiveData<String>()
 
 
     fun onClickCancelBtn(){
@@ -15,7 +15,7 @@ class TransferPriceViewModel: BaseViewModel() {
     }
 
     fun onClickNumberBtn(number: Int){
-        bankBookNumber.value = "${bankBookNumber.value}${number}"
+        transferMoney.value = "${transferMoney.value}${number}"
     }
 
     fun onClickBackBtn(){

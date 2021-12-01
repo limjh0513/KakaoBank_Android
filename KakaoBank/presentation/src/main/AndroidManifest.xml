@@ -29,7 +29,7 @@
             android:name=".view.activity.ImportActivity"
             android:exported="true" />
         <activity
-            android:name=".view.activity.TransferSuccessAcitivty"
+            android:name=".view.activity.TransferSuccessActivity"
             android:exported="true" />
         <activity
             android:name=".view.activity.TransferActivity"

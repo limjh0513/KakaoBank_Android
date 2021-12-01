@@ -1,8 +1,10 @@
 package kr.hs.dgsw.domain.request
 
 data class TransferRequest(
-    val fromAccountNumber: String,
-    val toAccountNumber: String,
-    val toBank: String,
-    val toMoney: Int,
-)
+    var fromAccountNumber: String?,
+    var toAccountNumber: String?,
+    var toBank: String?,
+    var toMoney: Int?,
+) {
+    constructor() : this(null, null, null, null)
+}

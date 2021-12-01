@@ -43,7 +43,7 @@ val viewModelModule = module {
 
     //transfer Fragment
     viewModel { TransferInputViewModel() }
-    viewModel { TransferPasswordViewModel() }
+    viewModel { TransferPasswordViewModel(get(), get()) }
     viewModel { TransferPriceViewModel() }
 
     //Import Fragment
