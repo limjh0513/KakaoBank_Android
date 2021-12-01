@@ -38,6 +38,7 @@
             android:background="@android:color/transparent"
             android:fontFamily="@font/kakao_regular"
             android:text="취소"
+            android:onClick="@{() -> vm.onClickCancelBtn()}"
             android:textColor="@color/text_mainColor"
             android:textFontWeight="700"
             android:textSize="18sp"

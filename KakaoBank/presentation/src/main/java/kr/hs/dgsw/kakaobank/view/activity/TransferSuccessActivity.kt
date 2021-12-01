@@ -19,8 +19,8 @@ class TransferSuccessActivity : AppCompatActivity() {
 
         binding.transferSAccount.text = "출금 계좌 : ${fromAccount}"
         binding.transferSTvName.text = "$toAccount"
-        binding.transferSTvSendPrice.text = "$money"
-        binding.transferSTvfees.text = "$fees"
+        binding.transferSTvSendPrice.text = "${money}원"
+        binding.transferSTvfees.text = "${fees}원"
 
         binding.button.setOnClickListener {
             finish()
